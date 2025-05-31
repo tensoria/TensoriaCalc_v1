@@ -1,0 +1,341 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10670,        333]
+NotebookOptionsPosition[      9534,        304]
+NotebookOutlinePosition[      9924,        320]
+CellTagsIndexPosition[      9881,        317]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Trank2d2ijDown", "=", 
+   RowBox[{"NonMetricTensor", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["i", "-"], ",", 
+       SubscriptBox["j", "-"]}], "}"}], ",", 
+     RowBox[{"(", "\[NoBreak]", GridBox[{
+        {
+         RowBox[{"d", "[", 
+          RowBox[{"x", ",", "y"}], "]"}], 
+         RowBox[{"e", "[", 
+          RowBox[{"x", ",", "y"}], "]"}]},
+        {
+         RowBox[{"f", "[", 
+          RowBox[{"x", ",", "y"}], "]"}], 
+         RowBox[{"h", "[", 
+          RowBox[{"x", ",", "y"}], "]"}]}
+       }], "\[NoBreak]", ")"}], ",", "\"\<T\>\"", ",", 
+     RowBox[{"CoordinateSystem", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}]}], ",", 
+     RowBox[{"StartIndex", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Trank2d2ijUp", "=", 
+   RowBox[{"NonMetricTensor", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["i", "-"], ",", 
+       SuperscriptBox["j", "-"]}], "}"}], ",", 
+     RowBox[{"(", "\[NoBreak]", GridBox[{
+        {
+         RowBox[{"d2", "[", 
+          RowBox[{"x", ",", "y"}], "]"}], 
+         RowBox[{"e2", "[", 
+          RowBox[{"x", ",", "y"}], "]"}]},
+        {
+         RowBox[{"f2", "[", 
+          RowBox[{"x", ",", "y"}], "]"}], 
+         RowBox[{"h2", "[", 
+          RowBox[{"x", ",", "y"}], "]"}]}
+       }], "\[NoBreak]", ")"}], ",", "\"\<T2\>\"", ",", 
+     RowBox[{"CoordinateSystem", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}]}], ",", 
+     RowBox[{"StartIndex", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Scalar2D", "=", 
+   RowBox[{"NonMetricTensor", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"\[Phi]", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", "\"\<\[Phi]\>\"", ",", 
+     RowBox[{"CoordinateSystem", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}]}], ",", 
+     RowBox[{"StartIndex", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TensorsProduct", "[", 
+  RowBox[{"Scalar2D", " ", "Trank2d2ijUp", " ", "Trank2d2ijDown"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.954557219482725*^9, 3.954557220530631*^9}, {
+  3.9557573580122766`*^9, 3.955757384604933*^9}, {3.955757437486865*^9, 
+  3.9557574705624866`*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"6085b36a-66cc-4edb-afb1-9ceb6bf5944a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"d", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], " ", 
+     RowBox[{"d2", "[", 
+      RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"e", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], " ", 
+     RowBox[{"e2", "[", 
+      RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], " ", 
+     RowBox[{"f2", "[", 
+      RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"h", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], " ", 
+     RowBox[{"h2", "[", 
+      RowBox[{"x", ",", "y"}], "]"}]}]}], ")"}], " ", 
+  TagBox[
+   TooltipBox[
+    TemplateBox[{"\"\[Phi]\""},
+     "RowDefault"],
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+         RowBox[{"\[Phi]", "[", 
+           RowBox[{"x", ",", "y"}], "]"}], 
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        RowBox[{"\"Coordinates\"", "\[Rule]", 
+          RowBox[{"{", 
+            RowBox[{"x", ",", "y"}], "}"}]}]}], "}"}],
+    TooltipStyle->{}],
+   Annotation[#, {
+     MatrixForm[
+      $CellContext`\[Phi][$CellContext`x, $CellContext`y]], 
+     "Coordinates" -> {$CellContext`x, $CellContext`y}}, 
+    "Tooltip"]& ]}]], "Output",
+ CellChangeTimes->{
+  3.955757482713182*^9, {3.956190085274094*^9, 3.95619009286416*^9}},
+ CellLabel->"Out[27]=",ExpressionUUID->"da87acc6-4c25-40e9-9ff5-247df9e3ac7d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TensorsProduct", "[", 
+  RowBox[{"Sin", "[", 
+   RowBox[{"Scalar2D", " ", "Trank2d2ijUp", " ", "Trank2d2ijDown"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.955757502663134*^9, 3.9557575053594646`*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"74c9d5f1-8c79-438c-a9a6-73575676ae5e"],
+
+Cell[BoxData[
+ RowBox[{"Sin", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"d2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"e", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"e2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"f2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"h", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"h2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}]}], ")"}], " ", 
+   TagBox[
+    TooltipBox[
+     TemplateBox[{"\"\[Phi]\""},
+      "RowDefault"],
+     RowBox[{"{", 
+       RowBox[{
+         TagBox[
+          RowBox[{"\[Phi]", "[", 
+            RowBox[{"x", ",", "y"}], "]"}], 
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         RowBox[{"\"Coordinates\"", "\[Rule]", 
+           RowBox[{"{", 
+             RowBox[{"x", ",", "y"}], "}"}]}]}], "}"}],
+     TooltipStyle->{}],
+    Annotation[#, {
+      MatrixForm[
+       $CellContext`\[Phi][$CellContext`x, $CellContext`y]], 
+      "Coordinates" -> {$CellContext`x, $CellContext`y}}, "Tooltip"]& ]}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.9557575057772617`*^9, 3.956190093606516*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"5d5b2ca3-a309-4701-8013-cfbb878a77f8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TensorsProduct", "[", 
+  FractionBox["1", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"Scalar2D", " ", "Trank2d2ijUp", " ", "Trank2d2ijDown"}], "]"}]], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.956190073401723*^9, 3.956190090670385*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"61ce4ecc-880b-48dd-b8fa-127920fc87f8"],
+
+Cell[BoxData[
+ RowBox[{"Csc", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"d2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"e", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"e2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"f2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"h", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"h2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}]}], ")"}], " ", 
+   TagBox[
+    TooltipBox[
+     TemplateBox[{"\"\[Phi]\""},
+      "RowDefault"],
+     RowBox[{"{", 
+       RowBox[{
+         TagBox[
+          RowBox[{"\[Phi]", "[", 
+            RowBox[{"x", ",", "y"}], "]"}], 
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         RowBox[{"\"Coordinates\"", "\[Rule]", 
+           RowBox[{"{", 
+             RowBox[{"x", ",", "y"}], "}"}]}]}], "}"}],
+     TooltipStyle->{}],
+    Annotation[#, {
+      MatrixForm[
+       $CellContext`\[Phi][$CellContext`x, $CellContext`y]], 
+      "Coordinates" -> {$CellContext`x, $CellContext`y}}, "Tooltip"]& ]}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.9561900944363813`*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"40663732-3a89-4ed5-826f-276fcb7f3800"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TensorComponents", "[", 
+  RowBox[{"TensorsProduct", "[", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"Scalar2D", " ", "Trank2d2ijUp", " ", "Trank2d2ijDown"}], "]"}], 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.955757519647749*^9, 3.955757535433712*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"2423281e-4512-4390-977d-9551c75357e8"],
+
+Cell[BoxData[
+ RowBox[{"Sin", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"d2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"e", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"e2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"f2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"h", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], " ", 
+      RowBox[{"h2", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}]}], ")"}], " ", 
+   RowBox[{"\[Phi]", "[", 
+    RowBox[{"x", ",", "y"}], "]"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.955757522754322*^9, 3.955757535975675*^9}, 
+   3.956190101488284*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"e67462bc-6a4e-472b-b73b-eb5a660d11d8"]
+}, Open  ]]
+},
+WindowSize->{972, 480.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b9e1b0be-a231-4f64-91e0-199040d21fd9"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2432, 69, 123, "Input",ExpressionUUID->"6085b36a-66cc-4edb-afb1-9ceb6bf5944a"],
+Cell[3015, 93, 1449, 46, 33, "Output",ExpressionUUID->"da87acc6-4c25-40e9-9ff5-247df9e3ac7d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4501, 144, 312, 6, 31, "Input",ExpressionUUID->"74c9d5f1-8c79-438c-a9a6-73575676ae5e"],
+Cell[4816, 152, 1494, 46, 35, "Output",ExpressionUUID->"5d5b2ca3-a309-4701-8013-cfbb878a77f8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6347, 203, 333, 7, 52, "Input",ExpressionUUID->"61ce4ecc-880b-48dd-b8fa-127920fc87f8"],
+Cell[6683, 212, 1472, 46, 35, "Output",ExpressionUUID->"40663732-3a89-4ed5-826f-276fcb7f3800"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8192, 263, 356, 7, 31, "Input",ExpressionUUID->"2423281e-4512-4390-977d-9551c75357e8"],
+Cell[8551, 272, 967, 29, 35, "Output",ExpressionUUID->"e67462bc-6a4e-472b-b73b-eb5a660d11d8"]
+}, Open  ]]
+}
+]
+*)
+

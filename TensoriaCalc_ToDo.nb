@@ -1,0 +1,1460 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     71920,       1452]
+NotebookOptionsPosition[     68359,       1381]
+NotebookOutlinePosition[     68908,       1401]
+CellTagsIndexPosition[     68865,       1398]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["TensoriaCalc", "Title",
+ CellChangeTimes->{{3.533882220173852*^9, 
+  3.5338822591895204`*^9}},ExpressionUUID->"3a895480-b49d-4ca6-8e08-\
+64fb754b69e9"],
+
+Cell[CellGroupData[{
+
+Cell["First Priority", "Subsection",
+ CellChangeTimes->{{3.953340632261692*^9, 3.953340633381488*^9}, {
+  3.953340709581133*^9, 
+  3.953340718663323*^9}},ExpressionUUID->"1ebebb65-8ed6-4a19-96ae-\
+ccf8ac39fcad"],
+
+Cell["\<\
+\[EmptySmallCircle] Publish documentation in Computer Physics Communications? \
+See e . g ., FeynCalc and xAct .
+\[EmptySmallCircle] ? Riemann ?Ricci display complain.
+\[EmptySmallCircle] See why T /. i -> 1000 will give you 0 zero but not \
+complain. When 1000 lies out range of coordinate number.
+\[EmptySmallCircle] The label of ONFF for non-diagonal metric should  be \
+labelled with numeric indices but not coordinate indices.
+\[EmptySmallCircle] PotentialForm: A check could be inserted to verify \
+whether the exterior derivative of \[Alpha] is zero or not. If it not zero, \
+the integration will not give a unique solution and so should complain. 
+\[EmptySmallCircle] I should make sure that we do not use \
+TestTensorIsFullyAntiSymmetric in our package.
+\[EmptySmallCircle] Change the check of Indices from TestEF into Tensor or \
+List Head. See other extract function.\
+\>", "Text",
+ CellChangeTimes->{{3.954814808352099*^9, 3.954814813139282*^9}, {
+  3.95497173394923*^9, 3.954971734104658*^9}, {3.954985558026002*^9, 
+  3.954985559123439*^9}, {3.955064549551662*^9, 3.955064576451136*^9}, {
+  3.955066089002681*^9, 3.9550661346179123`*^9}, {3.955762283214698*^9, 
+  3.9557622836221743`*^9}, {3.955763679543851*^9, 3.955763683256771*^9}, {
+  3.9567955825531397`*^9, 3.956795611781981*^9}, {3.957399185769704*^9, 
+  3.957399228882266*^9}, {3.9574026075989437`*^9, 
+  3.957402640015175*^9}},ExpressionUUID->"5ca5cf19-01c1-4be0-a295-\
+b3308390f902"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solved?/Solved!", "Subsection",
+ CellChangeTimes->{{3.953340721799631*^9, 3.95334072307997*^9}, {
+  3.954547915163877*^9, 
+  3.954547917427807*^9}},ExpressionUUID->"1de36529-513e-456e-a3eb-\
+b03c8be3c162"],
+
+Cell[TextData[{
+ "\[EmptySmallCircle] (Solved?) Order of Tensor objects occurring in \
+ContractTensors need to be handled more carefully. Also, should output always \
+be a single Tensor? Metric Tensors should be treated separately and properly. \
+\n\[UpDownArrow]\n\[EmptySmallCircle] (Solved?) TensorProduct of Tensors will \
+allow for ContractTensors to be implement more readily, since we already have \
+summation convenction implemented?\n\[UpDownArrow]\n\[EmptySmallCircle] \
+(Solved?) ContractTensors can be expanded? To make the output more flexible. \
+(20250509 WH: I think it\[CloseCurlyQuote]s solved. However, it depends on \
+what kind of flexibility. On the other hand, should we add ContractTensors \
+back?)\n\[EmptySmallCircle] (Solved!: See Wei-Hao\[CloseCurlyQuote]s thesis \
+p.188) CovariantD checks. CovariantD needs to distribute over Plus; how \
+should it act on a tensor product? \n\[EmptySmallCircle] (Solved!)It should \
+not be too difficult to extend CoordinateTransformation so that it can act on \
+Tensor\[CloseCurlyQuote]s.\n\[EmptySmallCircle] (Solved!)We need to allow for \
+sums and products of Tensors and scalars!\n\[EmptySmallCircle] (Solved!) \
+Write NonMetricTensor code.\n\[EmptySmallCircle] (Solved!) Allow for basis \
+vectors/forms display format?\n\[EmptySmallCircle] (Solved!) Write general \
+converter from quadratic form (of differentials) to matrix and vice versa? \
+Mixed/vectors too?\n\[EmptySmallCircle] (Half solved) Introduce some sort of \
+slot mechanism internally to allow for more control over placement of \
+indices?\n\[EmptySmallCircle] (Solved?)How to update tooltipdisplay after \
+indices have been moved?\n\[EmptySmallCircle] (Solved!) New functions: \
+\[DifferentialD] on Tensor. Wedge products.\n\[EmptySmallCircle] (Solved!) \
+Induced metrics & coordinate transformations of Tensors\n\[EmptySmallCircle] \
+(Solved!) General Lie Derivatives.\n\[EmptySmallCircle] (Solved!) Exterior \
+derivatives.\n\[EmptySmallCircle] (Solved!) Interior product\n\
+\[EmptySmallCircle] (Solved?) LaplaceBeltrami\n\[EmptySmallCircle] (Solved!) \
+CovariantBox needs to be updated to allow for higher rank tensors as input.\n\
+\[EmptySmallCircle] (Solved!) Orthonormal basis computation\n\
+\[EmptySmallCircle] (Solved! See: TC wo TsP.nb)TensorCompoments acting on \
+products of tensors with no contracted indices does not seem to work. This is \
+probably because ContractTensors does not do anything when there are no \
+contracted indices?\n\[UpDownArrow]Same thing\n\[EmptySmallCircle] Extend the \
+functionality of TensorComponents. For e.g. TensorComponents acting on \
+product of Tensor objects does not work.\n\[EmptySmallCircle] (Solved!) Allow \
+PartialD to take in coordinates (as a List) instead of only allowing for \
+Metric m_Tensor\n\[EmptySmallCircle] (Solved! See: Compare Timing of \
+commutation of CD and TsP.nb)Is it good policy/strategy to ContractTensors \
+before taking their CovariantD?\n\[EmptySmallCircle] (Solved?) Create a \
+DisplayTensorContents function\n\[EmptySmallCircle] (Solved?) Make sure all \
+relevant functions work on generic expressions, not just a single Tensor. \
+(E.g., CovariantD should be able to act on sums/products of objects.) \n\
+\[EmptySmallCircle] (Solved? The SparseArray itself)Create function that \
+spits out only the non-zero components of a tensor as replacement rules. \
+Maybe extend the functionality of TensorComponents.\n\[EmptySmallCircle] \
+(Solved!) What is the difference between putting the condition(s) /;(stuff) \
+before vs after an equality? E.g. f/:f[t_]/;(stuff):=xxxx vs \
+f/:f[t_]:=xxxx/;(stuff)\n\[EmptySmallCircle] (Solved?) Consider allowing end \
+user to customize Tooltipdisplay for Metric and other Tensors.\n\
+\[EmptySmallCircle] (Solved!) NonMetricTensor should allow for creation of a \
+scalar\n\[EmptySmallCircle] (Solved!) TooltipDisplay for Ricci tensor. Should \
+display a square matrix instead of a List.\n\[EmptySmallCircle] (Solved!) \
+Make sure TensoriaCalc can properly handle ratios (i.e., divisions) involving \
+Tensor objects. E.g. Feynman diagram calculations.\n\[EmptySmallCircle] \
+(Solved!) TensorComponents[",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "\[Mu]\[Nu]"], "+", 
+    SubscriptBox["T", "\[Nu]\[Mu]"]}], TraditionalForm]],ExpressionUUID->
+  "4911a1e4-69c1-45f2-b547-0cfd0c2b2b09"],
+ "] and TensorComponents[",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "\[Mu]\[Nu]"], "-", 
+    SubscriptBox["T", "\[Nu]\[Mu]"]}], TraditionalForm]],ExpressionUUID->
+  "8f441662-10b4-4db6-9ad2-164b38ae2ca0"],
+ "] have ambiguities and will currently yield wrong answers.\n\
+\[EmptySmallCircle] (Solved!) Can PartialD handle mixed expressions involving \
+products of expressions times Tensors? Or even products of Tensors?\n\
+\[EmptySmallCircle] (Solved?) CovariantD pop-up message has ErrorBox\n\
+\[EmptySmallCircle] (Solved!) Upon applying ContractTensors, if the result is \
+a scalar \[LongDash] should we allow for an option to preserve the result as \
+a Tensor rather than merely a MMA expression?\n\[EmptySmallCircle] (Solved!) \
+For PartialD, with a lower index, we should allow for input either the metric \
+or a set of coordinates. \n\[EmptySmallCircle] (Solved!) Understand how to \
+control the order of Tensors when applying ContractTensors.\n\
+\[EmptySmallCircle] (Solved!) Consider how to make user to turn on or off \
+TooltipDisplay in case the nonzero components are too complicated.\n\
+\[EmptySmallCircle] (Solved!) Make CovariantBox to be able to act on Tensor.\n\
+\[EmptySmallCircle] (Solved? See: substraction of same tensors.nb)The \
+subtraction between two same Tensors will lose the information of Tensor. \
+e.g. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["J", "x"], "-", 
+     SubscriptBox["J", "x"]}], "=", "0"}], TraditionalForm]],ExpressionUUID->
+  "b2494776-7641-448d-89e3-46734aa88cee"],
+ ". and zero is not Tensor object.\n\[EmptySmallCircle] (Solved? See: \
+NotAbstractIndex Test.nb)When we input a numeric index lying out of range, \
+what should we do with it? Moreover, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["20", "-"], 
+    SubscriptBox["20", "-"]}], TraditionalForm]],ExpressionUUID->
+  "f8d3d565-b91c-41af-bb46-ad957cf19418"],
+ " should not trigger Einstein summation if 20 lies out of range. Check that \
+all the functions that use NotAbstractIndex works as intended.\n\
+\[EmptySmallCircle] (Solved?) MHDSystem should output objects with \
+MoveIndices wrapped around them, so that their indices can be moved \
+automatically.\n\[EmptySmallCircle] (Solved!) Problem: Nested Tensor object \
+(especially a complicated one. For e.g., a Kerr metric w/ ONFF\[Rule]ONFFt) \
+can not trigger Format properly. (See: Nested Tensor and TooltipStyle.nb) \
+(20250505 WH: I don\[CloseCurlyQuote]t know why there is a bug at the very \
+first place. Probably MMA solve some bug on v.13.0 so it no longer a \
+problem.) (When I wrote down Kerr metric, I thought I meant BL coordinate. \
+However, MMA can not tackle BL ONFF properly. That confused me. However, I \
+tried Kerr-Schild and it worked.)\n\[UpDownArrow]Same thing\n\
+\[EmptySmallCircle] (Solved!) Right now, whenever there is a nested Tensor, \
+it conflicts w/ Wei-Hao Format code.\n\[EmptySmallCircle] (Solved!) We should \
+consider the TensorType(s) other than \[OpenCurlyDoubleQuote]Metric\
+\[CloseCurlyDoubleQuote] and \[OpenCurlyDoubleQuote]ChristoffelSymbols\
+\[CloseCurlyDoubleQuote] truly are necessary? (20250509 WH: I once deleted \
+all the unused TensorType. We should add more only if we will use it.)\n\
+\[EmptySmallCircle] (Solved!) How to implement this e.g. in ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["R", "xyzw"], 
+     RowBox[{"(", 
+      RowBox[{"dx", "\[TensorWedge]", "dy"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"dz", "\[TensorWedge]", "dw"}], ")"}]}], "+"}], "..."}]],
+  ExpressionUUID->"654a455b-5230-49b4-b9d7-868af070f346"],
+ " ExpressionForm\n\[EmptySmallCircle] (Solved! See: Sin[scalar tensor \
+tensor].nb)Deal with ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["1", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"\[Phi]", " ", 
+      SuperscriptBox["T", "\[Mu]\[Nu]"], " ", 
+      SubscriptBox["\[CapitalGamma]", "\[Mu]\[Nu]"]}], "]"}]], 
+   TraditionalForm]],ExpressionUUID->"16bbfc88-90e5-4065-b3ad-d271c7c3edb4"],
+ " with ContractTensors, where \[Phi] is a scalar Tensor.\n\
+\[EmptySmallCircle] (Solved!) TensorIsFullyAntiSymmetric Message. (20250509 \
+WH: There is no Message now, but there is Message for TestDifferentialForm)\n\
+\[EmptySmallCircle] (Solved! See: Bug fixed: coefficient of InteriorProduct \
+when p=q.nb) ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"InteriorProduct", " ", "[", 
+    RowBox[{"X", ",", "\[Omega]"}], "]"}], TraditionalForm]],ExpressionUUID->
+  "28f8e23f-cf6f-4c60-a3e6-cf209812035a"],
+ " and its short hand ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Iota]", "X"], "[", "\[Omega]", "]"}], TraditionalForm]],
+  ExpressionUUID->"d06103d1-3c1e-4cfb-aaa3-56428c044e93"],
+ " gives different output (20250509 WH: Bug solved on 20250509. This is also \
+the first e.g. for the GitHub system.)\n\[EmptySmallCircle] (Solved! See: The \
+level Simplify and Replacement go through.nb) Still try to test on the level \
+of Simplify w/ Actual function (20250512 WH: How is the level it will go \
+through? I did a test. It goes through more than 500 levels so I don\
+\[CloseCurlyQuote]t think we need to worry about it.)\n\[EmptySmallCircle] \
+(Solved!) Replace null list into 1 for CT[alltensor](20250512 WH: Just run \
+TensorsProduct[{}])\n\[EmptySmallCircle] (Solved!) Refer to MMA Thread \
+strategy. Construct ContractTensors version of it. (CT[Log[",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["M", "2"], TraditionalForm]],ExpressionUUID->
+  "fce0af79-9c3d-4a2e-bb73-bbf8fbf9afe2"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["V", "\[Mu]"], 
+    SubscriptBox["W", "\[Mu]"]}], TraditionalForm]],ExpressionUUID->
+  "5814624f-6f17-4bef-b014-71dcc26ce7d8"],
+ "]]->Log[",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["CTM", "2"], TraditionalForm]],ExpressionUUID->
+  "e7c61231-cc6b-4e90-940a-b2a671b19f84"],
+ " [",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["V", "\[Mu]"], 
+     SubscriptBox["W", "\[Mu]"]}], "]"}], TraditionalForm]],ExpressionUUID->
+  "fa12b82d-086c-4751-a4f1-917fc8967ce2"],
+ "])\n\[EmptySmallCircle] (Solved!) \
+MatchQ[(Union[Sgn[#]&/@RemoveUnderBarredIndices[Indices[t]]]),{-1}|{}]) as a \
+new function and add this check in TensorWedge"
+}], "Text",
+ CellChangeTimes->{{3.9545466604912357`*^9, 3.9545466698761673`*^9}, {
+   3.954547719046526*^9, 3.9545477246932173`*^9}, {3.954547765503976*^9, 
+   3.954547765852519*^9}, {3.9545478472661343`*^9, 3.954547886434977*^9}, 
+   3.954547920020123*^9, {3.954550181777605*^9, 3.954550215677416*^9}, {
+   3.9545502860526876`*^9, 3.954550321254821*^9}, {3.954551038474333*^9, 
+   3.954551041763451*^9}, {3.954551119020465*^9, 3.9545511498770943`*^9}, {
+   3.9545513094272747`*^9, 3.954551328466322*^9}, {3.954551403380952*^9, 
+   3.954551484463176*^9}, {3.9545515993208923`*^9, 3.9545516252182198`*^9}, {
+   3.954551694429093*^9, 3.954551709676428*^9}, {3.954551934588451*^9, 
+   3.954551943426444*^9}, {3.9545523829458027`*^9, 3.954552391671417*^9}, 
+   3.954552694380088*^9, {3.954554323080324*^9, 3.954554326952465*^9}, {
+   3.954554550943364*^9, 3.954554554556903*^9}, {3.954555395284576*^9, 
+   3.954555395402355*^9}, {3.9545555025039186`*^9, 3.954555507156756*^9}, {
+   3.954557837114079*^9, 3.954557847891013*^9}, {3.954557882222138*^9, 
+   3.9545578853554907`*^9}, {3.954813459258074*^9, 3.954813468418352*^9}, {
+   3.9548135496534147`*^9, 3.954813554080917*^9}, {3.95481399373773*^9, 
+   3.9548140101542387`*^9}, {3.954814066229154*^9, 3.9548140722136927`*^9}, {
+   3.954814103822872*^9, 3.954814111014908*^9}, {3.95481440986749*^9, 
+   3.954814444309375*^9}, {3.9548147614127073`*^9, 3.9548147691539087`*^9}, {
+   3.9548152989200697`*^9, 3.954815333352746*^9}, {3.954815397931672*^9, 
+   3.954815408072421*^9}, 3.954971589049383*^9, {3.9549716194347258`*^9, 
+   3.954971644252192*^9}, {3.95497249394098*^9, 3.954972502350243*^9}, {
+   3.954972996300721*^9, 3.954973021293655*^9}, {3.9549731369128857`*^9, 
+   3.954973163269045*^9}, {3.954973910871893*^9, 3.9549739221039467`*^9}, 
+   3.9549750336852913`*^9, {3.954985563332589*^9, 3.9549856105254917`*^9}, {
+   3.954985953568068*^9, 3.954985962214953*^9}, {3.9549861851270113`*^9, 
+   3.954986189402857*^9}, {3.9550653321439238`*^9, 3.955065333568459*^9}, {
+   3.955427613234702*^9, 3.955427627050768*^9}, {3.955427677508602*^9, 
+   3.955427901938901*^9}, {3.955751197151147*^9, 3.955751276761409*^9}, {
+   3.955751328594998*^9, 3.955751340971159*^9}, {3.9557523656506243`*^9, 
+   3.955752382482699*^9}, {3.955752416657177*^9, 3.955752496342208*^9}, {
+   3.955752634417852*^9, 3.9557526381489077`*^9}, {3.955755822807369*^9, 
+   3.9557558517672367`*^9}, {3.95575761147822*^9, 3.955757616931511*^9}, 
+   3.955757667205028*^9, {3.955758881562615*^9, 3.955758903370989*^9}, {
+   3.955762042225616*^9, 3.955762042399479*^9}, {3.955762149436516*^9, 
+   3.955762190670313*^9}, {3.9557707912201233`*^9, 3.9557708386930447`*^9}, {
+   3.955770870097516*^9, 3.955770875957955*^9}, {3.9560246699382668`*^9, 
+   3.9560247053148203`*^9}, {3.956026287106591*^9, 3.9560263306641073`*^9}, {
+   3.956027635465361*^9, 3.9560276416305103`*^9}, {3.956120301000072*^9, 
+   3.956120301220997*^9}, {3.956190132938716*^9, 3.956190135073495*^9}, {
+   3.956193442573003*^9, 
+   3.956193446538012*^9}},ExpressionUUID->"0009bfff-8b82-4c00-a8df-\
+db0711a9417d"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Second priority", "Subsection",
+ CellChangeTimes->{
+  3.9545475384016457`*^9},ExpressionUUID->"754000b5-ce17-474f-9b38-\
+4916f91d75d3"],
+
+Cell["\<\
+\[EmptySmallCircle] Check through TensoriaCalc to see if we have used Indices \
+\[Rule] indx to check for Dimension of Tensor, for e.g. Should really use \
+TensorComponents.
+\[EmptySmallCircle] We should think about altering how CovariantD\
+\[CloseCurlyQuote]s appear in output. Right now it does, for e.g., Del[V]^\
+\[Mu]\[Nu], where V is a vector.
+\[UpDownArrow]Same thing?
+\[EmptySmallCircle] Format of Tensors need to be thought through more \
+carefully, especially those Tensors with more complicated structure, for \
+e.g., containing CovariantD\[CloseCurlyQuote]s.
+\[EmptySmallCircle] All index moving portions of TensoriaCalc should use \
+MoveIndices. Right now the geometric tensors use their own internal code; not \
+sure if it is slower or faster?
+\[EmptySmallCircle] ContractTensors need to take into account contractions \
+involving Metric Tensors.
+\[UpDownArrow]Same thing?
+\[EmptySmallCircle] (Solved by MoveIndices?)ContractTensors need to \
+automatically raise/lower indices whenever metric is present.
+\[EmptySmallCircle] Abstract: Expand CovD into \[PartialD] and Christoffels \
+(and back?)
+\[EmptySmallCircle] Commute CovD
+\[EmptySmallCircle] Allow PartialD to take more than one derivative at a time.
+\[EmptySmallCircle] Should we allow SwapIndices to also MoveIndices or vice \
+versa?
+\[EmptySmallCircle] RiemannToWeyl
+\[EmptySmallCircle] In NonMetricTensor code, we did not check the consistency \
+of the input indices and the Matrix.
+\[EmptySmallCircle] In Metric, we should check that the number of input \
+coordinates is the same as the Dimension of the input matrix
+\[EmptySmallCircle] TensoriaCalc should check for duplicate replacement rules \
+in Tensor objects and complain whenever there are in fact duplicates. This \
+will allow the user to Append replacement rules directly into his/her Tensor \
+objects w/o worrying too much about duplications.
+\[EmptySmallCircle] Write a new OperatorRule to make if there is a zero in \
+some Functions, the output will be automatically 0 also. For e.g., \
+TensorsProduct[0, Tensor]->0.
+\[EmptySmallCircle] Warning: CT an OverHat Tensor (a mixed coordinate \
+Tensor). Then specify indices will occur a problem. (20250505 WH: What is the \
+problem? The problem is if we  specify the coordinate, just from the \
+appearance of the tensor, the information of OverHat will lost.)(I also put \
+this ToDo in manual section)(Here is an example copy from my code:)\
+\>", "Text",
+ CellChangeTimes->{
+  3.954547532793325*^9, {3.9545476757330914`*^9, 3.954547679405135*^9}, {
+   3.954547888194931*^9, 3.954547888391835*^9}, {3.954550044493218*^9, 
+   3.9545500471248293`*^9}, 3.954550080311359*^9, {3.9545501282799263`*^9, 
+   3.954550158296109*^9}, {3.9545515622652693`*^9, 3.954551584499858*^9}, {
+   3.95455270664454*^9, 3.954552737664666*^9}, {3.954553063153027*^9, 
+   3.954553064047627*^9}, {3.954813401327538*^9, 3.9548134014777317`*^9}, {
+   3.954813601807741*^9, 3.954813605313241*^9}, {3.954815256325811*^9, 
+   3.954815257267639*^9}, {3.9548153426491613`*^9, 3.954815343386805*^9}, {
+   3.9549716699873047`*^9, 3.954971737229545*^9}, {3.954972444051114*^9, 
+   3.9549724442365847`*^9}, {3.954972613104167*^9, 3.954972613216963*^9}, {
+   3.954974289977683*^9, 3.954974290290023*^9}, {3.9549860896019363`*^9, 
+   3.95498611482017*^9}, {3.955065613430418*^9, 3.9550656671976767`*^9}, {
+   3.955415048685657*^9, 3.955415049374728*^9}, {3.9554150942556868`*^9, 
+   3.9554152212425117`*^9}, {3.955415253635893*^9, 3.9554152733560677`*^9}, {
+   3.955415356261711*^9, 3.955415369750617*^9}, {3.955758638441681*^9, 
+   3.955758649154376*^9}},ExpressionUUID->"7151cbe8-932b-4148-932f-\
+ac477f2ceb62"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"Rt", "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\[Nu]", "\[Rule]", "t"}], ",", 
+      RowBox[{"\[Alpha]", "\[Rule]", " ", "r"}], ",", 
+      RowBox[{"\[Beta]", "\[Rule]", " ", "t"}]}], "}"}]}], ")"}], "//", 
+  "FS"}], "\[IndentingNewLine]", 
+ RowBox[{"R\[Mu]0r0", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"RtONFF", "/.", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\[Nu]", "^"], "\[Rule]", "t"}], ",", 
+       RowBox[{
+        OverscriptBox["\[Alpha]", "^"], "\[Rule]", " ", "r"}], ",", 
+       RowBox[{
+        OverscriptBox["\[Beta]", "^"], "\[Rule]", " ", "t"}]}], "}"}]}], 
+    ")"}], "//", "FS"}]}]}], "Input",
+ CellChangeTimes->{{3.8978577571650686`*^9, 3.8978577845553164`*^9}, {
+  3.8978601847085476`*^9, 3.897860199472573*^9}},
+ CellLabel->
+  "In[188]:=",ExpressionUUID->"833d9d8f-204d-4a99-a4b2-63571513773a"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{
+    "\"\\!\\(\\*\\nStyleBox[\\\"R\\\",\\nFontSlant->\\\"Italic\\\"]\\)\"", 
+     TagBox[
+      GridBox[{{"\[Mu]"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["r", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"0"}, {
+              FractionBox[
+               RowBox[{
+                 RowBox[{"(", 
+                   RowBox[{"r", "-", "rs"}], ")"}], " ", "rs"}], 
+               SuperscriptBox["r", "4"]]}, {"0"}, {"0"}}, RowSpacings -> 1, 
+            ColumnAlignments -> Center, ColumnAlignments -> Left], Column], 
+          "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"t", ",", "r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}],
+      "}"}],
+   TooltipStyle->{"Large"}],
+  Annotation[#, {
+    MatrixForm[{
+     0, ($CellContext`r^(-4) ($CellContext`r - $CellContext`rs)) \
+$CellContext`rs, 0, 0}], 
+    "Coordinates" -> {$CellContext`t, $CellContext`r, $CellContext`\[Theta], \
+$CellContext`\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.897857747224198*^9, 3.8978577847711825`*^9}, 
+   3.8978597171164618`*^9, 3.8978597525735445`*^9, 3.8978597870657206`*^9, 
+   3.897859913048949*^9, 3.897860104645934*^9, 3.8978602001912756`*^9, {
+   3.8984156231789694`*^9, 3.898415646221799*^9}, 3.8984157457582054`*^9, 
+   3.8984157809708357`*^9},
+ CellLabel->
+  "Out[188]=",ExpressionUUID->"5e68e6d6-841d-4e7c-a4dc-3df24383ff6b"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{
+    "\"\\!\\(\\*\\nStyleBox[\\\"R\\\",\\nFontSlant->\\\"Italic\\\"]\\)\"", 
+     TagBox[
+      GridBox[{{
+         OverscriptBox["\[Mu]", "^"]}, {""}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["r", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"0"}, {
+              FractionBox["rs", 
+               RowBox[{"r", " ", 
+                 SuperscriptBox[
+                  RowBox[{"(", 
+                    RowBox[{"r", "-", "rs"}], ")"}], "2"]}]]}, {"0"}, {"0"}}, 
+            RowSpacings -> 1, ColumnAlignments -> Center, ColumnAlignments -> 
+            Left], Column], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"t", ",", "r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}],
+      "}"}],
+   TooltipStyle->{"Large"}],
+  Annotation[#, {
+    MatrixForm[{
+     0, ($CellContext`r^(-1) ($CellContext`r - $CellContext`rs)^(-2)) \
+$CellContext`rs, 0, 0}], 
+    "Coordinates" -> {$CellContext`t, $CellContext`r, $CellContext`\[Theta], \
+$CellContext`\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.897857747224198*^9, 3.8978577847711825`*^9}, 
+   3.8978597171164618`*^9, 3.8978597525735445`*^9, 3.8978597870657206`*^9, 
+   3.897859913048949*^9, 3.897860104645934*^9, 3.8978602001912756`*^9, {
+   3.8984156231789694`*^9, 3.898415646221799*^9}, 3.8984157457582054`*^9, 
+   3.8984157809864645`*^9},
+ CellLabel->
+  "Out[189]=",ExpressionUUID->"59d72f29-1edd-4ca4-a648-531abcdc26f7"]
+}, Open  ]],
+
+Cell[TextData[{
+ "\[EmptySmallCircle] Code up correct version of Christoffel Symbol \
+transforming into Orthonormal Basis. (e.g., Fermion)\n\[EmptySmallCircle] \
+Warning: Right now we transform Christoffel into Orthonormal Basis like a \
+tensor.(I also put this ToDo in manual section)\n\[EmptySmallCircle] \
+Simplify: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["0", "\[Mu]"], "+", 
+      SuperscriptBox["T", "\[Mu]"]}], ")"}], "//", 
+    RowBox[{"Simplify", "\[Rule]", 
+     SuperscriptBox["T", "\[Mu]"]}]}], TraditionalForm]],ExpressionUUID->
+  "7d6c41e9-c9a6-4cb7-8768-70c168d2f5ef"],
+ " (20250509 WH: Write a Simplification (e.g. TensorReduce?) to help users \
+throw away the zero Tensor?)\n\[EmptySmallCircle] Is there example showing \
+benefits of storing SymmetrizedArray as a Tensor Property? Right now haven\
+\[CloseCurlyQuote]t seen.\n\[EmptySmallCircle] The shortcut of \
+CovariantHodgeDual, Metric endow function (Right now is commented out), \
+storing ONFF as a Tensor in Metric, and storing Ambient Metric in induced \
+metric, e.t.c., all  require we define Nested Tensor. Once we solve the \
+problem we encounter in nested Tensor. We can cancel the comment out, or \
+built new pattern for different function. (20250509 WH: The Nested Tensor \
+problem seems solved in the MMA v.13. Now we can do it.)\n\[EmptySmallCircle] \
+Cotton tensor (FRW metric)\n\[EmptySmallCircle] Implement functions in \
+guide/FormulaManipulation to tackle Tensor object.\n\[EmptySmallCircle] Weyl \
+transf.\n\[EmptySmallCircle] TensorProduct and shortcut\n\[EmptySmallCircle] \
+ElectromagneticStressTensor should check that its input tensor is \
+anti-symmetric. Check if it overlaps with iMHD code; and consolidate the two \
+if necessary.\n\[EmptySmallCircle] Consider to add TensorAssumption as an \
+optional argument in functions where the output will be a Tensor. For \
+example, ",
+ Cell[BoxData[
+  RowBox[{"ElectromagneticStressEnergyTensor", "[", 
+   RowBox[{
+    SubscriptBox["\[Alpha]", "-"], ",", 
+    SubscriptBox["\[Beta]", "-"], ",", "Ft", ",", "gBL", ",", 
+    RowBox[{"MetricSignature", "\[Rule]", " ", "\"\<Mostly minus\>\""}], ",", 
+    RowBox[{"TensorAssumption", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "]"}]],
+  CellChangeTimes->{{3.841270390300227*^9, 3.8412704352121086`*^9}, {
+    3.841270494612041*^9, 3.841270752786425*^9}, {3.843614823380642*^9, 
+    3.843614824489979*^9}, {3.8436152731977496`*^9, 3.843615279530011*^9}, {
+    3.8436153883941326`*^9, 3.843615388527231*^9}, {3.843725250925856*^9, 
+    3.8437252591917753`*^9}, {3.8439613626845474`*^9, 3.843961370750104*^9}, {
+    3.872652420265623*^9, 3.8726524207343593`*^9}, {3.872652458117834*^9, 
+    3.872652458274084*^9}, {3.8949490702895055`*^9, 3.8949491231325474`*^9}, 
+    3.8949491916152873`*^9, {3.8949492239019437`*^9, 
+    3.8949492252454524`*^9}, {3.89494925807705*^9, 3.8949492696569*^9}, {
+    3.895543609928806*^9, 3.89554374884778*^9}, {3.928199202504427*^9, 
+    3.928199230272175*^9}, {3.928264878470635*^9, 3.928264879334236*^9}, {
+    3.9282658387267714`*^9, 3.9282658479504004`*^9}, {3.9282659758318443`*^9, 
+    3.928266033851347*^9}, {3.92826613861285*^9, 3.928266139361579*^9}, {
+    3.928266558706853*^9, 3.9282665925173607`*^9}, {3.928286286626583*^9, 
+    3.9282862900316353`*^9}, {3.9283634912594547`*^9, 3.928363496938877*^9}},
+  ExpressionUUID->"10a58b97-c715-45f8-9da0-c04674248c94"],
+ " \n(20250509 WH: Is it necessary for all Function? If so, Maybe we can \
+combine some default values endowing as a single OperatorRules. Right now, \
+the output of ElectromagneticStressEnergyTensor will inherit TensorAssumption \
+from Ft or gBL. Also, user could use Endow Function as an alternative \
+solution.)\n\[EmptySmallCircle] Operator rules on RaiseAllIndices (and other \
+functions as well)\n\[EmptySmallCircle] Improving the algorithm for \
+ToTensorComponent. Consider switching SymmetrizedArray as the output for \
+Fully (Anti-)Symmetric tensor. If we can firstly read out the symmetric \
+property from the ExpressionForm itself.\n\[UpDownArrow]May relevant \n\
+\[EmptySmallCircle] Simplify differential form and p-vector in expression \
+form. For e.g. \[DifferentialD]x\[TensorWedge]\[DifferentialD]y+\
+\[DifferentialD]y\[TensorWedge]\[DifferentialD]x=0 \n\[EmptySmallCircle] Turn \
+on and off of bracket with TensorSymmetric function and extra property \n\
+\[EmptySmallCircle] Test TensorComponentsManipulation again(20250512 WH: Not \
+sure what kind of e.g. I wanted to test then.)\n\[EmptySmallCircle] (See \
+Chia-Yu\[CloseCurlyQuote]s \[OpenCurlyDoubleQuote]tooldisplay.nb\
+\[CloseCurlyDoubleQuote]) We should not only obtain the non-zero components \
+list inside the TooltipDisplay only but let user to directly print it. If the \
+list becomes too huge. The TooltipStyle can\[CloseCurlyQuote]t solve the \
+problem since when the font size is too small, although the Tooltip box is \
+small enough, user still can not read it.\n\[EmptySmallCircle] The endow \
+function for ONFF related properties."
+}], "Text",
+ CellChangeTimes->{
+  3.955415242803461*^9, {3.9554153382128973`*^9, 3.955415338485861*^9}, 
+   3.955415376223332*^9, {3.955750930654254*^9, 3.955750984686741*^9}, {
+   3.955753011898193*^9, 3.9557530133747787`*^9}, {3.955755739739317*^9, 
+   3.955755799188561*^9}, {3.9557615252328577`*^9, 3.9557615256752996`*^9}, {
+   3.955761595538289*^9, 3.95576160196723*^9}, {3.9557619806623774`*^9, 
+   3.955761981005234*^9}, {3.955762255414287*^9, 3.9557622791488667`*^9}, {
+   3.955762473821103*^9, 3.955762476614553*^9}, {3.9557625958437557`*^9, 
+   3.955762680851108*^9}, {3.955762812759057*^9, 3.955762941946003*^9}, {
+   3.955764795673473*^9, 3.955764805105562*^9}, {3.956020907784852*^9, 
+   3.9560209310019093`*^9}, {3.956027099833374*^9, 3.9560270999399157`*^9}, {
+   3.956027441458522*^9, 3.95602746132552*^9}, {3.9560277182428513`*^9, 
+   3.956027748003821*^9}, {3.9561186399735203`*^9, 3.956118841522917*^9}, {
+   3.956119276016096*^9, 3.956119278783757*^9}, {3.9561203116395597`*^9, 
+   3.95612033222363*^9}, {3.956193433091414*^9, 3.956193435322616*^9}, {
+   3.957401100075947*^9, 
+   3.957401182212399*^9}},ExpressionUUID->"d8f80b15-0342-488a-b217-\
+9feaae854fa3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Long Term", "Subsection",
+ CellChangeTimes->{{3.954547439148199*^9, 3.9545474436223583`*^9}, {
+  3.954547501943542*^9, 
+  3.9545475393612843`*^9}},ExpressionUUID->"43fed159-63c8-4bd1-befc-\
+e9490ca14d5c"],
+
+Cell[TextData[{
+ "\[EmptySmallCircle] Currently, ContractTensors only creates a TensorProduct \
+of Tensors with the same Coordinates. Need to generalize. But how? Are there \
+different character sets in Mathematica that we can exploit for different \
+sorts of Einstein summation?\n\[EmptySmallCircle] (Meaning?) Discretize PDEs \
+in curved spacetimes for numerical solutions? May need to export to \
+Fortran/C++/Python, etc.? Ability to Discretize Einstein\[CloseCurlyQuote]s & \
+Yang-Mills Equations. See Doug Arnold\[CloseCurlyQuote]s (@ UMN Math) work.\n\
+\[EmptySmallCircle] (Meaning?) Can we extend Tensor to BiTensor or even \
+NTensor? Applications: Green\[CloseCurlyQuote]s functions.\n\
+\[EmptySmallCircle] Look up educational resources for teaching GR. Can \
+TensoriaCalc become a useful tool?\n\[EmptySmallCircle] Torsion? Metric \
+non-compatibility?\n\[EmptySmallCircle] Exploit \
+Mathematica\[CloseCurlyQuote]s Tensor abilities.\n\[EmptySmallCircle] \
+(Meaning?) Parallelize functions \[LongDash] for e.g., all the \
+summation/computation of Christoffel, Riemann, etc.?\n\[EmptySmallCircle] \
+(Meaning?) Read field theory typed in ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"L", 
+     StyleBox[
+      AdjustmentBox["A",
+       BoxBaselineShift->-0.4,
+       BoxMargins->{{-0.5, -0.3}, {0, 0}}],
+      FontSize->Smaller], "T", 
+     AdjustmentBox["E",
+      BoxBaselineShift->0.5,
+      BoxMargins->{{-0.3, 0}, {0, 0}}], "X"}],
+    SingleLetterItalics->False], TraditionalForm]],ExpressionUUID->
+  "e51a7f7a-d7aa-4b41-a42f-db093ae0ed4f"],
+ " to Tensor objects? Also allow for output to ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"L", 
+     StyleBox[
+      AdjustmentBox["A",
+       BoxBaselineShift->-0.4,
+       BoxMargins->{{-0.5, -0.3}, {0, 0}}],
+      FontSize->Smaller], "T", 
+     AdjustmentBox["E",
+      BoxBaselineShift->0.5,
+      BoxMargins->{{-0.3, 0}, {0, 0}}], "X"}],
+    SingleLetterItalics->False], TraditionalForm]],ExpressionUUID->
+  "2dadd7a9-a85e-430e-8f56-4c694aeb3ab9"],
+ ".\n\[EmptySmallCircle] (Meaning?) How to allow for Yang-Mills color index? \
+Some sort of generalized tensor product?\n\[UpDownArrow]Same thing?\n\
+\[EmptySmallCircle] New arguments for Tensor: IndexPartition -> stuff and \
+IndexType/IndexSpaces -> stuff? (so as to allow for different spaces \
+\[LongDash] spacetime vs color indices, for e.g.) Need to account for \
+coordinates too\n\[EmptySmallCircle] (Meaning?) Canonicalize tensors\n\
+\[EmptySmallCircle] Allow for summation over different sub-ranges of indices: \
+for e.g., ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["V", "\[Mu]"], 
+     SuperscriptBox["W", "\[Mu]"]}], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["V", "0"], 
+      SuperscriptBox["W", "0"]}], "+", 
+     RowBox[{
+      SubscriptBox["V", "i"], 
+      SuperscriptBox["W", "i"]}]}]}], TraditionalForm]],ExpressionUUID->
+  "002a85b4-6488-41fb-a2c2-f6e40ac2acd4"],
+ " or ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["V", "\[Mu]"], 
+     SuperscriptBox["W", "\[Mu]"]}], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["V", "0"], 
+      SuperscriptBox["W", "0"]}], "+", 
+     RowBox[{
+      SubscriptBox["V", "r"], 
+      SuperscriptBox["W", "r"]}], "+", 
+     RowBox[{
+      SubscriptBox["V", "I"], 
+      SuperscriptBox["W", "I"]}]}]}], TraditionalForm]],ExpressionUUID->
+  "16aab3e5-0515-48b6-8f82-30662b9451cd"],
+ "; if difficult to allow for arbitrary \[OpenCurlyDoubleQuote]layers\
+\[CloseCurlyDoubleQuote] do at least 3?\n\[EmptySmallCircle] (Meaning?) Wang \
+Yi\[CloseCurlyQuote]s MathGR reference for indices. \
+https://arxiv.org/abs/1306.1295\n\[EmptySmallCircle] \
+\[OpenCurlyDoubleQuote]Symbolic Tensors\[CloseCurlyDoubleQuote] from \
+Mathematica documentation. \n\[UpDownArrow]\n\[EmptySmallCircle] Should we \
+implement $Assumptions to simplify certain calculations in TensoriaCalc.\n\
+\[EmptySmallCircle] How to do perturbation theory involving products of \
+Tensors?\n\[EmptySmallCircle] Extend Determinant to any square rank-2 Tensor\n\
+\[EmptySmallCircle] When applying ContractTensors on products of Tensor \
+objects, we should not allow for repeated indices that are both up or both \
+down.\n\[EmptySmallCircle] ContractTensors ought to carry over properties of \
+all the Tensors it is multiplying together, not just the first.\n\
+\[EmptySmallCircle] Code up Cotton Tensor.\n\[EmptySmallCircle] When we want \
+to caution people what not to be done, we add \[OpenCurlyDoubleQuote]Message\
+\[CloseCurlyDoubleQuote].\n\[UpDownArrow]\n\[EmptySmallCircle] CheckIndex \
+Message complain too much, so I comment that out. (20250509 WH\
+\[CloseCurlyQuote]s Guide: Be careful to add Message. The frequent Test \
+Function should not add Message. Make sure we do the Test in Content.)\n\
+\[EmptySmallCircle] Wei-Hao\[CloseCurlyQuote]s suggestion: Should we use the \
+technique of object oriented concept and association to implement our package \
+functionality. (For e.g., Operator Linearity & ProductRule for PartialD, \
+CovariantD and LieDerivative.) (20250509 WH: The OperatorRules are \
+implemented. However, should think about if we want to truly include the \
+conception of object oriented. For e.g., at least using association?)\n\
+\[EmptySmallCircle] (Mystery. See: Conflict of Inverse Metric code and \
+D[_Tensor,_Symbol] code.nb) Somehow if we try to use D as the function name \
+of \[OpenCurlyDoubleQuote]Derivative for Tensor\[CloseCurlyDoubleQuote], the \
+\[OpenCurlyDoubleQuote]inverse of metric\[CloseCurlyDoubleQuote] takes a long \
+time, but we don\[CloseCurlyQuote]t know the reason.\n\[EmptySmallCircle] \
+Allow T1\[TensorWedge]T2, where T1 and T2 have different coord. (20250509 WH: \
+To allow so, we should firstly allow different index corresponding to \
+different coordinate. Maybe the concept of object-oriented could help.)\n\
+\[EmptySmallCircle] Right now we only inherit the property from the first \
+Tensor when we do TensorWedge. (20250509 WH: In fact, for a lot Functions, we \
+only inherit properties from the first Tensor.)\n\[UpDownArrow] Same thing\n\
+\[EmptySmallCircle] Consider about if there is any important property that we \
+want to inherit from the second Tensor.\n\[EmptySmallCircle] Room for \
+improvement that Wei-Hao did on TensorSymmetry ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"Antisymmetric", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["\[Mu]", "-"], ",", 
+      SubscriptBox["\[Nu]", "-"]}], "}"}], "]"}], "}"}]],
+  CellChangeTimes->{3.8477911644192667`*^9, 3.847791196573058*^9, 
+   3.8477920815040197`*^9},ExpressionUUID->
+  "09a03be7-a5fd-45a5-9a44-631871e06d79"],
+ " for Wei-Hao commented out version. ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"Antisymmetric", "[", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}], "]"}], "}"}]],
+  CellChangeTimes->{3.8477911644192667`*^9, 3.847791196573058*^9, 
+   3.8477920815040197`*^9},ExpressionUUID->
+  "053d247e-3da3-424f-8e2b-170ca23563a7"],
+ " for MMA language.(20250509 WH: Now is the latter. Consider if there is \
+benefit to back to use the commented out version.)\n\[EmptySmallCircle] \
+Notice that if there is potential danger for all the Extract Functions\n\
+\[EmptySmallCircle] When we displace a private variable (for e.g., \
+TensoriaCalc`Private`\[Nu]$3079$3082, and those number are generated by \
+Module and Unique). Can we remove the TensoriaCalc`Private in front of it. (\
+\[OpenCurlyDoubleQuote]Strip\[CloseCurlyDoubleQuote] function in Python.)\n\
+\[EmptySmallCircle] Keep in view: What MMA function will Thread through \
+everything and what does not. For e.g., Simplify goes through everything.\n\
+\[EmptySmallCircle] Does changing all the Module into Block make TensoriaCalc \
+run faster?\n\[UpDownArrow]\n\[EmptySmallCircle] Gradually change Module into \
+Block and make sure it works. (Theoretically, Block is more efficient, but \
+simply replacing all Module with Block doesn\[CloseCurlyQuote]t work.)\n\
+\[EmptySmallCircle] ref/CoordinateTransformData\n\[EmptySmallCircle] Check \
+for the consistency of the information inherited from the input Tensor \
+especially TooltipDisplay, TooltipStyle, TensorAssumption, and \
+TensorOperator. Generally, the output of any function is generated by \
+replacing the information of the input Tensor. This way the Rules mentioned \
+before will be automatically inherited. To be on the safe side, check for the \
+consistency. \n\[EmptySmallCircle] Refer to \
+\[OpenCurlyDoubleQuote]dT2vector.nb\[CloseCurlyDoubleQuote]. After Symmetrize \
+an abstract tensor, it can not be recognized symmetric with MMA \
+TensorSymmetry.\n\[EmptySmallCircle] Bracket problem in a/symmetrize. \
+(20250512 WH: For e.g., RaiseAll and LowerAllIndices. the bracket should move \
+at the same time.)\n\[UpDownArrow]Same thing\n\[EmptySmallCircle] We haven\
+\[CloseCurlyQuote]t add a code to also move brackets and vertical bars when \
+we use MoveIndices (or SwapIndices?). Brackets and vertical bars should \
+always move with its nearby indices.\n\[EmptySmallCircle] ts should not \
+inherent?(20250512 WH: ts means TensorSymmetry. If your output of the \
+function gives different Tensor, we should calculate ts again or throw away \
+the old ts.)\n\[EmptySmallCircle] SwapIndices and ts?(20250512 WH: How do \
+they interact?)\n\[EmptySmallCircle] Delete redundant information in notebook \
+to faster(20250512 WH: This is a guide. If a single notebook store too much \
+information, it will easily get slow, especially while you do searching.)\n\
+\[EmptySmallCircle] automatically sorting problem for contract tensor. \
+(20250512 WH: Short answer: not easy to solve, but now we have alternative \
+solution.\n\[EmptySmallCircle] Wang\[CloseCurlyQuote]s code (Split space time \
+while doing ContractTensors) ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["V", "\[Mu]"], 
+     SubscriptBox["W", "\[Mu]"]}], "=", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["V", "t1"], 
+      SubscriptBox["W", "t1"]}], " ", "+", 
+     RowBox[{
+      SuperscriptBox["V", "t2"], 
+      SubscriptBox["W", "t2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["V", "i"], 
+      SubscriptBox["W", "i"]}]}]}], TraditionalForm]],ExpressionUUID->
+  "3459852b-c3ba-4017-bfe7-c300d72e274f"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["g", "\[Mu]\[Nu]"], 
+     SubscriptBox["W", "\[Mu]"]}], "=", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["g", "\[Mu]0"], 
+      SubscriptBox["W", "0"]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", "\[Mu]i"], 
+      SubscriptBox["W", "i"]}]}]}], TraditionalForm]],ExpressionUUID->
+  "d502b0c4-a70d-4502-92da-c50229242972"],
+ "\n\[EmptySmallCircle] Tensor Spherical harmonic (transverse traceless)\n\
+\[EmptySmallCircle] Test on geodynamics\n\[EmptySmallCircle] (Mystery. See: \
+Cases[Times object, TensorProduct].nb) Cases of TensorProduct seems that \
+doesn\[CloseCurlyQuote]t work well in MMA.\n\[EmptySmallCircle] (Guide) Think \
+about how to make order of cells to make it more systemic/accessible. (Manual \
+and package)\n\[EmptySmallCircle] Christoffel can have TensorAssumption and \
+TensorOperator as its input Rules . \n\[EmptySmallCircle] Distinguish the \
+TestScalarExpressionForm and TestTensorExpressionForm from \
+TestExpressionForm. If users themselves want to do Indices[\[DifferentialD]x\
+\[TensorProduct]\[DifferentialD]y] , we want to return itself? (or other \
+potential issues that we haven\[CloseCurlyQuote]t encountered)"
+}], "Text",
+ CellChangeTimes->{
+  3.9545474495948763`*^9, {3.95454749744802*^9, 3.9545475290568047`*^9}, {
+   3.954551662460062*^9, 3.954551684347465*^9}, {3.9545517162701063`*^9, 
+   3.954551732013919*^9}, {3.954551900955639*^9, 3.954551926821575*^9}, {
+   3.954552761350585*^9, 3.954552840122747*^9}, {3.954552998710786*^9, 
+   3.954552998950913*^9}, {3.9545530441766157`*^9, 3.954553058753113*^9}, {
+   3.954554386458394*^9, 3.9545543993976927`*^9}, 3.954554459215271*^9, {
+   3.954554526486719*^9, 3.954554539684968*^9}, {3.954813427673182*^9, 
+   3.954813438190742*^9}, {3.954813513588163*^9, 3.954813513756105*^9}, {
+   3.954814384387001*^9, 3.954814388383663*^9}, {3.954814508862187*^9, 
+   3.954814509042057*^9}, {3.9548146025524607`*^9, 3.954814604105454*^9}, {
+   3.954814654361867*^9, 3.954814689603438*^9}, {3.9548147328200607`*^9, 
+   3.954814733574741*^9}, {3.954814787869875*^9, 3.954814788103805*^9}, 
+   3.954973099226841*^9, {3.954974012954741*^9, 3.9549740244418*^9}, {
+   3.954974247153191*^9, 3.9549742474217577`*^9}, {3.9549747642290792`*^9, 
+   3.954974807225799*^9}, {3.954974843197641*^9, 3.954974861283517*^9}, {
+   3.954986204086979*^9, 3.954986213060755*^9}, {3.9557513785963507`*^9, 
+   3.955751388419898*^9}, {3.955751518871961*^9, 3.9557516184749813`*^9}, 
+   3.95575261526425*^9, {3.955752661994244*^9, 3.955752733380187*^9}, {
+   3.955752790823666*^9, 3.955752799965398*^9}, {3.955752911776874*^9, 
+   3.955752980130424*^9}, {3.9557553898020067`*^9, 3.955755441394662*^9}, {
+   3.9557561313519077`*^9, 3.955756132253409*^9}, {3.955756755306508*^9, 
+   3.9557567554422283`*^9}, {3.955758616018066*^9, 3.95575861612157*^9}, {
+   3.9557586531391077`*^9, 3.9557586690265093`*^9}, {3.955758954764841*^9, 
+   3.9557590270148087`*^9}, {3.955764768417754*^9, 3.955764773861785*^9}, {
+   3.9560211199463463`*^9, 3.956021125518242*^9}, {3.956022188990717*^9, 
+   3.956022237967422*^9}, {3.956022284448978*^9, 3.9560225353449078`*^9}, {
+   3.9560225948507977`*^9, 3.9560226109151773`*^9}, {3.956023255327507*^9, 
+   3.956023275231391*^9}, {3.95602459929535*^9, 3.956024660529883*^9}, {
+   3.9560263731824207`*^9, 3.9560263758373957`*^9}, {3.956026451047988*^9, 
+   3.95602649457777*^9}, {3.956027588608279*^9, 3.956027589054164*^9}, {
+   3.95602766348281*^9, 3.95602766623409*^9}, {3.9561192426160088`*^9, 
+   3.956119242770054*^9}, {3.9561197522240267`*^9, 3.95611979982463*^9}, {
+   3.956195065975931*^9, 3.956195070420595*^9}, {3.95679897267459*^9, 
+   3.956799084912815*^9}, {3.957401188767758*^9, 3.9574011898241243`*^9}, {
+   3.957401300649597*^9, 
+   3.9574014155338593`*^9}},ExpressionUUID->"09dea201-9b24-402d-bac7-\
+adbd4ff36ab8"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Manual or e.g.", "Subsection",
+ CellChangeTimes->{{3.954550242677188*^9, 3.9545502461786003`*^9}, {
+  3.956026561472727*^9, 
+  3.9560265631527863`*^9}},ExpressionUUID->"4352fd60-e471-41cd-8304-\
+fd31794dab7c"],
+
+Cell["\<\
+\[EmptySmallCircle] Should explain in Web Guide that the covariance of the \
+Tensor is the programmer\[CloseCurlyQuote]s/user\[CloseCurlyQuote]s \
+responsibility.
+\[EmptySmallCircle] Update web guide!
+\[EmptySmallCircle] Christoffel description: Change SuperMinus SubMinus to \
+words \[LongDash] say explicitly that only up-down-down is accepted.
+\[EmptySmallCircle] In function descriptions, all MetricT should be \
+MetricT_Tensor.
+\[EmptySmallCircle] TensoriaCalc manual: Visualization of the geodesics in \
+Kerr? This would require employing NDSolve in Mathematica. 
+\[EmptySmallCircle] TensoriaCalc manual: Reproduce some of the visuals of Kip \
+Thorne\[CloseCurlyQuote]s black hole in the movie Interstellar. See \
+https://arxiv.org/abs/1502.03808 https://arxiv.org/abs/1502.03809
+\[EmptySmallCircle] Keep a webpage containing all the Tensor Calculus package \
+on the market.fo
+\[EmptySmallCircle] Warning: CT an OverHat Tensor (a mixed coordinate \
+Tensor). Then specify indices will occur a problem. (20250505 WH: What is the \
+problem? The problem is if we  specify the coordinate, just from the \
+appearance of the tensor, the information of OverHat will lost.)(Here is an \
+example copy from my code:)\
+\>", "Text",
+ CellChangeTimes->{{3.954550251434174*^9, 3.954550277270643*^9}, {
+  3.954554598728785*^9, 3.954554611045677*^9}, {3.954814334492136*^9, 
+  3.954814349950713*^9}, {3.954973947288055*^9, 3.954973947474036*^9}, {
+  3.955415393998548*^9, 
+  3.955415398801343*^9}},ExpressionUUID->"e922a0b0-2ccf-4dd9-8261-\
+c7ad2ff24eda"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"Rt", "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\[Nu]", "\[Rule]", "t"}], ",", 
+      RowBox[{"\[Alpha]", "\[Rule]", " ", "r"}], ",", 
+      RowBox[{"\[Beta]", "\[Rule]", " ", "t"}]}], "}"}]}], ")"}], "//", 
+  "FS"}], "\[IndentingNewLine]", 
+ RowBox[{"R\[Mu]0r0", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"RtONFF", "/.", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\[Nu]", "^"], "\[Rule]", "t"}], ",", 
+       RowBox[{
+        OverscriptBox["\[Alpha]", "^"], "\[Rule]", " ", "r"}], ",", 
+       RowBox[{
+        OverscriptBox["\[Beta]", "^"], "\[Rule]", " ", "t"}]}], "}"}]}], 
+    ")"}], "//", "FS"}]}]}], "Input",
+ CellChangeTimes->{{3.8978577571650686`*^9, 3.8978577845553164`*^9}, {
+  3.8978601847085476`*^9, 3.897860199472573*^9}},
+ CellLabel->
+  "In[188]:=",ExpressionUUID->"fa8f2ca0-995e-4ef6-88ce-fa182625920c"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{
+    "\"\\!\\(\\*\\nStyleBox[\\\"R\\\",\\nFontSlant->\\\"Italic\\\"]\\)\"", 
+     TagBox[
+      GridBox[{{"\[Mu]"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["r", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"0"}, {
+              FractionBox[
+               RowBox[{
+                 RowBox[{"(", 
+                   RowBox[{"r", "-", "rs"}], ")"}], " ", "rs"}], 
+               SuperscriptBox["r", "4"]]}, {"0"}, {"0"}}, RowSpacings -> 1, 
+            ColumnAlignments -> Center, ColumnAlignments -> Left], Column], 
+          "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"t", ",", "r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}],
+      "}"}],
+   TooltipStyle->{"Large"}],
+  Annotation[#, {
+    MatrixForm[{
+     0, ($CellContext`r^(-4) ($CellContext`r - $CellContext`rs)) \
+$CellContext`rs, 0, 0}], 
+    "Coordinates" -> {$CellContext`t, $CellContext`r, $CellContext`\[Theta], \
+$CellContext`\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.897857747224198*^9, 3.8978577847711825`*^9}, 
+   3.8978597171164618`*^9, 3.8978597525735445`*^9, 3.8978597870657206`*^9, 
+   3.897859913048949*^9, 3.897860104645934*^9, 3.8978602001912756`*^9, {
+   3.8984156231789694`*^9, 3.898415646221799*^9}, 3.8984157457582054`*^9, 
+   3.8984157809708357`*^9},
+ CellLabel->
+  "Out[188]=",ExpressionUUID->"d318416b-1ad1-4170-a22e-b40ad1c55525"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{
+    "\"\\!\\(\\*\\nStyleBox[\\\"R\\\",\\nFontSlant->\\\"Italic\\\"]\\)\"", 
+     TagBox[
+      GridBox[{{
+         OverscriptBox["\[Mu]", "^"]}, {""}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["r", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {
+         UnderscriptBox["t", "_"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"0"}, {
+              FractionBox["rs", 
+               RowBox[{"r", " ", 
+                 SuperscriptBox[
+                  RowBox[{"(", 
+                    RowBox[{"r", "-", "rs"}], ")"}], "2"]}]]}, {"0"}, {"0"}}, 
+            RowSpacings -> 1, ColumnAlignments -> Center, ColumnAlignments -> 
+            Left], Column], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"t", ",", "r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}],
+      "}"}],
+   TooltipStyle->{"Large"}],
+  Annotation[#, {
+    MatrixForm[{
+     0, ($CellContext`r^(-1) ($CellContext`r - $CellContext`rs)^(-2)) \
+$CellContext`rs, 0, 0}], 
+    "Coordinates" -> {$CellContext`t, $CellContext`r, $CellContext`\[Theta], \
+$CellContext`\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.897857747224198*^9, 3.8978577847711825`*^9}, 
+   3.8978597171164618`*^9, 3.8978597525735445`*^9, 3.8978597870657206`*^9, 
+   3.897859913048949*^9, 3.897860104645934*^9, 3.8978602001912756`*^9, {
+   3.8984156231789694`*^9, 3.898415646221799*^9}, 3.8984157457582054`*^9, 
+   3.8984157809864645`*^9},
+ CellLabel->
+  "Out[189]=",ExpressionUUID->"ccf7477d-ea6e-4cab-8411-f9c2ae7236f3"]
+}, Open  ]],
+
+Cell["\<\
+\[EmptySmallCircle] Warning: Right now we transform Christoffel into \
+Orthonormal Basis like a tensor.
+\[EmptySmallCircle] Warning: Metric contains Ricci, Riemann..., e.t.c. So we \
+don\[CloseCurlyQuote]t deal w/ the case CT a Metric w/ at least one \
+OverHat.(20250505 WH: I didn\[CloseCurlyQuote]t see anything we should deal \
+with and why should we warn?)
+\[EmptySmallCircle] Show in the manual: A special case that a problem occurs: \
+How to combine separated integral into one. (Do Local exactness of closed \
+form (Rank-1 & 2) as Tensor Objects (PotentialForm))
+\[EmptySmallCircle] Manual: Show user the definition difference between ours \
+and MMA\[CloseCurlyQuote]s.
+\[EmptySmallCircle] Manual: VectorSphericalHarmonic: Introduce user the \
+different system and the default one is the usual coordinate {\[Theta],\[Phi]}
+\[EmptySmallCircle] Find PotentialForm e.g. in Jackson
+\[EmptySmallCircle] Just a reminder: Indices, Coordinates, and \
+TensorComponents are now part of Tensor block. They don\[CloseCurlyQuote]t \
+appear in the library like before.  They still work with the same \
+functionality as before, only their place has changed. 
+\[EmptySmallCircle] Check if Esc t* Esc === \[TensorProduct] === \
+TensorProduct vs CircleTimes === Esc \\otimes Esc has been properly \
+documented in manual
+\[EmptySmallCircle] (Unsolved)An e.g. for E&M: a finite length line with \
+constant electric current. What is the vector potential, electric and \
+magnetic field. 
+*Utilizing the PotentialForm to demonstrate it.
+\[EmptySmallCircle] Check \[OpenCurlyDoubleQuote]solution of Einstein Field \
+eqn\[CloseCurlyDoubleQuote] in Yi-Zen Website & library online version: What \
+{x,y,z} to {r \[Theta] \[Phi]} in Kerr (20250512 WH: Found it in other source \
+and become one of an e.g. in WH\[CloseCurlyQuote]s thesis 3.9.2)
+\[EmptySmallCircle] (Unsolved)de Sitter: Flat slicing, Static Patch, Open \
+Slicing, Closed Slicing.
+\[EmptySmallCircle] (Unsolved)Hyperboloid in 4+1 flat spacetimes
+\[EmptySmallCircle] (Unsolved)All slicing satisfy hyperboloid eqn. in 4+1 dim.
+\[EmptySmallCircle] (Unsolved)Derive Killing vectors in higher dimensional \
+perspective.
+\[EmptySmallCircle] (Unsolved)Spatial Translation Killing vector in flat \
+slicing (complex, nontrivial)
+\[EmptySmallCircle] FRW metric for Einstein field eq (20250512 WH: WH thesis \
+3.6)
+\[EmptySmallCircle] Killing Tensor for cosmology (FRW)
+\[EmptySmallCircle] (Unsolved)CT for Killing tensor form one patch to the \
+other for de Sitter.
+\[EmptySmallCircle] (Unsolved)prove that de sitter metric in t x y z coord is \
+still solution of EFE
+\[EmptySmallCircle] (Unsolved)Gram-Schmidt process for Lorentz coord. in \
+higher dim.
+\[EmptySmallCircle] (Unsolved)MMA book: GERD BAUMANN example(20250512 WH: I \
+found this book in NCU library and not sure if it provides any good e.g.)
+\[EmptySmallCircle] (Unsolved)Try to reproduce Kerr-de-Sitter ONFF in \
+Kerr-Schild coord. Test eigensystem
+\[EmptySmallCircle] 2-sphere geodesics
+\[EmptySmallCircle] div B=0 -> B=curl A
+\[EmptySmallCircle] (Guide) Think about how to make order of cells to make it \
+more systemic/accessible. (Manual and package)
+\[EmptySmallCircle] Warn the users to check the anti-symmetry property (its \
+TensorComponents) of input tensor of TensorWedge themselves. We don\
+\[CloseCurlyQuote]t check it them.\
+\>", "Text",
+ CellChangeTimes->{
+  3.95541542300801*^9, {3.955415540122588*^9, 3.955415577651741*^9}, {
+   3.955751178301197*^9, 3.9557511794505796`*^9}, {3.955756777890259*^9, 
+   3.9557567780095167`*^9}, {3.9557586046802807`*^9, 3.955758604795368*^9}, {
+   3.9557591111605186`*^9, 3.955759111592444*^9}, {3.955763835628655*^9, 
+   3.955763837689362*^9}, {3.956020996588169*^9, 3.9560210211012783`*^9}, {
+   3.956026498687236*^9, 3.9560265116313467`*^9}, {3.956026555889084*^9, 
+   3.9560266151864147`*^9}, {3.956026661853125*^9, 3.956026707842215*^9}, {
+   3.9560270149111843`*^9, 3.9560270305755653`*^9}, {3.95602706552851*^9, 
+   3.956027078416758*^9}, {3.956027154649488*^9, 3.9560273035134163`*^9}, {
+   3.9560275738227043`*^9, 3.956027609544228*^9}, {3.95619484166601*^9, 
+   3.956194853171438*^9}, {3.9561949136342363`*^9, 3.956194918326076*^9}, {
+   3.9561949550837708`*^9, 3.956194971048326*^9}, {3.956195045595421*^9, 
+   3.956195051879005*^9}, {3.956795155681377*^9, 
+   3.956795247593334*^9}},ExpressionUUID->"06873741-d735-43b1-ac1d-\
+bddf77ce373d"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Ask meaning", "Subsection",
+ CellChangeTimes->{{3.9545561327369823`*^9, 
+  3.95455613594501*^9}},ExpressionUUID->"9491f34a-9541-43a7-a2bc-\
+1c29bcce2486"],
+
+Cell["\<\
+\[EmptySmallCircle] How to implement pop-up message paste options? \
+(LieDerivative works; but not ToTensor \[LongDash] why?)
+\[EmptySmallCircle] Are NonMetricTensor and ToTensor duplicates? Maybe get \
+rid of NonMetricTensor?
+\[EmptySmallCircle] There\[CloseCurlyQuote]s a funny bug in Afidah\
+\[CloseCurlyQuote]s code. Is it a TensoriaCalc problem?
+\[EmptySmallCircle] TensorComponents need to allow for extraction of \
+components for products of Tensors with different coordinate systems; i.e., \
+TensorComponents[t1 t2] needs to work even if t1 and t2 have different \
+coordinates.
+\[EmptySmallCircle] Mini projects to solve, as non trivial examples for what \
+TensoriaCalc can do.
+\[EmptySmallCircle] Make ContractTensors (and possibly other similar \
+functions) able to handle non-polynomial Tensor expressions
+\[EmptySmallCircle] All case as functions
+\[EmptySmallCircle] Allow {xxx___} for other property (20250512 WH: I confess \
+I wrote it down but I can\[CloseCurlyQuote]t remember what it means now. It \
+put in my keeping in view list.)
+\[EmptySmallCircle] TooltipStyle in PotentialForm and CHD -> use \
+replacement(20250513 WH: I don\[CloseCurlyQuote]t know what it means. \
+Probably it not a big deal.)
+\[EmptySmallCircle] What can we learn from this:\
+\>", "Text",
+ CellChangeTimes->{
+  3.9545561614785213`*^9, {3.9548133751745253`*^9, 3.954813375312415*^9}, {
+   3.954814081989109*^9, 3.954814082086615*^9}, {3.954814692698043*^9, 
+   3.9548146933010273`*^9}, {3.954972176626656*^9, 3.954972177616987*^9}, {
+   3.954974194670947*^9, 3.954974194834218*^9}, {3.954974346859291*^9, 
+   3.954974378491843*^9}, {3.9557558812714357`*^9, 3.9557558823836613`*^9}, {
+   3.956023158442665*^9, 3.9560232293722677`*^9}, {3.956025920222048*^9, 
+   3.9560259209369717`*^9}, {3.956119152427449*^9, 3.956119233163815*^9}, {
+   3.956119310455926*^9, 
+   3.956119323566826*^9}},ExpressionUUID->"9b32769f-38d8-4ee0-be48-\
+715179313c03"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}], "\[Cross]", 
+   RowBox[{"{", 
+    RowBox[{"d", ",", "e", ",", "f", ",", "g"}], "}"}], "\[Cross]", 
+   RowBox[{"{", 
+    RowBox[{"h", ",", "i", ",", "j", ",", "k"}], "}"}]}], "==", 
+  RowBox[{"HodgeDual", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}], "\[TensorWedge]", 
+    RowBox[{"{", 
+     RowBox[{"d", ",", "e", ",", "f", ",", "g"}], "}"}], "\[TensorWedge]", 
+    RowBox[{"{", 
+     RowBox[{"h", ",", "i", ",", "j", ",", "k"}], "}"}]}], "]"}]}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1995741216,ExpressionUUID->"3945a71a-44d3-4983-bbe6-0d68b3510806"],
+
+Cell[BoxData["True"], "Output",
+ CellLabel->"Out[4]=",
+ CellID->2113311176,ExpressionUUID->"43efaac7-8630-428b-b43a-a37d49823e1e"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Think again", "Subsection",
+ CellChangeTimes->{{3.954974351082844*^9, 
+  3.9549743533788757`*^9}},ExpressionUUID->"b64d3510-4c45-4285-97a4-\
+3191849db4fc"],
+
+Cell[TextData[{
+ "\[EmptySmallCircle] Hodge dual should all be denoted by tilde; make sure we \
+change all stars to tildes in our code. (20250509 WH: I think star is also \
+good for me from the PoV of differential form sense. Consider to let user \
+decide?)\n\[EmptySmallCircle] Conceptual consistency of MHDSystem code. Why \
+define internal tensor functions when we only use it once? Why does the \
+output not allow for flexibility in moving indices?\n\[EmptySmallCircle] \
+MoveIndices and SwapIndices: Do we want to put indices list at the first \
+argument?\n\[EmptySmallCircle] Consider about if we want to check \
+\[OpenCurlyDoubleQuote]Christoffel Symbols\[CloseCurlyDoubleQuote] when \
+applying MoveIndices, LowerAllIndices, etc.\n\[EmptySmallCircle] Sometimes \
+our function arguments are Replacement Rules, sometimes they aren\
+\[CloseCurlyQuote]t. Inconsistency? Should we make input more consistent?\n\
+\[EmptySmallCircle] Should the computation of Weyl be part of the Metric \
+code?\n\[EmptySmallCircle] Christoffel won\[CloseCurlyQuote]t be transformed \
+into orthonormal basis by users? Right now we didn\[CloseCurlyQuote]t take \
+care of coord. transf. of Christoffel w/ OverHat indices.\n\
+\[EmptySmallCircle] How to make CoordinateSystem as mandatory argument in \
+Metric?\n\[EmptySmallCircle] Should we replace all Tooltipdisplay with \
+Tooltip? The former seems to have vanished in MMA documentation.\n\
+\[EmptySmallCircle] RemoveUnderBarredIndices for tensor as a public function?\
+\n\[UpDownArrow] Same thing\n\[EmptySmallCircle] Consider to public \
+RemoveUnderBarredIndices & RemoveRepeatedUnderBarredIndices. Is there any \
+internal function that we also want to public.\n\[EmptySmallCircle] Make \
+DifferentialFormCheck & TensorIsFullyAntiSymmetric public?\n\
+\[EmptySmallCircle] z and z bar coord of SHV-> If there is benefit, declare \
+it. (20250509 WH: Now we only have ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["S", "2"], TraditionalForm]],ExpressionUUID->
+  "4ffdd85f-0e2f-451d-975a-8f712c78cac3"],
+ " coord.)\n\[EmptySmallCircle]  Notation package: ",
+ Cell[BoxData[
+  RowBox[{"Symbolize", "[", 
+   TemplateBox[{
+     OverscriptBox["_", "^"]},
+    "NotationTemplateTag"], "]"}]], "Input",
+  CellChangeTimes->{3.8972631198031497`*^9, 3.897529219624156*^9, 
+   3.897530276954917*^9},ExpressionUUID->
+  "a237216c-887c-45eb-8d41-fbe2c6b0a2a6"],
+ " to make Head[",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["i", "^"], TraditionalForm]],ExpressionUUID->
+  "37fc3434-4bb5-4677-97aa-9235e301098a"],
+ "] to be Symbol (20250509 WH: Still need to figure out if this is a good \
+idea.)\n\[EmptySmallCircle]  Consider if we want to make Operators\
+\[CloseCurlyQuote] Rules public. (20250509 WH: OperatorDistributeOverPlus is \
+public now. Others are commented out.)\n\[EmptySmallCircle] Consider to do a \
+consistency fixed on CoordinateSystem: 1. The extract function is now called \
+Coordinates, should we change it with the same name of property \
+CoordinateSystem? 2. CoordinateSystem is one of the most mandatory properties \
+of a Tensor object. However, in a lot of Functions, users input it as the way \
+we input an optional properties. Consider to change it back to a true \
+mandatory argument. There are pros and cons. The benefit is user don\
+\[CloseCurlyQuote]t need to remember so many order of arguments, because of \
+Orderless property. They can input wherever they want. The disadvantages are \
+inconsistency and the confusion of whether it is mandatory or optional. One \
+more benefit: saving hand writing. The following function involve \
+\[OpenCurlyDoubleQuote]CoordinateSystem\[Rule]{___}\[CloseCurlyDoubleQuote] \
+as input: Metric, NonMetricTensor, ToTensorComponents, PartialD.\n\
+\[EmptySmallCircle] We are still considering whether  to keep adding these \
+brackets, and vertical bars. When we symmetrize more then one time, the \
+indices list will look messy. There will be some e.g. in following section.\n\
+\[EmptySmallCircle] CurveST P.7.6(20250512 WH: Not sure if it is still \
+Problem 7.6 now?)"
+}], "Text",
+ CellChangeTimes->{
+  3.954974359765184*^9, {3.954974782087882*^9, 3.954974805653043*^9}, {
+   3.954974845649591*^9, 3.954974863574465*^9}, {3.954986015401003*^9, 
+   3.954986015635295*^9}, {3.9549860929631157`*^9, 3.954986117484177*^9}, {
+   3.955752871735093*^9, 3.955752890736971*^9}, {3.9557590762632504`*^9, 
+   3.955759091356298*^9}, {3.955759127417362*^9, 3.955759196186987*^9}, {
+   3.955759901304768*^9, 3.955759934897975*^9}, {3.955761991958604*^9, 
+   3.955762023047235*^9}, {3.955762186196225*^9, 3.9557621863764677`*^9}, {
+   3.955762328936461*^9, 3.9557623302648277`*^9}, {3.956022563145095*^9, 
+   3.956022565225193*^9}, {3.956027035983626*^9, 
+   3.9560270497040033`*^9}},ExpressionUUID->"42f5c06c-6508-4520-97e0-\
+156cf1631c45"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Published version note", "Subsection",
+ CellChangeTimes->{{3.9567946453137407`*^9, 
+  3.956794658683415*^9}},ExpressionUUID->"d6d23d8d-3f88-41cf-b9da-\
+dff0b737de76"],
+
+Cell["\<\
+\[EmptySmallCircle] TestTensorIsFullyAntiSymmetric should be a public \
+function, because we don\[CloseCurlyQuote]t use inside any where of our \
+package.\
+\>", "Text",
+ CellChangeTimes->{{3.9567946704200897`*^9, 3.9567946997008123`*^9}, {
+  3.9567952538499203`*^9, 
+  3.9567953050262203`*^9}},ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-\
+00c21616e396"]
+}, Closed]],
+
+Cell["Notes and To-do\[CloseCurlyQuote]s (Uncategorized)", "Subsection",
+ CellChangeTimes->{{3.6295188054388905`*^9, 3.6295188216830254`*^9}, {
+  3.629822625421372*^9, 3.62982262969978*^9}, {3.6298258416001663`*^9, 
+  3.629825842083767*^9}, {3.956119398498768*^9, 
+  3.956119406690675*^9}},ExpressionUUID->"e6b2e12a-82a5-4f2e-af26-\
+b6e8ae8d7c7f"]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowToolbars->"EditBar",
+WindowSize->{972, 480.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowSelection->True,
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a3748019-dda0-412f-bf4b-39030fc9ffb1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 157, 3, 98, "Title",ExpressionUUID->"3a895480-b49d-4ca6-8e08-64fb754b69e9"],
+Cell[CellGroupData[{
+Cell[761, 29, 211, 4, 54, "Subsection",ExpressionUUID->"1ebebb65-8ed6-4a19-96ae-ccf8ac39fcad"],
+Cell[975, 35, 1467, 24, 196, "Text",ExpressionUUID->"5ca5cf19-01c1-4be0-a295-b3308390f902"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2479, 64, 211, 4, 54, "Subsection",ExpressionUUID->"1de36529-513e-456e-a3eb-b03c8be3c162"],
+Cell[2693, 70, 13676, 235, 1843, "Text",ExpressionUUID->"0009bfff-8b82-4c00-a8df-db0711a9417d"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[16406, 310, 141, 3, 38, "Subsection",ExpressionUUID->"754000b5-ce17-474f-9b38-4916f91d75d3"],
+Cell[16550, 315, 3666, 60, 587, "Text",ExpressionUUID->"7151cbe8-932b-4148-932f-ac477f2ceb62"],
+Cell[CellGroupData[{
+Cell[20241, 379, 918, 26, 59, "Input",ExpressionUUID->"833d9d8f-204d-4a99-a4b2-63571513773a"],
+Cell[21162, 407, 2568, 64, 47, "Output",ExpressionUUID->"5e68e6d6-841d-4e7c-a4dc-3df24383ff6b"],
+Cell[23733, 473, 2617, 66, 49, "Output",ExpressionUUID->"59d72f29-1edd-4ca4-a648-531abcdc26f7"]
+}, Open  ]],
+Cell[26365, 542, 6236, 98, 729, "Text",ExpressionUUID->"d8f80b15-0342-488a-b217-9feaae854fa3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32638, 645, 210, 4, 38, "Subsection",ExpressionUUID->"43fed159-63c8-4bd1-befc-e9490ca14d5c"],
+Cell[32851, 651, 14157, 263, 1808, "Text",ExpressionUUID->"09dea201-9b24-402d-bac7-adbd4ff36ab8"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[47045, 919, 215, 4, 38, "Subsection",ExpressionUUID->"4352fd60-e471-41cd-8304-fd31794dab7c"],
+Cell[47263, 925, 1554, 27, 265, "Text",ExpressionUUID->"e922a0b0-2ccf-4dd9-8261-c7ad2ff24eda"],
+Cell[CellGroupData[{
+Cell[48842, 956, 918, 26, 59, "Input",ExpressionUUID->"fa8f2ca0-995e-4ef6-88ce-fa182625920c"],
+Cell[49763, 984, 2568, 64, 47, "Output",ExpressionUUID->"d318416b-1ad1-4170-a22e-b40ad1c55525"],
+Cell[52334, 1050, 2617, 66, 49, "Output",ExpressionUUID->"ccf7477d-ea6e-4cab-8411-f9c2ae7236f3"]
+}, Open  ]],
+Cell[54966, 1119, 4410, 74, 748, "Text",ExpressionUUID->"06873741-d735-43b1-ac1d-bddf77ce373d"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[59413, 1198, 160, 3, 38, "Subsection",ExpressionUUID->"9491f34a-9541-43a7-a2bc-1c29bcce2486"],
+Cell[59576, 1203, 1944, 34, 288, "Text",ExpressionUUID->"9b32769f-38d8-4ee0-be48-715179313c03"],
+Cell[CellGroupData[{
+Cell[61545, 1241, 712, 18, 29, "Input",ExpressionUUID->"3945a71a-44d3-4983-bbe6-0d68b3510806",
+ CellID->1995741216],
+Cell[62260, 1261, 130, 2, 33, "Output",ExpressionUUID->"43efaac7-8630-428b-b43a-a37d49823e1e",
+ CellID->2113311176]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[62439, 1269, 161, 3, 38, "Subsection",ExpressionUUID->"b64d3510-4c45-4285-97a4-3191849db4fc"],
+Cell[62603, 1274, 4805, 78, 755, "Text",ExpressionUUID->"42f5c06c-6508-4520-97e0-156cf1631c45"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[67445, 1357, 172, 3, 38, "Subsection",ExpressionUUID->"d6d23d8d-3f88-41cf-b9da-dff0b737de76"],
+Cell[67620, 1362, 361, 8, 35, "Text",ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-00c21616e396"]
+}, Closed]],
+Cell[67996, 1373, 347, 5, 38, "Subsection",ExpressionUUID->"e6b2e12a-82a5-4f2e-af26-b6e8ae8d7c7f"]
+}, Open  ]]
+}
+]
+*)
+

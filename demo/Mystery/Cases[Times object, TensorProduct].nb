@@ -1,0 +1,177 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6057,        167]
+NotebookOptionsPosition[      4803,        140]
+NotebookOutlinePosition[      5193,        156]
+CellTagsIndexPosition[      5150,        153]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Cases[Times object, TensorProduct]", "Subsubsection",
+ CellChangeTimes->{3.9023138557252135`*^9, 
+  3.9561197264696074`*^9},ExpressionUUID->"f2ee47ad-98d6-4f5e-8c09-\
+c491603ced37"],
+
+Cell["\<\
+Here is a MMA problem, even a Times object could be recognized as \
+TensorProduct object while using Cases.\
+\>", "Text",
+ CellChangeTimes->{{3.9023138253684998`*^9, 
+  3.90231389574549*^9}},ExpressionUUID->"32cc72a0-63ee-4497-8608-\
+20d70b7f03c9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"stuff", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"\[DifferentialD]", "x"}], ")"}], 
+   RowBox[{"(", 
+    RowBox[{"\[DifferentialD]", "y"}], ")"}], 
+   RowBox[{"(", 
+    RowBox[{"\[DifferentialD]", "z"}], ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"(", 
+  RowBox[{"Cases", "[", 
+   RowBox[{
+    RowBox[{"{", "stuff", "}"}], ",", 
+    RowBox[{"TensorProduct", "[", "__", "]"}], ",", "Infinity"}], "]"}], 
+  ")"}], "\[IndentingNewLine]", 
+ RowBox[{"(", 
+  RowBox[{"Cases", "[", 
+   RowBox[{
+    RowBox[{"{", "stuff", "}"}], ",", 
+    RowBox[{"TensorProduct", "[", "__", "]"}], ",", 
+    RowBox[{"{", "1", "}"}]}], "]"}], ")"}], "\[IndentingNewLine]", 
+ RowBox[{"(", 
+  RowBox[{"Cases", "[", 
+   RowBox[{
+    RowBox[{"{", "stuff", "}"}], ",", 
+    RowBox[{"TensorProduct", "[", "__", "]"}], ",", 
+    RowBox[{"{", "2", "}"}]}], "]"}], ")"}], "\[IndentingNewLine]", 
+ RowBox[{"(", 
+  RowBox[{"Cases", "[", 
+   RowBox[{
+    RowBox[{"{", "stuff", "}"}], ",", 
+    RowBox[{"TensorProduct", "[", "__", "]"}], ",", 
+    RowBox[{"{", "3", "}"}]}], "]"}], ")"}], "\[IndentingNewLine]", 
+ RowBox[{"(", 
+  RowBox[{"Cases", "[", 
+   RowBox[{
+    RowBox[{"{", "stuff", "}"}], ",", 
+    RowBox[{"TensorProduct", "[", "__", "]"}], ",", 
+    RowBox[{"{", "4", "}"}]}], "]"}], ")"}]}], "Input",
+ CellChangeTimes->{{3.8948002297030945`*^9, 3.8948002819445567`*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"5f2c11d8-591e-4ed2-a84e-1df7d2e8f380"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[DifferentialD]", "x"}], " ", 
+  RowBox[{"\[DifferentialD]", "y"}], " ", 
+  RowBox[{"\[DifferentialD]", "z"}]}]], "Output",
+ CellChangeTimes->{{3.8948002299829273`*^9, 3.894800282162653*^9}},
+ CellLabel->"Out[31]=",ExpressionUUID->"1da7d4c1-2540-47ff-8122-b6093d9ee430"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", ",", 
+   RowBox[{"\[DifferentialD]", "x"}], ",", "y", ",", 
+   RowBox[{"\[DifferentialD]", "y"}], ",", "z", ",", 
+   RowBox[{"\[DifferentialD]", "z"}], ",", 
+   RowBox[{
+    RowBox[{"\[DifferentialD]", "x"}], " ", 
+    RowBox[{"\[DifferentialD]", "y"}], " ", 
+    RowBox[{"\[DifferentialD]", "z"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.8948002299829273`*^9, 3.8948002821763673`*^9}},
+ CellLabel->"Out[32]=",ExpressionUUID->"6a964ac3-9c26-4a29-82fc-c03445cfcc85"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[DifferentialD]", "x"}], " ", 
+   RowBox[{"\[DifferentialD]", "y"}], " ", 
+   RowBox[{"\[DifferentialD]", "z"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.8948002299829273`*^9, 3.894800282187413*^9}},
+ CellLabel->"Out[33]=",ExpressionUUID->"587dbc40-daf1-45b9-aaa2-e93bc4a8eb39"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[DifferentialD]", "x"}], ",", 
+   RowBox[{"\[DifferentialD]", "y"}], ",", 
+   RowBox[{"\[DifferentialD]", "z"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.8948002299829273`*^9, 3.8948002821924577`*^9}},
+ CellLabel->"Out[34]=",ExpressionUUID->"00a2f5ca-8386-4027-a551-98122248954e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", ",", "y", ",", "z"}], "}"}]], "Output",
+ CellChangeTimes->{{3.8948002299829273`*^9, 3.894800282202198*^9}},
+ CellLabel->"Out[35]=",ExpressionUUID->"19a88997-7510-4b72-b0bc-ac3ea300da6e"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{{3.8948002299829273`*^9, 3.8948002822122087`*^9}},
+ CellLabel->"Out[36]=",ExpressionUUID->"a158f146-478d-47a4-ba32-0cd123308424"]
+}, Open  ]],
+
+Cell["\<\
+To solve this problem of Fully Symmetrized Tensor Condition Check in \
+ToTensorComponents function, I use a lots extra condition check.\
+\>", "Text",
+ CellChangeTimes->{{3.9023139007694087`*^9, 3.9023139494091578`*^9}, {
+  3.902313986660751*^9, 
+  3.902314006263651*^9}},ExpressionUUID->"9e870cd4-c2f8-4aeb-be0f-\
+9179fe4e7403"]
+}, Open  ]]
+},
+WindowSize->{972, 480.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"6c8fa746-07f5-4430-acf4-774b0293807a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 187, 3, 45, "Subsubsection",ExpressionUUID->"f2ee47ad-98d6-4f5e-8c09-c491603ced37"],
+Cell[770, 27, 258, 6, 35, "Text",ExpressionUUID->"32cc72a0-63ee-4497-8608-20d70b7f03c9"],
+Cell[CellGroupData[{
+Cell[1053, 37, 1454, 40, 130, "Input",ExpressionUUID->"5f2c11d8-591e-4ed2-a84e-1df7d2e8f380"],
+Cell[2510, 79, 306, 6, 33, "Output",ExpressionUUID->"1da7d4c1-2540-47ff-8122-b6093d9ee430"],
+Cell[2819, 87, 513, 11, 35, "Output",ExpressionUUID->"6a964ac3-9c26-4a29-82fc-c03445cfcc85"],
+Cell[3335, 100, 332, 7, 35, "Output",ExpressionUUID->"587dbc40-daf1-45b9-aaa2-e93bc4a8eb39"],
+Cell[3670, 109, 334, 7, 33, "Output",ExpressionUUID->"00a2f5ca-8386-4027-a551-98122248954e"],
+Cell[4007, 118, 230, 4, 33, "Output",ExpressionUUID->"19a88997-7510-4b72-b0bc-ac3ea300da6e"],
+Cell[4240, 124, 194, 3, 33, "Output",ExpressionUUID->"a158f146-478d-47a4-ba32-0cd123308424"]
+}, Open  ]],
+Cell[4449, 130, 338, 7, 35, "Text",ExpressionUUID->"9e870cd4-c2f8-4aeb-be0f-9179fe4e7403"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,351 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12616,        341]
+NotebookOptionsPosition[     11759,        320]
+NotebookOutlinePosition[     12149,        336]
+CellTagsIndexPosition[     12106,        333]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FS", "=", 
+   RowBox[{
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"0", "\[LessEqual]", " ", "\[Phi]", "\[LessEqual]", 
+         RowBox[{"2", "Pi"}]}], ",", 
+        RowBox[{"0", "\[LessEqual]", "\[Theta]", "\[LessEqual]", "Pi"}], ",", 
+        
+        RowBox[{"r", "\[GreaterEqual]", "0"}]}], "}"}]}], "]"}], "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"m", "=", 
+   RowBox[{
+    RowBox[{"Metric", "[", 
+     RowBox[{
+      SubscriptBox["i", "-"], ",", 
+      SubscriptBox["j", "-"], ",", 
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {"1", "0", "0"},
+         {"0", 
+          SuperscriptBox["r", "2"], "0"},
+         {"0", "0", 
+          RowBox[{
+           SuperscriptBox["r", "2"], "*", 
+           SuperscriptBox[
+            RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}]}
+        }], "\[NoBreak]", ")"}], ",", 
+      RowBox[{"TensorName", "\[Rule]", "\"\<g\>\""}], ",", 
+      RowBox[{"CoordinateSystem", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}], ",", 
+      RowBox[{"StartIndex", "\[Rule]", "1"}], ",", 
+      RowBox[{"FlatMetric", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ",", 
+      RowBox[{"OrthonormalFrameFieldOperator", "\[Rule]", "FS"}]}], "]"}], 
+    "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vt", "=", 
+   RowBox[{"NonMetricTensor", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      SuperscriptBox[
+       OverscriptBox["i", "^"], "-"], "}"}], ",", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"Sqrt", "[", "2", "]"}]], 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Sqrt", "[", "2", "]"}], ",", 
+        RowBox[{"-", "1"}], ",", 
+        RowBox[{"-", "1"}]}], "}"}]}], ",", "\"\<v\>\"", ",", 
+     RowBox[{"CoordinateSystem", "\[Rule]", 
+      RowBox[{"Coordinates", "[", "m", "]"}]}], ",", 
+     RowBox[{"StartIndex", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"MoveIndices", "[", 
+  RowBox[{"vt", ",", "OrthonormalBasis", ",", "m"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"MoveIndices", "[", 
+  RowBox[{"vt", ",", "CoordinateBasis", ",", "m"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"viup", "=", 
+  RowBox[{"MoveIndices", "[", 
+   RowBox[{"vt", ",", 
+    RowBox[{"{", 
+     SuperscriptBox["i", "-"], "}"}], ",", "m"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"LowerAllIndices", "[", 
+  RowBox[{"viup", ",", "m"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"MoveIndices", "[", 
+  RowBox[{"vt", ",", 
+   RowBox[{"{", 
+    SubscriptBox["i", "-"], "}"}], ",", "m"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.865118756341462*^9, 3.865118759763338*^9}, {
+   3.8651188239014683`*^9, 3.865118830448344*^9}, {3.897140679977662*^9, 
+   3.8971406804619937`*^9}, 3.899417880952956*^9, {3.9542870511244497`*^9, 
+   3.954287138830031*^9}, {3.954293336200289*^9, 3.954293423311769*^9}, {
+   3.9542934607707243`*^9, 3.954293476897287*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"e15fb4ed-fe1d-4f5e-b0a1-93f5edcb495f"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"v\"", 
+     TagBox[
+      GridBox[{{
+         OverscriptBox["i", "^"]}, {""}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"1"}, {
+              RowBox[{"-", 
+                FractionBox["1", 
+                 SqrtBox["2"]]}]}, {
+              RowBox[{"-", 
+                FractionBox["1", 
+                 SqrtBox["2"]]}]}}, RowSpacings -> 1, ColumnAlignments -> 
+            Center, ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{1, -2^Rational[-1, 2], -2^Rational[-1, 2]}], 
+    "Coordinates" -> {$CellContext`r, $CellContext`\[Theta], $CellContext`\
+\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.9542933568691263`*^9, 3.954293371635528*^9}, {
+   3.954293416010323*^9, 3.9542934244480352`*^9}, 3.954293478160903*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"55c3cdd9-b190-404a-98e3-7810cf069282"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"v\"", 
+     TagBox[
+      GridBox[{{"i"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"1"}, {
+              RowBox[{"-", 
+                FractionBox["1", 
+                 RowBox[{
+                   SqrtBox["2"], " ", "r"}]]}]}, {
+              RowBox[{"-", 
+                FractionBox[
+                 RowBox[{"Abs", "[", 
+                   RowBox[{"Csc", "[", "\[Theta]", "]"}], "]"}], 
+                 RowBox[{
+                   SqrtBox["2"], " ", "r"}]]}]}}, RowSpacings -> 1, 
+            ColumnAlignments -> Center, ColumnAlignments -> Left], Column], 
+          "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{
+     1, -2^Rational[-1, 2]/$CellContext`r, -2^
+       Rational[-1, 2] $CellContext`r^(-1) Abs[
+        Csc[$CellContext`\[Theta]]]}], 
+    "Coordinates" -> {$CellContext`r, $CellContext`\[Theta], $CellContext`\
+\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.9542933568691263`*^9, 3.954293371635528*^9}, {
+   3.954293416010323*^9, 3.9542934244480352`*^9}, 3.9542934790867*^9},
+ CellLabel->"Out[39]=",ExpressionUUID->"fd525863-1281-4eea-8c7c-fc1c89dd0c30"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"v\"", 
+     TagBox[
+      GridBox[{{"i"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"1"}, {
+              RowBox[{"-", 
+                FractionBox["1", 
+                 RowBox[{
+                   SqrtBox["2"], " ", "r"}]]}]}, {
+              RowBox[{"-", 
+                FractionBox[
+                 RowBox[{"Abs", "[", 
+                   RowBox[{"Csc", "[", "\[Theta]", "]"}], "]"}], 
+                 RowBox[{
+                   SqrtBox["2"], " ", "r"}]]}]}}, RowSpacings -> 1, 
+            ColumnAlignments -> Center, ColumnAlignments -> Left], Column], 
+          "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{
+     1, -2^Rational[-1, 2]/$CellContext`r, -2^
+       Rational[-1, 2] $CellContext`r^(-1) Abs[
+        Csc[$CellContext`\[Theta]]]}], 
+    "Coordinates" -> {$CellContext`r, $CellContext`\[Theta], $CellContext`\
+\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.9542933568691263`*^9, 3.954293371635528*^9}, {
+   3.954293416010323*^9, 3.9542934244480352`*^9}, 3.954293480029786*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"0892ae34-18ac-44a0-99cb-24390ec12d08"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"v\"", 
+     TagBox[
+      GridBox[{{""}, {"i"}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"1"}, {
+              RowBox[{"-", 
+                FractionBox["r", 
+                 SqrtBox["2"]]}]}, {
+              RowBox[{"-", 
+                FractionBox[
+                 RowBox[{"r", " ", 
+                   RowBox[{"Abs", "[", 
+                    RowBox[{"Csc", "[", "\[Theta]", "]"}], "]"}], " ", 
+                   SuperscriptBox[
+                    RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}], 
+                 SqrtBox["2"]]}]}}, RowSpacings -> 1, ColumnAlignments -> 
+            Center, ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{
+     1, -2^Rational[-1, 2] $CellContext`r, -2^Rational[-1, 2] $CellContext`r 
+      Abs[
+        Csc[$CellContext`\[Theta]]] Sin[$CellContext`\[Theta]]^2}], 
+    "Coordinates" -> {$CellContext`r, $CellContext`\[Theta], $CellContext`\
+\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.9542933568691263`*^9, 3.954293371635528*^9}, {
+   3.954293416010323*^9, 3.9542934244480352`*^9}, 3.954293480697443*^9},
+ CellLabel->"Out[41]=",ExpressionUUID->"beab2e49-3c73-4c95-ab45-5c4fdc6c28a0"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"v\"", 
+     TagBox[
+      GridBox[{{""}, {"i"}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           GridBox[{{"1"}, {
+              RowBox[{"-", 
+                FractionBox["1", 
+                 SqrtBox["2"]]}]}, {
+              RowBox[{"-", 
+                FractionBox["1", 
+                 SqrtBox["2"]]}]}}, RowSpacings -> 1, ColumnAlignments -> 
+            Center, ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{1, -2^Rational[-1, 2], -2^Rational[-1, 2]}], 
+    "Coordinates" -> {$CellContext`r, $CellContext`\[Theta], $CellContext`\
+\[Phi]}}, "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.9542933568691263`*^9, 3.954293371635528*^9}, {
+   3.954293416010323*^9, 3.9542934244480352`*^9}, 3.95429348163383*^9},
+ CellLabel->"Out[42]=",ExpressionUUID->"d38f2374-1047-4d83-9b2f-a933e9514e23"]
+}, Open  ]]
+},
+WindowSize->{972, 480.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c62e3807-f4a4-4950-889b-53973f3f7b01"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 3174, 84, 259, "Input",ExpressionUUID->"e15fb4ed-fe1d-4f5e-b0a1-93f5edcb495f"],
+Cell[3757, 108, 1442, 37, 51, "Output",ExpressionUUID->"55c3cdd9-b190-404a-98e3-7810cf069282"],
+Cell[5202, 147, 1682, 43, 47, "Output",ExpressionUUID->"fd525863-1281-4eea-8c7c-fc1c89dd0c30"],
+Cell[6887, 192, 1684, 43, 47, "Output",ExpressionUUID->"0892ae34-18ac-44a0-99cb-24390ec12d08"],
+Cell[8574, 237, 1763, 43, 47, "Output",ExpressionUUID->"beab2e49-3c73-4c95-ab45-5c4fdc6c28a0"],
+Cell[10340, 282, 1403, 35, 47, "Output",ExpressionUUID->"d38f2374-1047-4d83-9b2f-a933e9514e23"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

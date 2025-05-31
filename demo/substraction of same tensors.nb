@@ -1,0 +1,305 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10388,        295]
+NotebookOptionsPosition[      8820,        258]
+NotebookOutlinePosition[      9207,        274]
+CellTagsIndexPosition[      9164,        271]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"vectorD3", "=", 
+  RowBox[{"NonMetricTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     SuperscriptBox["i", "-"], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "\"\<T\>\"", ",", 
+    RowBox[{"CoordinateSystem", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+    RowBox[{"StartIndex", "\[Rule]", "1"}]}], "]"}]}]], "Input",
+ CellLabel->"In[11]:=",ExpressionUUID->"aa329a95-e017-405b-87c4-dff0f7bb06bf"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"T\"", 
+     TagBox[
+      GridBox[{{"i"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           
+           GridBox[{{"a"}, {"b"}, {"c"}}, RowSpacings -> 1, ColumnAlignments -> 
+            Center, ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{3.954973649273571*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"5ed1f06f-fa99-4767-b07a-bbbffce44e39"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vectorD3", "-", "vectorD3"}]], "Input",
+ CellChangeTimes->{{3.954973653734717*^9, 3.9549736539208508`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"6efea518-d0fd-48ee-8648-9f9c06e1ad6a"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.954973654330194*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"8606623f-eb98-4aeb-90ed-13d301035398"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TensorsProduct", "[", 
+  RowBox[{
+   RowBox[{"vectorD3", "-", "vectorD3"}], ",", "Tensor"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9549736578648252`*^9, 3.954973680903973*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"3a3b122f-43e6-4a55-8174-4189fc6bc01f"],
+
+Cell[BoxData[
+ RowBox[{"TensorsProduct", "[", 
+  RowBox[{"0", ",", "Tensor"}], "]"}]], "Output",
+ CellChangeTimes->{3.954973672858551*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"c95aaf70-e304-44fe-8dc2-b2ae46028c83"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vectorD3two", "=", 
+  RowBox[{"NonMetricTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     SuperscriptBox["i", "-"], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "\"\<T2\>\"", ",", 
+    RowBox[{"CoordinateSystem", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+    RowBox[{"StartIndex", "\[Rule]", "1"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.9549737079108763`*^9, 3.954973756755451*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"4fb1a627-33ca-4b10-bad4-17f2be19078b"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"T2\"", 
+     TagBox[
+      GridBox[{{"i"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           
+           GridBox[{{"a"}, {"b"}, {"c"}}, RowSpacings -> 1, ColumnAlignments -> 
+            Center, ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.95497373776227*^9, 3.954973757005579*^9}},
+ CellLabel->"Out[20]=",ExpressionUUID->"f96686d3-98b2-4ce0-87ff-e04ac7a22607"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vectorD3", "-", "vectorD3two"}]], "Input",
+ CellChangeTimes->{{3.954973734225045*^9, 3.954973736391548*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"6cd75359-1725-4c39-a910-6bebfee2437a"],
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   TooltipBox[
+    TemplateBox[{"\"T\"", 
+      TagBox[
+       GridBox[{{"i"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+        DefaultBaseStyle -> "Column", 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+     "RowDefault"],
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+           TagBox[
+            
+            GridBox[{{"a"}, {"b"}, {"c"}}, RowSpacings -> 1, ColumnAlignments -> 
+             Center, ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+         
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        RowBox[{"\"Coordinates\"", "\[Rule]", 
+          RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+    TooltipStyle->{}],
+   Annotation[#, {
+     MatrixForm[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+     "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+    "Tooltip"]& ], "-", 
+  TagBox[
+   TooltipBox[
+    TemplateBox[{"\"T2\"", 
+      TagBox[
+       GridBox[{{"i"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+        DefaultBaseStyle -> "Column", 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+     "RowDefault"],
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+           TagBox[
+            
+            GridBox[{{"a"}, {"b"}, {"c"}}, RowSpacings -> 1, ColumnAlignments -> 
+             Center, ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+         
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        RowBox[{"\"Coordinates\"", "\[Rule]", 
+          RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+    TooltipStyle->{}],
+   Annotation[#, {
+     MatrixForm[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+     "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+    "Tooltip"]& ]}]], "Output",
+ CellChangeTimes->{{3.954973736670295*^9, 3.954973758639942*^9}},
+ CellLabel->"Out[21]=",ExpressionUUID->"0cf014d9-f866-48a9-891c-c95b672f0667"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TensorsProduct", "[", 
+  RowBox[{
+   RowBox[{"vectorD3", "-", "vectorD3two"}], ",", "Tensor"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.954973768340069*^9, 3.95497376865016*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"5be5b5d1-181f-4841-beef-42f2e31d2ac3"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{
+     RowBox[{"\"T\"", "-", "\"T2\""}], 
+     TagBox[
+      GridBox[{{"i"}, {""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          TagBox[
+           
+           GridBox[{{"0"}, {"0"}, {"0"}}, ColumnAlignments -> Center, 
+            RowSpacings -> 1, ColumnAlignments -> Left], Column], 
+          "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[{0, 0, 0}], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{{3.954973764917171*^9, 3.954973769171776*^9}},
+ CellLabel->"Out[23]=",ExpressionUUID->"a4bf0c29-4878-4ecd-b1e7-fb94460420d8"]
+}, Open  ]]
+},
+WindowSize->{729, 381},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"34c82ac1-79cb-4f1b-9049-113da535aad3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 501, 12, 50, "Input",ExpressionUUID->"aa329a95-e017-405b-87c4-dff0f7bb06bf"],
+Cell[1084, 36, 1115, 29, 47, "Output",ExpressionUUID->"5ed1f06f-fa99-4767-b07a-bbbffce44e39"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2236, 70, 210, 3, 29, "Input",ExpressionUUID->"6efea518-d0fd-48ee-8648-9f9c06e1ad6a"],
+Cell[2449, 75, 149, 2, 33, "Output",ExpressionUUID->"8606623f-eb98-4aeb-90ed-13d301035398"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2635, 82, 280, 5, 29, "Input",ExpressionUUID->"3a3b122f-43e6-4a55-8174-4189fc6bc01f"],
+Cell[2918, 89, 217, 4, 33, "Output",ExpressionUUID->"c95aaf70-e304-44fe-8dc2-b2ae46028c83"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3172, 98, 573, 13, 50, "Input",ExpressionUUID->"4fb1a627-33ca-4b10-bad4-17f2be19078b"],
+Cell[3748, 113, 1139, 29, 47, "Output",ExpressionUUID->"f96686d3-98b2-4ce0-87ff-e04ac7a22607"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4924, 147, 211, 3, 29, "Input",ExpressionUUID->"6cd75359-1725-4c39-a910-6bebfee2437a"],
+Cell[5138, 152, 2202, 59, 47, "Output",ExpressionUUID->"0cf014d9-f866-48a9-891c-c95b672f0667"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7377, 216, 282, 6, 29, "Input",ExpressionUUID->"5be5b5d1-181f-4841-beef-42f2e31d2ac3"],
+Cell[7662, 224, 1142, 31, 47, "Output",ExpressionUUID->"a4bf0c29-4878-4ecd-b1e7-fb94460420d8"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
