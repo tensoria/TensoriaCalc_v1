@@ -767,6 +767,14 @@ TestFormVectorIndices[indices_List]:=MatchQ[(Union[Sgn[#]&/@RemoveUnderBarredInd
 
 
 (* ::Input::Initialization:: *)
+Test1[]:="Test1";
+
+
+(* ::Input::Initialization:: *)
+Test1a[]:="Test1a";
+
+
+(* ::Input::Initialization:: *)
 (* Metric *)
 (* this is how we are going to input a metric and compute geometric objects *)
 (*NewCode: Redundant TagSetDelay*)

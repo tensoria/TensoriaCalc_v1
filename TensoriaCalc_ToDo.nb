@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     71920,       1452]
-NotebookOptionsPosition[     68359,       1381]
-NotebookOutlinePosition[     68908,       1401]
-CellTagsIndexPosition[     68865,       1398]
+NotebookDataLength[     72032,       1454]
+NotebookOptionsPosition[     68471,       1383]
+NotebookOutlinePosition[     69020,       1403]
+CellTagsIndexPosition[     68977,       1400]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,7 +47,8 @@ the integration will not give a unique solution and so should complain.
 \[EmptySmallCircle] I should make sure that we do not use \
 TestTensorIsFullyAntiSymmetric in our package.
 \[EmptySmallCircle] Change the check of Indices from TestEF into Tensor or \
-List Head. See other extract function.\
+List Head. See other extract function.
+Test1\
 \>", "Text",
  CellChangeTimes->{{3.954814808352099*^9, 3.954814813139282*^9}, {
   3.95497173394923*^9, 3.954971734104658*^9}, {3.954985558026002*^9, 
@@ -55,8 +56,9 @@ List Head. See other extract function.\
   3.955066089002681*^9, 3.9550661346179123`*^9}, {3.955762283214698*^9, 
   3.9557622836221743`*^9}, {3.955763679543851*^9, 3.955763683256771*^9}, {
   3.9567955825531397`*^9, 3.956795611781981*^9}, {3.957399185769704*^9, 
-  3.957399228882266*^9}, {3.9574026075989437`*^9, 
-  3.957402640015175*^9}},ExpressionUUID->"5ca5cf19-01c1-4be0-a295-\
+  3.957399228882266*^9}, {3.9574026075989437`*^9, 3.957402640015175*^9}, {
+  3.9578438050875473`*^9, 
+  3.957843806864147*^9}},ExpressionUUID->"5ca5cf19-01c1-4be0-a295-\
 b3308390f902"]
 }, Open  ]],
 
@@ -72,58 +74,58 @@ Cell[TextData[{
  "\[EmptySmallCircle] (Solved?) Order of Tensor objects occurring in \
 ContractTensors need to be handled more carefully. Also, should output always \
 be a single Tensor? Metric Tensors should be treated separately and properly. \
-\n\[UpDownArrow]\n\[EmptySmallCircle] (Solved?) TensorProduct of Tensors will \
-allow for ContractTensors to be implement more readily, since we already have \
-summation convenction implemented?\n\[UpDownArrow]\n\[EmptySmallCircle] \
-(Solved?) ContractTensors can be expanded? To make the output more flexible. \
-(20250509 WH: I think it\[CloseCurlyQuote]s solved. However, it depends on \
-what kind of flexibility. On the other hand, should we add ContractTensors \
-back?)\n\[EmptySmallCircle] (Solved!: See Wei-Hao\[CloseCurlyQuote]s thesis \
-p.188) CovariantD checks. CovariantD needs to distribute over Plus; how \
-should it act on a tensor product? \n\[EmptySmallCircle] (Solved!)It should \
-not be too difficult to extend CoordinateTransformation so that it can act on \
-Tensor\[CloseCurlyQuote]s.\n\[EmptySmallCircle] (Solved!)We need to allow for \
-sums and products of Tensors and scalars!\n\[EmptySmallCircle] (Solved!) \
-Write NonMetricTensor code.\n\[EmptySmallCircle] (Solved!) Allow for basis \
-vectors/forms display format?\n\[EmptySmallCircle] (Solved!) Write general \
-converter from quadratic form (of differentials) to matrix and vice versa? \
-Mixed/vectors too?\n\[EmptySmallCircle] (Half solved) Introduce some sort of \
-slot mechanism internally to allow for more control over placement of \
-indices?\n\[EmptySmallCircle] (Solved?)How to update tooltipdisplay after \
-indices have been moved?\n\[EmptySmallCircle] (Solved!) New functions: \
-\[DifferentialD] on Tensor. Wedge products.\n\[EmptySmallCircle] (Solved!) \
-Induced metrics & coordinate transformations of Tensors\n\[EmptySmallCircle] \
-(Solved!) General Lie Derivatives.\n\[EmptySmallCircle] (Solved!) Exterior \
-derivatives.\n\[EmptySmallCircle] (Solved!) Interior product\n\
-\[EmptySmallCircle] (Solved?) LaplaceBeltrami\n\[EmptySmallCircle] (Solved!) \
-CovariantBox needs to be updated to allow for higher rank tensors as input.\n\
-\[EmptySmallCircle] (Solved!) Orthonormal basis computation\n\
-\[EmptySmallCircle] (Solved! See: TC wo TsP.nb)TensorCompoments acting on \
-products of tensors with no contracted indices does not seem to work. This is \
-probably because ContractTensors does not do anything when there are no \
-contracted indices?\n\[UpDownArrow]Same thing\n\[EmptySmallCircle] Extend the \
-functionality of TensorComponents. For e.g. TensorComponents acting on \
-product of Tensor objects does not work.\n\[EmptySmallCircle] (Solved!) Allow \
-PartialD to take in coordinates (as a List) instead of only allowing for \
-Metric m_Tensor\n\[EmptySmallCircle] (Solved! See: Compare Timing of \
-commutation of CD and TsP.nb)Is it good policy/strategy to ContractTensors \
-before taking their CovariantD?\n\[EmptySmallCircle] (Solved?) Create a \
-DisplayTensorContents function\n\[EmptySmallCircle] (Solved?) Make sure all \
-relevant functions work on generic expressions, not just a single Tensor. \
-(E.g., CovariantD should be able to act on sums/products of objects.) \n\
-\[EmptySmallCircle] (Solved? The SparseArray itself)Create function that \
-spits out only the non-zero components of a tensor as replacement rules. \
-Maybe extend the functionality of TensorComponents.\n\[EmptySmallCircle] \
-(Solved!) What is the difference between putting the condition(s) /;(stuff) \
-before vs after an equality? E.g. f/:f[t_]/;(stuff):=xxxx vs \
-f/:f[t_]:=xxxx/;(stuff)\n\[EmptySmallCircle] (Solved?) Consider allowing end \
-user to customize Tooltipdisplay for Metric and other Tensors.\n\
-\[EmptySmallCircle] (Solved!) NonMetricTensor should allow for creation of a \
-scalar\n\[EmptySmallCircle] (Solved!) TooltipDisplay for Ricci tensor. Should \
-display a square matrix instead of a List.\n\[EmptySmallCircle] (Solved!) \
-Make sure TensoriaCalc can properly handle ratios (i.e., divisions) involving \
-Tensor objects. E.g. Feynman diagram calculations.\n\[EmptySmallCircle] \
-(Solved!) TensorComponents[",
+\nTest1\n\[UpDownArrow]\n\[EmptySmallCircle] (Solved?) TensorProduct of \
+Tensors will allow for ContractTensors to be implement more readily, since we \
+already have summation convenction implemented?\n\[UpDownArrow]\n\
+\[EmptySmallCircle] (Solved?) ContractTensors can be expanded? To make the \
+output more flexible. (20250509 WH: I think it\[CloseCurlyQuote]s solved. \
+However, it depends on what kind of flexibility. On the other hand, should we \
+add ContractTensors back?)\n\[EmptySmallCircle] (Solved!: See Wei-Hao\
+\[CloseCurlyQuote]s thesis p.188) CovariantD checks. CovariantD needs to \
+distribute over Plus; how should it act on a tensor product? \n\
+\[EmptySmallCircle] (Solved!)It should not be too difficult to extend \
+CoordinateTransformation so that it can act on Tensor\[CloseCurlyQuote]s.\n\
+\[EmptySmallCircle] (Solved!)We need to allow for sums and products of \
+Tensors and scalars!\n\[EmptySmallCircle] (Solved!) Write NonMetricTensor \
+code.\n\[EmptySmallCircle] (Solved!) Allow for basis vectors/forms display \
+format?\n\[EmptySmallCircle] (Solved!) Write general converter from quadratic \
+form (of differentials) to matrix and vice versa? Mixed/vectors too?\n\
+\[EmptySmallCircle] (Half solved) Introduce some sort of slot mechanism \
+internally to allow for more control over placement of indices?\n\
+\[EmptySmallCircle] (Solved?)How to update tooltipdisplay after indices have \
+been moved?\n\[EmptySmallCircle] (Solved!) New functions: \[DifferentialD] on \
+Tensor. Wedge products.\n\[EmptySmallCircle] (Solved!) Induced metrics & \
+coordinate transformations of Tensors\n\[EmptySmallCircle] (Solved!) General \
+Lie Derivatives.\n\[EmptySmallCircle] (Solved!) Exterior derivatives.\n\
+\[EmptySmallCircle] (Solved!) Interior product\n\[EmptySmallCircle] (Solved?) \
+LaplaceBeltrami\n\[EmptySmallCircle] (Solved!) CovariantBox needs to be \
+updated to allow for higher rank tensors as input.\n\[EmptySmallCircle] \
+(Solved!) Orthonormal basis computation\n\[EmptySmallCircle] (Solved! See: TC \
+wo TsP.nb)TensorCompoments acting on products of tensors with no contracted \
+indices does not seem to work. This is probably because ContractTensors does \
+not do anything when there are no contracted indices?\n\[UpDownArrow]Same \
+thing\n\[EmptySmallCircle] Extend the functionality of TensorComponents. For \
+e.g. TensorComponents acting on product of Tensor objects does not work.\n\
+\[EmptySmallCircle] (Solved!) Allow PartialD to take in coordinates (as a \
+List) instead of only allowing for Metric m_Tensor\n\[EmptySmallCircle] \
+(Solved! See: Compare Timing of commutation of CD and TsP.nb)Is it good \
+policy/strategy to ContractTensors before taking their CovariantD?\n\
+\[EmptySmallCircle] (Solved?) Create a DisplayTensorContents function\n\
+\[EmptySmallCircle] (Solved?) Make sure all relevant functions work on \
+generic expressions, not just a single Tensor. (E.g., CovariantD should be \
+able to act on sums/products of objects.) \n\[EmptySmallCircle] (Solved? The \
+SparseArray itself)Create function that spits out only the non-zero \
+components of a tensor as replacement rules. Maybe extend the functionality \
+of TensorComponents.\n\[EmptySmallCircle] (Solved!) What is the difference \
+between putting the condition(s) /;(stuff) before vs after an equality? E.g. \
+f/:f[t_]/;(stuff):=xxxx vs f/:f[t_]:=xxxx/;(stuff)\n\[EmptySmallCircle] \
+(Solved?) Consider allowing end user to customize Tooltipdisplay for Metric \
+and other Tensors.\n\[EmptySmallCircle] (Solved!) NonMetricTensor should \
+allow for creation of a scalar\n\[EmptySmallCircle] (Solved!) TooltipDisplay \
+for Ricci tensor. Should display a square matrix instead of a List.\n\
+\[EmptySmallCircle] (Solved!) Make sure TensoriaCalc can properly handle \
+ratios (i.e., divisions) involving Tensor objects. E.g. Feynman diagram \
+calculations.\n\[EmptySmallCircle] (Solved!) TensorComponents[",
  Cell[BoxData[
   FormBox[
    RowBox[{
@@ -301,10 +303,10 @@ new function and add this check in TensorWedge"
    3.9560247053148203`*^9}, {3.956026287106591*^9, 3.9560263306641073`*^9}, {
    3.956027635465361*^9, 3.9560276416305103`*^9}, {3.956120301000072*^9, 
    3.956120301220997*^9}, {3.956190132938716*^9, 3.956190135073495*^9}, {
-   3.956193442573003*^9, 
-   3.956193446538012*^9}},ExpressionUUID->"0009bfff-8b82-4c00-a8df-\
+   3.956193442573003*^9, 3.956193446538012*^9}, {3.9578438160826406`*^9, 
+   3.957843817728673*^9}},ExpressionUUID->"0009bfff-8b82-4c00-a8df-\
 db0711a9417d"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1404,55 +1406,55 @@ Cell[CellGroupData[{
 Cell[579, 22, 157, 3, 98, "Title",ExpressionUUID->"3a895480-b49d-4ca6-8e08-64fb754b69e9"],
 Cell[CellGroupData[{
 Cell[761, 29, 211, 4, 54, "Subsection",ExpressionUUID->"1ebebb65-8ed6-4a19-96ae-ccf8ac39fcad"],
-Cell[975, 35, 1467, 24, 196, "Text",ExpressionUUID->"5ca5cf19-01c1-4be0-a295-b3308390f902"]
+Cell[975, 35, 1524, 26, 219, "Text",ExpressionUUID->"5ca5cf19-01c1-4be0-a295-b3308390f902"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2479, 64, 211, 4, 54, "Subsection",ExpressionUUID->"1de36529-513e-456e-a3eb-b03c8be3c162"],
-Cell[2693, 70, 13676, 235, 1843, "Text",ExpressionUUID->"0009bfff-8b82-4c00-a8df-db0711a9417d"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[16406, 310, 141, 3, 38, "Subsection",ExpressionUUID->"754000b5-ce17-474f-9b38-4916f91d75d3"],
-Cell[16550, 315, 3666, 60, 587, "Text",ExpressionUUID->"7151cbe8-932b-4148-932f-ac477f2ceb62"],
-Cell[CellGroupData[{
-Cell[20241, 379, 918, 26, 59, "Input",ExpressionUUID->"833d9d8f-204d-4a99-a4b2-63571513773a"],
-Cell[21162, 407, 2568, 64, 47, "Output",ExpressionUUID->"5e68e6d6-841d-4e7c-a4dc-3df24383ff6b"],
-Cell[23733, 473, 2617, 66, 49, "Output",ExpressionUUID->"59d72f29-1edd-4ca4-a648-531abcdc26f7"]
+Cell[2536, 66, 211, 4, 54, "Subsection",ExpressionUUID->"1de36529-513e-456e-a3eb-b03c8be3c162"],
+Cell[2750, 72, 13731, 235, 1866, "Text",ExpressionUUID->"0009bfff-8b82-4c00-a8df-db0711a9417d"]
 }, Open  ]],
-Cell[26365, 542, 6236, 98, 729, "Text",ExpressionUUID->"d8f80b15-0342-488a-b217-9feaae854fa3"]
-}, Closed]],
 Cell[CellGroupData[{
-Cell[32638, 645, 210, 4, 38, "Subsection",ExpressionUUID->"43fed159-63c8-4bd1-befc-e9490ca14d5c"],
-Cell[32851, 651, 14157, 263, 1808, "Text",ExpressionUUID->"09dea201-9b24-402d-bac7-adbd4ff36ab8"]
-}, Closed]],
+Cell[16518, 312, 141, 3, 54, "Subsection",ExpressionUUID->"754000b5-ce17-474f-9b38-4916f91d75d3"],
+Cell[16662, 317, 3666, 60, 587, "Text",ExpressionUUID->"7151cbe8-932b-4148-932f-ac477f2ceb62"],
 Cell[CellGroupData[{
-Cell[47045, 919, 215, 4, 38, "Subsection",ExpressionUUID->"4352fd60-e471-41cd-8304-fd31794dab7c"],
-Cell[47263, 925, 1554, 27, 265, "Text",ExpressionUUID->"e922a0b0-2ccf-4dd9-8261-c7ad2ff24eda"],
-Cell[CellGroupData[{
-Cell[48842, 956, 918, 26, 59, "Input",ExpressionUUID->"fa8f2ca0-995e-4ef6-88ce-fa182625920c"],
-Cell[49763, 984, 2568, 64, 47, "Output",ExpressionUUID->"d318416b-1ad1-4170-a22e-b40ad1c55525"],
-Cell[52334, 1050, 2617, 66, 49, "Output",ExpressionUUID->"ccf7477d-ea6e-4cab-8411-f9c2ae7236f3"]
+Cell[20353, 381, 918, 26, 59, "Input",ExpressionUUID->"833d9d8f-204d-4a99-a4b2-63571513773a"],
+Cell[21274, 409, 2568, 64, 47, "Output",ExpressionUUID->"5e68e6d6-841d-4e7c-a4dc-3df24383ff6b"],
+Cell[23845, 475, 2617, 66, 49, "Output",ExpressionUUID->"59d72f29-1edd-4ca4-a648-531abcdc26f7"]
 }, Open  ]],
-Cell[54966, 1119, 4410, 74, 748, "Text",ExpressionUUID->"06873741-d735-43b1-ac1d-bddf77ce373d"]
+Cell[26477, 544, 6236, 98, 729, "Text",ExpressionUUID->"d8f80b15-0342-488a-b217-9feaae854fa3"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[59413, 1198, 160, 3, 38, "Subsection",ExpressionUUID->"9491f34a-9541-43a7-a2bc-1c29bcce2486"],
-Cell[59576, 1203, 1944, 34, 288, "Text",ExpressionUUID->"9b32769f-38d8-4ee0-be48-715179313c03"],
+Cell[32750, 647, 210, 4, 38, "Subsection",ExpressionUUID->"43fed159-63c8-4bd1-befc-e9490ca14d5c"],
+Cell[32963, 653, 14157, 263, 1808, "Text",ExpressionUUID->"09dea201-9b24-402d-bac7-adbd4ff36ab8"]
+}, Closed]],
 Cell[CellGroupData[{
-Cell[61545, 1241, 712, 18, 29, "Input",ExpressionUUID->"3945a71a-44d3-4983-bbe6-0d68b3510806",
+Cell[47157, 921, 215, 4, 38, "Subsection",ExpressionUUID->"4352fd60-e471-41cd-8304-fd31794dab7c"],
+Cell[47375, 927, 1554, 27, 265, "Text",ExpressionUUID->"e922a0b0-2ccf-4dd9-8261-c7ad2ff24eda"],
+Cell[CellGroupData[{
+Cell[48954, 958, 918, 26, 59, "Input",ExpressionUUID->"fa8f2ca0-995e-4ef6-88ce-fa182625920c"],
+Cell[49875, 986, 2568, 64, 47, "Output",ExpressionUUID->"d318416b-1ad1-4170-a22e-b40ad1c55525"],
+Cell[52446, 1052, 2617, 66, 49, "Output",ExpressionUUID->"ccf7477d-ea6e-4cab-8411-f9c2ae7236f3"]
+}, Open  ]],
+Cell[55078, 1121, 4410, 74, 748, "Text",ExpressionUUID->"06873741-d735-43b1-ac1d-bddf77ce373d"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[59525, 1200, 160, 3, 38, "Subsection",ExpressionUUID->"9491f34a-9541-43a7-a2bc-1c29bcce2486"],
+Cell[59688, 1205, 1944, 34, 288, "Text",ExpressionUUID->"9b32769f-38d8-4ee0-be48-715179313c03"],
+Cell[CellGroupData[{
+Cell[61657, 1243, 712, 18, 29, "Input",ExpressionUUID->"3945a71a-44d3-4983-bbe6-0d68b3510806",
  CellID->1995741216],
-Cell[62260, 1261, 130, 2, 33, "Output",ExpressionUUID->"43efaac7-8630-428b-b43a-a37d49823e1e",
+Cell[62372, 1263, 130, 2, 33, "Output",ExpressionUUID->"43efaac7-8630-428b-b43a-a37d49823e1e",
  CellID->2113311176]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[62439, 1269, 161, 3, 38, "Subsection",ExpressionUUID->"b64d3510-4c45-4285-97a4-3191849db4fc"],
-Cell[62603, 1274, 4805, 78, 755, "Text",ExpressionUUID->"42f5c06c-6508-4520-97e0-156cf1631c45"]
+Cell[62551, 1271, 161, 3, 38, "Subsection",ExpressionUUID->"b64d3510-4c45-4285-97a4-3191849db4fc"],
+Cell[62715, 1276, 4805, 78, 755, "Text",ExpressionUUID->"42f5c06c-6508-4520-97e0-156cf1631c45"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[67445, 1357, 172, 3, 38, "Subsection",ExpressionUUID->"d6d23d8d-3f88-41cf-b9da-dff0b737de76"],
-Cell[67620, 1362, 361, 8, 35, "Text",ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-00c21616e396"]
+Cell[67557, 1359, 172, 3, 38, "Subsection",ExpressionUUID->"d6d23d8d-3f88-41cf-b9da-dff0b737de76"],
+Cell[67732, 1364, 361, 8, 35, "Text",ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-00c21616e396"]
 }, Closed]],
-Cell[67996, 1373, 347, 5, 38, "Subsection",ExpressionUUID->"e6b2e12a-82a5-4f2e-af26-b6e8ae8d7c7f"]
+Cell[68108, 1375, 347, 5, 38, "Subsection",ExpressionUUID->"e6b2e12a-82a5-4f2e-af26-b6e8ae8d7c7f"]
 }, Open  ]]
 }
 ]
