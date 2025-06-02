@@ -767,10 +767,6 @@ TestFormVectorIndices[indices_List]:=MatchQ[(Union[Sgn[#]&/@RemoveUnderBarredInd
 
 
 (* ::Input::Initialization:: *)
-Test2[]:="Test2";
-
-
-(* ::Input::Initialization:: *)
 (* Metric *)
 (* this is how we are going to input a metric and compute geometric objects *)
 (*NewCode: Redundant TagSetDelay*)
@@ -1202,10 +1198,6 @@ TooltipDisplay\[Rule]newdisp
 (*Abondoned code: End*)
 
 (*Tensor/:D[Tensor[stuff___],\[Mu]T_Symbol]:=PD[Tensor[stuff],\[Mu]T]*)
-
-
-(* ::Input::Initialization:: *)
-Test2a[]:="Test2a";
 
 
 (* ::Input::Initialization:: *)

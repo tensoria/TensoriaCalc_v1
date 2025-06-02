@@ -17,7 +17,6 @@
 (*\[EmptySmallCircle] PotentialForm: A check could be inserted to verify whether the exterior derivative of \[Alpha] is zero or not. If it not zero, the integration will not give a unique solution and so should complain. *)
 (*\[EmptySmallCircle] I should make sure that we do not use TestTensorIsFullyAntiSymmetric in our package.*)
 (*\[EmptySmallCircle] Change the check of Indices from TestEF into Tensor or List Head. See other extract function.*)
-(*Test2*)
 
 
 (* ::Subsection:: *)
@@ -28,7 +27,7 @@
 (*\[EmptySmallCircle] (Solved?) Order of Tensor objects occurring in ContractTensors need to be handled more carefully. Also, should output always be a single Tensor? Metric Tensors should be treated separately and properly. *)
 (*\[UpDownArrow]*)
 (*\[EmptySmallCircle] (Solved?) TensorProduct of Tensors will allow for ContractTensors to be implement more readily, since we already have summation convenction implemented?*)
-(*\[UpDownArrow]Test2*)
+(*\[UpDownArrow]*)
 (*\[EmptySmallCircle] (Solved?) ContractTensors can be expanded? To make the output more flexible. (20250509 WH: I think it's solved. However, it depends on what kind of flexibility. On the other hand, should we add ContractTensors back?)*)
 (*\[EmptySmallCircle] (Solved!: See Wei-Hao's thesis p.188) CovariantD checks. CovariantD needs to distribute over Plus; how should it act on a tensor product? *)
 (*\[EmptySmallCircle] (Solved!)It should not be too difficult to extend CoordinateTransformation so that it can act on Tensor's.*)
