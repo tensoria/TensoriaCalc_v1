@@ -5,7 +5,7 @@
 (*TensoriaCalc*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*First Priority*)
 
 
@@ -16,16 +16,15 @@
 (*\[EmptySmallCircle] The label of ONFF for non-diagonal metric should  be labelled with numeric indices but not coordinate indices.*)
 (*\[EmptySmallCircle] PotentialForm: A check could be inserted to verify whether the exterior derivative of \[Alpha] is zero or not. If it not zero, the integration will not give a unique solution and so should complain. *)
 (*\[EmptySmallCircle] I should make sure that we do not use TestTensorIsFullyAntiSymmetric in our package.*)
-(*\[EmptySmallCircle] Change the check of Indices from TestEF into Tensor or List Head. See other extract function.*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Solved?/Solved!*)
 
 
 (* ::Text:: *)
 (*\[EmptySmallCircle] (Solved?) Order of Tensor objects occurring in ContractTensors need to be handled more carefully. Also, should output always be a single Tensor? Metric Tensors should be treated separately and properly. *)
-(*\[UpDownArrow]Test2*)
+(*\[UpDownArrow]*)
 (*\[EmptySmallCircle] (Solved?) TensorProduct of Tensors will allow for ContractTensors to be implement more readily, since we already have summation convenction implemented?*)
 (*\[UpDownArrow]*)
 (*\[EmptySmallCircle] (Solved?) ContractTensors can be expanded? To make the output more flexible. (20250509 WH: I think it's solved. However, it depends on what kind of flexibility. On the other hand, should we add ContractTensors back?)*)
@@ -46,7 +45,7 @@
 (*\[EmptySmallCircle] (Solved!) CovariantBox needs to be updated to allow for higher rank tensors as input.*)
 (*\[EmptySmallCircle] (Solved!) Orthonormal basis computation*)
 (*\[EmptySmallCircle] (Solved! See: TC wo TsP.nb)TensorCompoments acting on products of tensors with no contracted indices does not seem to work. This is probably because ContractTensors does not do anything when there are no contracted indices?*)
-(*\[UpDownArrow]Same thing Test1*)
+(*\[UpDownArrow]Same thing*)
 (*\[EmptySmallCircle] Extend the functionality of TensorComponents. For e.g. TensorComponents acting on product of Tensor objects does not work.*)
 (*\[EmptySmallCircle] (Solved!) Allow PartialD to take in coordinates (as a List) instead of only allowing for Metric m_Tensor*)
 (*\[EmptySmallCircle] (Solved! See: Compare Timing of commutation of CD and TsP.nb)Is it good policy/strategy to ContractTensors before taking their CovariantD?*)
@@ -136,7 +135,7 @@
 (*\[EmptySmallCircle] The endow function for ONFF related properties.*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Long Term*)
 
 
@@ -196,7 +195,6 @@
 (*\[EmptySmallCircle] (Mystery. See: Cases[Times object, TensorProduct].nb) Cases of TensorProduct seems that doesn't work well in MMA.*)
 (*\[EmptySmallCircle] (Guide) Think about how to make order of cells to make it more systemic/accessible. (Manual and package)*)
 (*\[EmptySmallCircle] Christoffel can have TensorAssumption and TensorOperator as its input Rules . *)
-(*\[EmptySmallCircle] Distinguish the TestScalarExpressionForm and TestTensorExpressionForm from TestExpressionForm. If users themselves want to do Indices[\[DifferentialD]x\[TensorProduct]\[DifferentialD]y] , we want to return itself? (or other potential issues that we haven't encountered)*)
 
 
 (* ::Subsection::Closed:: *)
