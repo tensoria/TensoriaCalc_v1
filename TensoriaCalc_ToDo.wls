@@ -5,7 +5,7 @@
 (*TensoriaCalc*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*First Priority*)
 
 
@@ -16,9 +16,11 @@
 (*\[EmptySmallCircle] The label of ONFF for non-diagonal metric should  be labelled with numeric indices but not coordinate indices.*)
 (*\[EmptySmallCircle] PotentialForm: A check could be inserted to verify whether the exterior derivative of \[Alpha] is zero or not. If it not zero, the integration will not give a unique solution and so should complain. *)
 (*\[EmptySmallCircle] I should make sure that we do not use TestTensorIsFullyAntiSymmetric in our package.*)
+(*\[EmptySmallCircle] Change the check of Indices from TestEF into Tensor or List Head. See other extract function.*)
+(*Test2*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Solved?/Solved!*)
 
 
@@ -26,7 +28,7 @@
 (*\[EmptySmallCircle] (Solved?) Order of Tensor objects occurring in ContractTensors need to be handled more carefully. Also, should output always be a single Tensor? Metric Tensors should be treated separately and properly. *)
 (*\[UpDownArrow]*)
 (*\[EmptySmallCircle] (Solved?) TensorProduct of Tensors will allow for ContractTensors to be implement more readily, since we already have summation convenction implemented?*)
-(*\[UpDownArrow]*)
+(*\[UpDownArrow]Test2*)
 (*\[EmptySmallCircle] (Solved?) ContractTensors can be expanded? To make the output more flexible. (20250509 WH: I think it's solved. However, it depends on what kind of flexibility. On the other hand, should we add ContractTensors back?)*)
 (*\[EmptySmallCircle] (Solved!: See Wei-Hao's thesis p.188) CovariantD checks. CovariantD needs to distribute over Plus; how should it act on a tensor product? *)
 (*\[EmptySmallCircle] (Solved!)It should not be too difficult to extend CoordinateTransformation so that it can act on Tensor's.*)
@@ -135,7 +137,7 @@
 (*\[EmptySmallCircle] The endow function for ONFF related properties.*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Long Term*)
 
 
@@ -195,6 +197,7 @@
 (*\[EmptySmallCircle] (Mystery. See: Cases[Times object, TensorProduct].nb) Cases of TensorProduct seems that doesn't work well in MMA.*)
 (*\[EmptySmallCircle] (Guide) Think about how to make order of cells to make it more systemic/accessible. (Manual and package)*)
 (*\[EmptySmallCircle] Christoffel can have TensorAssumption and TensorOperator as its input Rules . *)
+(*\[EmptySmallCircle] Distinguish the TestScalarExpressionForm and TestTensorExpressionForm from TestExpressionForm. If users themselves want to do Indices[\[DifferentialD]x\[TensorProduct]\[DifferentialD]y] , we want to return itself? (or other potential issues that we haven't encountered)*)
 
 
 (* ::Subsection::Closed:: *)
