@@ -25,7 +25,7 @@
 
 (* ::Text:: *)
 (*\[EmptySmallCircle] (Solved?) Order of Tensor objects occurring in ContractTensors need to be handled more carefully. Also, should output always be a single Tensor? Metric Tensors should be treated separately and properly. *)
-(*\[UpDownArrow]*)
+(*\[UpDownArrow]Test2*)
 (*\[EmptySmallCircle] (Solved?) TensorProduct of Tensors will allow for ContractTensors to be implement more readily, since we already have summation convenction implemented?*)
 (*\[UpDownArrow]*)
 (*\[EmptySmallCircle] (Solved?) ContractTensors can be expanded? To make the output more flexible. (20250509 WH: I think it's solved. However, it depends on what kind of flexibility. On the other hand, should we add ContractTensors back?)*)
@@ -46,7 +46,7 @@
 (*\[EmptySmallCircle] (Solved!) CovariantBox needs to be updated to allow for higher rank tensors as input.*)
 (*\[EmptySmallCircle] (Solved!) Orthonormal basis computation*)
 (*\[EmptySmallCircle] (Solved! See: TC wo TsP.nb)TensorCompoments acting on products of tensors with no contracted indices does not seem to work. This is probably because ContractTensors does not do anything when there are no contracted indices?*)
-(*\[UpDownArrow]Same thing*)
+(*\[UpDownArrow]Same thing Test1*)
 (*\[EmptySmallCircle] Extend the functionality of TensorComponents. For e.g. TensorComponents acting on product of Tensor objects does not work.*)
 (*\[EmptySmallCircle] (Solved!) Allow PartialD to take in coordinates (as a List) instead of only allowing for Metric m_Tensor*)
 (*\[EmptySmallCircle] (Solved! See: Compare Timing of commutation of CD and TsP.nb)Is it good policy/strategy to ContractTensors before taking their CovariantD?*)

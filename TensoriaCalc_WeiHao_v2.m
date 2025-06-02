@@ -879,6 +879,10 @@ StyleBox[\"\[Delta]\",\nFontSlant->\"Italic\"]\)")&&(name=!="\[Delta]"))
 
 
 (* ::Input::Initialization:: *)
+Test1[]:="Test1";
+
+
+(* ::Input::Initialization:: *)
 (*NewCode: Second strategy of ONFF*)
 Tensor/:Eigensystem[t_Tensor]:=Eigensystem[TensorComponents[t]];
 
@@ -1750,6 +1754,10 @@ TensorOperator[t_Tensor,top_]:=Module[{mmm},Which[(Cases[t,(TensorOperator->mmm_
 (*NewCode: TensorPlus*)
 (*TensorPlus[(LHSt_Tensor|LHSt_Times(*|LHSt_Plus*))+(RHSt_Tensor|RHSt_Times|RHSt_Plus)]/;(*(Cases[LHSt,Tensor[___],{0,Infinity}]=!={})*)(!TestExpressionForm[LHSt])&&(*(Cases[RHSt,Tensor[___],{0,Infinity}]=!={})*)(!TestExpressionForm[RHSt]):=Union[Cases[{LHSt},Tensor[xx___],\[Infinity]]]\[LeftDoubleBracket]1\[RightDoubleBracket]/.{(TensorComponents\[Rule]LHStc_)\[RuleDelayed]   (TensorComponents\[Rule]TensorComponents[LHSt+RHSt])
 ,(TensorName\[Rule]LHStn_)\[RuleDelayed]   (TensorName\[Rule]TensorPlusName[LHSt+RHSt])}*)
+
+
+(* ::Input::Initialization:: *)
+Test2[]:="Test";
 
 
 (* ::Input::Initialization:: *)
