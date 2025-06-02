@@ -767,11 +767,7 @@ TestFormVectorIndices[indices_List]:=MatchQ[(Union[Sgn[#]&/@RemoveUnderBarredInd
 
 
 (* ::Input::Initialization:: *)
-Test1[]:="Test1";
-
-
-(* ::Input::Initialization:: *)
-Test1a[]:="Test1a";
+Test2[]:="Test2";
 
 
 (* ::Input::Initialization:: *)
@@ -1206,6 +1202,10 @@ TooltipDisplay\[Rule]newdisp
 (*Abondoned code: End*)
 
 (*Tensor/:D[Tensor[stuff___],\[Mu]T_Symbol]:=PD[Tensor[stuff],\[Mu]T]*)
+
+
+(* ::Input::Initialization:: *)
+Test2a[]:="Test2a";
 
 
 (* ::Input::Initialization:: *)
