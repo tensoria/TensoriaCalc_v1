@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     71920,       1452]
-NotebookOptionsPosition[     68359,       1381]
-NotebookOutlinePosition[     68908,       1401]
-CellTagsIndexPosition[     68865,       1398]
+NotebookDataLength[     81492,       1662]
+NotebookOptionsPosition[     76955,       1576]
+NotebookOutlinePosition[     77509,       1596]
+CellTagsIndexPosition[     77466,       1593]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,18 +47,31 @@ the integration will not give a unique solution and so should complain.
 \[EmptySmallCircle] I should make sure that we do not use \
 TestTensorIsFullyAntiSymmetric in our package.
 \[EmptySmallCircle] Change the check of Indices from TestEF into Tensor or \
-List Head. See other extract function.\
+List Head. See other extract function.
+\[EmptySmallCircle] CY found a bug: MoveIndices to change ONBasis and \
+CoordBasis. For a 1-vector or 1-form, one case won\[CloseCurlyQuote]t be \
+touched. See: \[OpenCurlyDoubleQuote]MoveIndicesONFFbug.nb\
+\[CloseCurlyDoubleQuote]
+\[EmptySmallCircle] WH showed the efficiency problem of 2 higher rank tensors \
+contraction. The Table method is much more efficient in higher rank than the \
+TensorProduct+TensorContract method. (The TensorContract spends much more \
+time than TensorProduct). I suggest the necessity to rewrite a ContractTensor \
+or Einstein Summation with Table. YZ suggests testing it with a single higher \
+rank tensor first.\
 \>", "Text",
  CellChangeTimes->{{3.954814808352099*^9, 3.954814813139282*^9}, {
-  3.95497173394923*^9, 3.954971734104658*^9}, {3.954985558026002*^9, 
-  3.954985559123439*^9}, {3.955064549551662*^9, 3.955064576451136*^9}, {
-  3.955066089002681*^9, 3.9550661346179123`*^9}, {3.955762283214698*^9, 
-  3.9557622836221743`*^9}, {3.955763679543851*^9, 3.955763683256771*^9}, {
-  3.9567955825531397`*^9, 3.956795611781981*^9}, {3.957399185769704*^9, 
-  3.957399228882266*^9}, {3.9574026075989437`*^9, 
-  3.957402640015175*^9}},ExpressionUUID->"5ca5cf19-01c1-4be0-a295-\
+   3.95497173394923*^9, 3.954971734104658*^9}, {3.954985558026002*^9, 
+   3.954985559123439*^9}, {3.955064549551662*^9, 3.955064576451136*^9}, {
+   3.955066089002681*^9, 3.9550661346179123`*^9}, {3.955762283214698*^9, 
+   3.9557622836221743`*^9}, {3.955763679543851*^9, 3.955763683256771*^9}, {
+   3.9567955825531397`*^9, 3.956795611781981*^9}, {3.957399185769704*^9, 
+   3.957399228882266*^9}, {3.9574026075989437`*^9, 3.957402640015175*^9}, {
+   3.957856414776412*^9, 3.957856418574204*^9}, {3.957856476449149*^9, 
+   3.9578565715228977`*^9}, {3.957858847380075*^9, 3.957858856548593*^9}, 
+   3.9578588883134336`*^9, {3.95786043437877*^9, 
+   3.957860441338167*^9}},ExpressionUUID->"5ca5cf19-01c1-4be0-a295-\
 b3308390f902"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -211,7 +224,7 @@ tensor].nb)Deal with ",
  " with ContractTensors, where \[Phi] is a scalar Tensor.\n\
 \[EmptySmallCircle] (Solved!) TensorIsFullyAntiSymmetric Message. (20250509 \
 WH: There is no Message now, but there is Message for TestDifferentialForm)\n\
-\[EmptySmallCircle] (Solved! See: Bug fixed: coefficient of InteriorProduct \
+\[EmptySmallCircle] (Solved! See: Bug fixed_coefficient of InteriorProduct \
 when p=q.nb) ",
  Cell[BoxData[
   FormBox[
@@ -301,8 +314,8 @@ new function and add this check in TensorWedge"
    3.9560247053148203`*^9}, {3.956026287106591*^9, 3.9560263306641073`*^9}, {
    3.956027635465361*^9, 3.9560276416305103`*^9}, {3.956120301000072*^9, 
    3.956120301220997*^9}, {3.956190132938716*^9, 3.956190135073495*^9}, {
-   3.956193442573003*^9, 
-   3.956193446538012*^9}},ExpressionUUID->"0009bfff-8b82-4c00-a8df-\
+   3.956193442573003*^9, 3.956193446538012*^9}, {3.957859734099545*^9, 
+   3.9578597350681267`*^9}},ExpressionUUID->"0009bfff-8b82-4c00-a8df-\
 db0711a9417d"]
 }, Closed]],
 
@@ -619,7 +632,19 @@ list inside the TooltipDisplay only but let user to directly print it. If the \
 list becomes too huge. The TooltipStyle can\[CloseCurlyQuote]t solve the \
 problem since when the font size is too small, although the Tooltip box is \
 small enough, user still can not read it.\n\[EmptySmallCircle] The endow \
-function for ONFF related properties."
+function for ONFF related properties.\n\[EmptySmallCircle] The LHS and RHS \
+Tensors of TensorEquations should be check that they have same rank.\n\
+\[EmptySmallCircle] Consider if we should add MetricOperator after the \
+Coefficient in Metric(ExpressionForm) since it Expand the expression form. \
+Create an e.g. for it. Explore the interaction of Expand and Coefficient.\n\
+\[EmptySmallCircle] Don\[CloseCurlyQuote]t do Expand inside the Table in \
+Metric Coefficient. Do it before Table.\n\[EmptySmallCircle] Definition of an \
+ExteriorD on an n-vectors: We should LowerAllIndices T first. \[PartialD] on \
+it. Then RaiseAllIndices.\n\[EmptySmallCircle] The Test Function of \
+(Anti-)Symmetric ExpressionForm and the test for n-Form should be created \
+separately.\n\[EmptySmallCircle] What happens if TC implements the endow \
+function? Maybe I (WH) should create a demo nb for that.\n\[EmptySmallCircle] \
+Let endow and extraction functions as OperatorRules."
 }], "Text",
  CellChangeTimes->{
   3.955415242803461*^9, {3.9554153382128973`*^9, 3.955415338485861*^9}, 
@@ -636,8 +661,12 @@ function for ONFF related properties."
    3.956027748003821*^9}, {3.9561186399735203`*^9, 3.956118841522917*^9}, {
    3.956119276016096*^9, 3.956119278783757*^9}, {3.9561203116395597`*^9, 
    3.95612033222363*^9}, {3.956193433091414*^9, 3.956193435322616*^9}, {
-   3.957401100075947*^9, 
-   3.957401182212399*^9}},ExpressionUUID->"d8f80b15-0342-488a-b217-\
+   3.957401100075947*^9, 3.957401182212399*^9}, {3.957856726746469*^9, 
+   3.9578567653700867`*^9}, {3.9578593194753428`*^9, 3.957859327678585*^9}, {
+   3.957859359810957*^9, 3.95785937456289*^9}, {3.9578603759871283`*^9, 
+   3.957860376267704*^9}, {3.9578605103003063`*^9, 3.957860568322083*^9}, 
+   3.957861036053174*^9, {3.95786150060998*^9, 
+   3.957861571669888*^9}},ExpressionUUID->"d8f80b15-0342-488a-b217-\
 9feaae854fa3"]
 }, Closed]],
 
@@ -873,7 +902,73 @@ TensorOperator as its input Rules . \n\[EmptySmallCircle] Distinguish the \
 TestScalarExpressionForm and TestTensorExpressionForm from \
 TestExpressionForm. If users themselves want to do Indices[\[DifferentialD]x\
 \[TensorProduct]\[DifferentialD]y] , we want to return itself? (or other \
-potential issues that we haven\[CloseCurlyQuote]t encountered)"
+potential issues that we haven\[CloseCurlyQuote]t encountered)\n\
+\[EmptySmallCircle] Research on Symbolic Tensors in MMA, for abstract \
+calculation.\n\[EmptySmallCircle] Research on xAct, MathGR, for abstract \
+calculation and functionality to split space \n\[EmptySmallCircle] Wei-Hao \
+had reduced the indices list argument in ToTensorComponent. (See: Args in \
+ToTensorComponents.nb). However, we should do further test for users. Cases \
+the basis in ExpressionForm. Judge the position (up or lower) for users. \
+Consider if we want to check the consistency for every term in ExpressionForm \
+users provide. For e.g. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[DifferentialD]", "x"}], ")"}], "\[TensorProduct]", 
+     RowBox[{"(", 
+      RowBox[{"\[DifferentialD]", "y"}], ")"}], "\[TensorProduct]", 
+     RowBox[{"(", 
+      RowBox[{"\[Del]", "z"}], ")"}]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[DifferentialD]", "z"}], ")"}], "\[TensorProduct]", 
+     RowBox[{"(", 
+      RowBox[{"\[DifferentialD]", "x"}], ")"}], "\[TensorProduct]", 
+     RowBox[{"(", 
+      RowBox[{"\[DifferentialD]", "z"}], ")"}]}]}], TraditionalForm]],
+  ExpressionUUID->"e576cd1c-ca77-47d7-ab39-45484de60108"],
+ ". ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"\[DifferentialD]", "x"}], ")"}], "2"], 
+    RowBox[{"\[DifferentialD]", "z"}]}], TraditionalForm]],ExpressionUUID->
+  "27e77b64-e289-4082-b625-e372272737f1"],
+ "+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"\[DifferentialD]", "x"}], ")"}], "10"], 
+    RowBox[{"\[DifferentialD]", "y"}]}], TraditionalForm]],ExpressionUUID->
+  "e78f6515-1018-4bf6-9b86-6831a97f2d2b"],
+ ".\n\[EmptySmallCircle] While using ToTensorComponents. for a simple e.g., \
+like ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"\[Del]", "x"}], ")"}], "\[Wedge]", 
+    RowBox[{"(", 
+     RowBox[{"\[Del]", "y"}], ")"}], "\[Wedge]", 
+    RowBox[{"(", 
+     RowBox[{"\[Del]", "z"}], ")"}]}], TraditionalForm]],ExpressionUUID->
+  "cda6e321-5641-44e4-aed3-a9d578f26fd0"],
+ ", we can use SymmetrizedArray (or SparseArray) to declare the \
+TensorComponents. Instead convert it into TensorProdcut first. Consider how \
+to do the same thing for complicated object like Riemann tensor.\n\
+\[UpDownArrow]\n\[EmptySmallCircle] (\[DifferentialD]t\[TensorProduct]\
+\[DifferentialD]x)\[TensorWedge](\[DifferentialD]y\[TensorProduct]\
+\[DifferentialD]z) could tell us the symmetric property: \
+AntiSymmetruc{{1,2},{3,4}}.\n(\[DifferentialD]t\[DifferentialD]x)\
+\[TensorWedge](\[DifferentialD]y\[DifferentialD]z) could tell us the \
+symmetric property: AntiSymmetruc[{{1,2},{3,4}}], Symmetry[{1,2}] and \
+Symmetry[{3,4}].\n->Tackle the fully-symmetric first"
 }], "Text",
  CellChangeTimes->{
   3.9545474495948763`*^9, {3.95454749744802*^9, 3.9545475290568047`*^9}, {
@@ -910,8 +1005,10 @@ potential issues that we haven\[CloseCurlyQuote]t encountered)"
    3.956119242770054*^9}, {3.9561197522240267`*^9, 3.95611979982463*^9}, {
    3.956195065975931*^9, 3.956195070420595*^9}, {3.95679897267459*^9, 
    3.956799084912815*^9}, {3.957401188767758*^9, 3.9574011898241243`*^9}, {
-   3.957401300649597*^9, 
-   3.9574014155338593`*^9}},ExpressionUUID->"09dea201-9b24-402d-bac7-\
+   3.957401300649597*^9, 3.9574014155338593`*^9}, {3.9578587571345577`*^9, 
+   3.957858772498246*^9}, {3.957859189694496*^9, 3.957859198866747*^9}, {
+   3.957860238853816*^9, 3.9578603671036053`*^9}, {3.95786120762157*^9, 
+   3.9578612223204947`*^9}},ExpressionUUID->"09dea201-9b24-402d-bac7-\
 adbd4ff36ab8"]
 }, Closed]],
 
@@ -1174,7 +1271,8 @@ Kerr-Schild coord. Test eigensystem
 more systemic/accessible. (Manual and package)
 \[EmptySmallCircle] Warn the users to check the anti-symmetry property (its \
 TensorComponents) of input tensor of TensorWedge themselves. We don\
-\[CloseCurlyQuote]t check it them.\
+\[CloseCurlyQuote]t check it them.
+\[EmptySmallCircle] Add ONFF on Kerr as an e.g.?\
 \>", "Text",
  CellChangeTimes->{
   3.95541542300801*^9, {3.955415540122588*^9, 3.955415577651741*^9}, {
@@ -1189,8 +1287,9 @@ TensorComponents) of input tensor of TensorWedge themselves. We don\
    3.9560275738227043`*^9, 3.956027609544228*^9}, {3.95619484166601*^9, 
    3.956194853171438*^9}, {3.9561949136342363`*^9, 3.956194918326076*^9}, {
    3.9561949550837708`*^9, 3.956194971048326*^9}, {3.956195045595421*^9, 
-   3.956195051879005*^9}, {3.956795155681377*^9, 
-   3.956795247593334*^9}},ExpressionUUID->"06873741-d735-43b1-ac1d-\
+   3.956195051879005*^9}, {3.956795155681377*^9, 3.956795247593334*^9}, {
+   3.957861621969738*^9, 
+   3.957861637056169*^9}},ExpressionUUID->"06873741-d735-43b1-ac1d-\
 bddf77ce373d"]
 }, Closed]],
 
@@ -1262,7 +1361,17 @@ Cell[BoxData[
 Cell[BoxData["True"], "Output",
  CellLabel->"Out[4]=",
  CellID->2113311176,ExpressionUUID->"43efaac7-8630-428b-b43a-a37d49823e1e"]
-}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+\[EmptySmallCircle] TestSymmetricTensorExpressionForm Plus and Times/Power \
+problem. (20250602 WH: I did find some mistakes in \
+TestSymmetricTensorExpressionForm and fixed it. Not sure what it meant here \
+and if it is solved.)\
+\>", "Text",
+ CellChangeTimes->{{3.957861056643528*^9, 
+  3.957861120424305*^9}},ExpressionUUID->"1606ae3a-4ff1-4415-b80f-\
+597f3ab31f4c"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1363,12 +1472,98 @@ dff0b737de76"],
 Cell["\<\
 \[EmptySmallCircle] TestTensorIsFullyAntiSymmetric should be a public \
 function, because we don\[CloseCurlyQuote]t use inside any where of our \
-package.\
+package.
+\[EmptySmallCircle] Should NoPart Extract Functions be published?\
 \>", "Text",
  CellChangeTimes->{{3.9567946704200897`*^9, 3.9567946997008123`*^9}, {
-  3.9567952538499203`*^9, 
-  3.9567953050262203`*^9}},ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-\
+  3.9567952538499203`*^9, 3.9567953050262203`*^9}, {3.9578604071627274`*^9, 
+  3.957860454956767*^9}},ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-\
 00c21616e396"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Something that WH still doesn\[CloseCurlyQuote]t understand", \
+"Subsection",
+ CellChangeTimes->{{3.9578590216112022`*^9, 3.957859030498411*^9}, {
+  3.957860462169626*^9, 
+  3.95786046704182*^9}},ExpressionUUID->"e342e3b9-d927-49f1-ad65-\
+21a8947525c9"],
+
+Cell["\<\
+\[EmptySmallCircle] The output of MMA built-in TensorTranspose isn\
+\[CloseCurlyQuote]t as expect. I expect it should be TensorTranspose[T, {4, \
+2, 3, 1}] not TensorTranspose[T, {1, 4, 3, 2}]. This is a small issue in \
+SymbolicTensor.nb.\
+\>", "Text",
+ CellChangeTimes->{{3.9578590373103657`*^9, 3.957859153325268*^9}, 
+   3.957861275448732*^9},ExpressionUUID->"b234c294-573f-4902-8f1c-\
+120e0ebd55f9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"TensorTranspose", "[", 
+  RowBox[{"T", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "4", ",", "3", ",", "1"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"TensorTranspose", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"Cycles", "[", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], "}"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.952988183408721*^9, 3.952988199497327*^9}},
+ CellLabel->
+  "In[108]:=",ExpressionUUID->"cd7d51e6-711d-4f2c-b699-5443b5d9b483"],
+
+Cell[BoxData[
+ RowBox[{"TensorTranspose", "[", 
+  RowBox[{"T", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "4", ",", "3", ",", "1"}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.95298820272149*^9, 3.9578590346557693`*^9},
+ CellLabel->
+  "Out[108]=",ExpressionUUID->"94e55120-369a-4a2f-8111-d71c0b3e24be"],
+
+Cell[BoxData[
+ RowBox[{"TensorTranspose", "[", 
+  RowBox[{"T", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "4", ",", "3", ",", "2"}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.95298820272149*^9, 3.9578590346583652`*^9},
+ CellLabel->
+  "Out[109]=",ExpressionUUID->"1da1c720-0e84-4cf3-bbf4-1460fa9a35a6"]
+}, Open  ]],
+
+Cell["\<\
+\[EmptySmallCircle] Weinberg GR book: bianchi id for Riemann is only bianchi \
+id p.141\
+\>", "Text",
+ CellChangeTimes->{{3.957861587840188*^9, 
+  3.957861591848393*^9}},ExpressionUUID->"14f87db1-2630-4dae-963b-\
+e6569e979a02"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Server issues", "Subsection",
+ CellChangeTimes->{{3.9578612610329123`*^9, 
+  3.95786126451435*^9}},ExpressionUUID->"66932d8f-a0ef-4590-b9e9-\
+e530a25ec283"],
+
+Cell["\<\
+\[EmptySmallCircle] WH haven\[CloseCurlyQuote]t tell YZ how to delete user3.
+\[EmptySmallCircle] server remote or reboot privilege. Could YZ use ThinLinc \
+to reboot remotely (on laptop of desktop). Is there an Android SSH client \
+could do the same thing? If I change all init 6 into reboot, could rebootuser \
+be connected remotely?
+\[EmptySmallCircle] GitLink environment.\
+\>", "Text",
+ CellChangeTimes->{{3.957861278825912*^9, 
+  3.957861463904662*^9}},ExpressionUUID->"1aedfa13-117f-40fd-9878-\
+9cd5c9c67a19"]
 }, Closed]],
 
 Cell["Notes and To-do\[CloseCurlyQuote]s (Uncategorized)", "Subsection",
@@ -1381,8 +1576,8 @@ b6e8ae8d7c7f"]
 },
 AutoGeneratedPackage->Automatic,
 WindowToolbars->"EditBar",
-WindowSize->{972, 480.75},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{715.5, 480.75},
+WindowMargins->{{40.5, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
 ShowSelection->True,
 FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
@@ -1404,55 +1599,70 @@ Cell[CellGroupData[{
 Cell[579, 22, 157, 3, 98, "Title",ExpressionUUID->"3a895480-b49d-4ca6-8e08-64fb754b69e9"],
 Cell[CellGroupData[{
 Cell[761, 29, 211, 4, 54, "Subsection",ExpressionUUID->"1ebebb65-8ed6-4a19-96ae-ccf8ac39fcad"],
-Cell[975, 35, 1467, 24, 196, "Text",ExpressionUUID->"5ca5cf19-01c1-4be0-a295-b3308390f902"]
+Cell[975, 35, 2341, 37, 403, "Text",ExpressionUUID->"5ca5cf19-01c1-4be0-a295-b3308390f902"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3353, 77, 211, 4, 38, "Subsection",ExpressionUUID->"1de36529-513e-456e-a3eb-b03c8be3c162"],
+Cell[3567, 83, 13723, 235, 2303, "Text",ExpressionUUID->"0009bfff-8b82-4c00-a8df-db0711a9417d"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[17327, 323, 141, 3, 38, "Subsection",ExpressionUUID->"754000b5-ce17-474f-9b38-4916f91d75d3"],
+Cell[17471, 328, 3666, 60, 702, "Text",ExpressionUUID->"7151cbe8-932b-4148-932f-ac477f2ceb62"],
+Cell[CellGroupData[{
+Cell[21162, 392, 918, 26, 59, "Input",ExpressionUUID->"833d9d8f-204d-4a99-a4b2-63571513773a"],
+Cell[22083, 420, 2568, 64, 47, "Output",ExpressionUUID->"5e68e6d6-841d-4e7c-a4dc-3df24383ff6b"],
+Cell[24654, 486, 2617, 66, 49, "Output",ExpressionUUID->"59d72f29-1edd-4ca4-a648-531abcdc26f7"]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[2479, 64, 211, 4, 54, "Subsection",ExpressionUUID->"1de36529-513e-456e-a3eb-b03c8be3c162"],
-Cell[2693, 70, 13676, 235, 1843, "Text",ExpressionUUID->"0009bfff-8b82-4c00-a8df-db0711a9417d"]
+Cell[27286, 555, 7482, 114, 1235, "Text",ExpressionUUID->"d8f80b15-0342-488a-b217-9feaae854fa3"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[16406, 310, 141, 3, 38, "Subsection",ExpressionUUID->"754000b5-ce17-474f-9b38-4916f91d75d3"],
-Cell[16550, 315, 3666, 60, 587, "Text",ExpressionUUID->"7151cbe8-932b-4148-932f-ac477f2ceb62"],
+Cell[34805, 674, 210, 4, 38, "Subsection",ExpressionUUID->"43fed159-63c8-4bd1-befc-e9490ca14d5c"],
+Cell[35018, 680, 17132, 331, 2682, "Text",ExpressionUUID->"09dea201-9b24-402d-bac7-adbd4ff36ab8"]
+}, Closed]],
 Cell[CellGroupData[{
-Cell[20241, 379, 918, 26, 59, "Input",ExpressionUUID->"833d9d8f-204d-4a99-a4b2-63571513773a"],
-Cell[21162, 407, 2568, 64, 47, "Output",ExpressionUUID->"5e68e6d6-841d-4e7c-a4dc-3df24383ff6b"],
-Cell[23733, 473, 2617, 66, 49, "Output",ExpressionUUID->"59d72f29-1edd-4ca4-a648-531abcdc26f7"]
+Cell[52187, 1016, 215, 4, 38, "Subsection",ExpressionUUID->"4352fd60-e471-41cd-8304-fd31794dab7c"],
+Cell[52405, 1022, 1554, 27, 357, "Text",ExpressionUUID->"e922a0b0-2ccf-4dd9-8261-c7ad2ff24eda"],
+Cell[CellGroupData[{
+Cell[53984, 1053, 918, 26, 59, "Input",ExpressionUUID->"fa8f2ca0-995e-4ef6-88ce-fa182625920c"],
+Cell[54905, 1081, 2568, 64, 47, "Output",ExpressionUUID->"d318416b-1ad1-4170-a22e-b40ad1c55525"],
+Cell[57476, 1147, 2617, 66, 49, "Output",ExpressionUUID->"ccf7477d-ea6e-4cab-8411-f9c2ae7236f3"]
 }, Open  ]],
-Cell[26365, 542, 6236, 98, 729, "Text",ExpressionUUID->"d8f80b15-0342-488a-b217-9feaae854fa3"]
+Cell[60108, 1216, 4509, 76, 955, "Text",ExpressionUUID->"06873741-d735-43b1-ac1d-bddf77ce373d"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[32638, 645, 210, 4, 38, "Subsection",ExpressionUUID->"43fed159-63c8-4bd1-befc-e9490ca14d5c"],
-Cell[32851, 651, 14157, 263, 1808, "Text",ExpressionUUID->"09dea201-9b24-402d-bac7-adbd4ff36ab8"]
-}, Closed]],
+Cell[64654, 1297, 160, 3, 38, "Subsection",ExpressionUUID->"9491f34a-9541-43a7-a2bc-1c29bcce2486"],
+Cell[64817, 1302, 1944, 34, 380, "Text",ExpressionUUID->"9b32769f-38d8-4ee0-be48-715179313c03"],
 Cell[CellGroupData[{
-Cell[47045, 919, 215, 4, 38, "Subsection",ExpressionUUID->"4352fd60-e471-41cd-8304-fd31794dab7c"],
-Cell[47263, 925, 1554, 27, 265, "Text",ExpressionUUID->"e922a0b0-2ccf-4dd9-8261-c7ad2ff24eda"],
-Cell[CellGroupData[{
-Cell[48842, 956, 918, 26, 59, "Input",ExpressionUUID->"fa8f2ca0-995e-4ef6-88ce-fa182625920c"],
-Cell[49763, 984, 2568, 64, 47, "Output",ExpressionUUID->"d318416b-1ad1-4170-a22e-b40ad1c55525"],
-Cell[52334, 1050, 2617, 66, 49, "Output",ExpressionUUID->"ccf7477d-ea6e-4cab-8411-f9c2ae7236f3"]
-}, Open  ]],
-Cell[54966, 1119, 4410, 74, 748, "Text",ExpressionUUID->"06873741-d735-43b1-ac1d-bddf77ce373d"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[59413, 1198, 160, 3, 38, "Subsection",ExpressionUUID->"9491f34a-9541-43a7-a2bc-1c29bcce2486"],
-Cell[59576, 1203, 1944, 34, 288, "Text",ExpressionUUID->"9b32769f-38d8-4ee0-be48-715179313c03"],
-Cell[CellGroupData[{
-Cell[61545, 1241, 712, 18, 29, "Input",ExpressionUUID->"3945a71a-44d3-4983-bbe6-0d68b3510806",
+Cell[66786, 1340, 712, 18, 50, "Input",ExpressionUUID->"3945a71a-44d3-4983-bbe6-0d68b3510806",
  CellID->1995741216],
-Cell[62260, 1261, 130, 2, 33, "Output",ExpressionUUID->"43efaac7-8630-428b-b43a-a37d49823e1e",
+Cell[67501, 1360, 130, 2, 33, "Output",ExpressionUUID->"43efaac7-8630-428b-b43a-a37d49823e1e",
  CellID->2113311176]
-}, Open  ]]
+}, Open  ]],
+Cell[67646, 1365, 379, 8, 81, "Text",ExpressionUUID->"1606ae3a-4ff1-4415-b80f-597f3ab31f4c"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[62439, 1269, 161, 3, 38, "Subsection",ExpressionUUID->"b64d3510-4c45-4285-97a4-3191849db4fc"],
-Cell[62603, 1274, 4805, 78, 755, "Text",ExpressionUUID->"42f5c06c-6508-4520-97e0-156cf1631c45"]
+Cell[68062, 1378, 161, 3, 38, "Subsection",ExpressionUUID->"b64d3510-4c45-4285-97a4-3191849db4fc"],
+Cell[68226, 1383, 4805, 78, 755, "Text",ExpressionUUID->"42f5c06c-6508-4520-97e0-156cf1631c45"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[67445, 1357, 172, 3, 38, "Subsection",ExpressionUUID->"d6d23d8d-3f88-41cf-b9da-dff0b737de76"],
-Cell[67620, 1362, 361, 8, 35, "Text",ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-00c21616e396"]
+Cell[73068, 1466, 172, 3, 38, "Subsection",ExpressionUUID->"d6d23d8d-3f88-41cf-b9da-dff0b737de76"],
+Cell[73243, 1471, 475, 9, 81, "Text",ExpressionUUID->"b67abf3b-c1d4-40a5-9caa-00c21616e396"]
 }, Closed]],
-Cell[67996, 1373, 347, 5, 38, "Subsection",ExpressionUUID->"e6b2e12a-82a5-4f2e-af26-b6e8ae8d7c7f"]
+Cell[CellGroupData[{
+Cell[73755, 1485, 259, 5, 38, "Subsection",ExpressionUUID->"e342e3b9-d927-49f1-ad65-21a8947525c9"],
+Cell[74017, 1492, 414, 8, 81, "Text",ExpressionUUID->"b234c294-573f-4902-8f1c-120e0ebd55f9"],
+Cell[CellGroupData[{
+Cell[74456, 1504, 518, 14, 50, "Input",ExpressionUUID->"cd7d51e6-711d-4f2c-b699-5443b5d9b483"],
+Cell[74977, 1520, 309, 7, 33, "Output",ExpressionUUID->"94e55120-369a-4a2f-8111-d71c0b3e24be"],
+Cell[75289, 1529, 309, 7, 33, "Output",ExpressionUUID->"1da1c720-0e84-4cf3-bbf4-1460fa9a35a6"]
+}, Open  ]],
+Cell[75613, 1539, 237, 6, 35, "Text",ExpressionUUID->"14f87db1-2630-4dae-963b-e6569e979a02"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[75887, 1550, 162, 3, 38, "Subsection",ExpressionUUID->"66932d8f-a0ef-4590-b9e9-e530a25ec283"],
+Cell[76052, 1555, 525, 10, 127, "Text",ExpressionUUID->"1aedfa13-117f-40fd-9878-9cd5c9c67a19"]
+}, Closed]],
+Cell[76592, 1568, 347, 5, 38, "Subsection",ExpressionUUID->"e6b2e12a-82a5-4f2e-af26-b6e8ae8d7c7f"]
 }, Open  ]]
 }
 ]

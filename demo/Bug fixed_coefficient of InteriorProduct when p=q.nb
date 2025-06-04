@@ -1,0 +1,1194 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     43136,       1186]
+NotebookOptionsPosition[     39963,       1126]
+NotebookOutlinePosition[     40353,       1142]
+CellTagsIndexPosition[     40310,       1139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Before", "Subsubsection",
+ CellChangeTimes->{{3.955770376005417*^9, 
+  3.955770377981762*^9}},ExpressionUUID->"6c40177c-2edd-47d5-95d3-\
+51c18187c849"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"X", "=", 
+  RowBox[{"NonMetricTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", "-"], ",", 
+      SuperscriptBox["\[Beta]", "-"]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a1", ",", "b1", ",", "c1"}], "}"}], "\[TensorWedge]", 
+     RowBox[{"{", 
+      RowBox[{"d1", ",", "f1", ",", "h1"}], "}"}]}], ",", "\"\<X\>\"", ",", 
+    RowBox[{"CoordinateSystem", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"\[Omega]", "=", 
+  RowBox[{"NonMetricTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["\[Mu]", "-"], ",", 
+      SubscriptBox["\[Nu]", "-"]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c"}], "}"}], "\[TensorWedge]", 
+     RowBox[{"{", 
+      RowBox[{"d", ",", "f", ",", "h"}], "}"}]}], ",", "\"\<\[Omega]\>\"", 
+    ",", 
+    RowBox[{"CoordinateSystem", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["\[Iota]", "X"], "[", "\[Omega]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"InteriorProduct", "[", 
+  RowBox[{"X", ",", "\[Omega]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"InteriorProduct", "[", 
+  RowBox[{"X", ",", "\[Omega]", ",", "Tensor"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.955765582428553*^9, 3.9557655852318773`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"13bc0a39-94f7-4248-8131-05eba5881cfd"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"X\"", 
+     TagBox[
+      GridBox[{{"\[Alpha]"}, {""}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{"\[Beta]"}, {""}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          GridBox[{{"0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+               RowBox[{"a1", " ", "f1"}]}], 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+               RowBox[{"a1", " ", "h1"}]}]}, {
+             RowBox[{
+               RowBox[{"b1", " ", "d1"}], "-", 
+               RowBox[{"a1", " ", "f1"}]}], "0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+               RowBox[{"b1", " ", "h1"}]}]}, {
+             RowBox[{
+               RowBox[{"c1", " ", "d1"}], "-", 
+               RowBox[{"a1", " ", "h1"}]}], 
+             RowBox[{
+               RowBox[{"c1", " ", "f1"}], "-", 
+               RowBox[{"b1", " ", "h1"}]}], "0"}}, RowSpacings -> 1, 
+           ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> 
+           Center], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[
+          SymmetrizedArray[
+           
+           StructuredArray`StructuredData[{3, 
+            3}, {{{1, 
+               2} -> -$CellContext`b1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`f1, {1, 
+               3} -> -$CellContext`c1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`h1, {2, 
+               3} -> -$CellContext`c1 $CellContext`f1 + $CellContext`b1 \
+$CellContext`h1}, 
+             Antisymmetric[{1, 2}]}]]]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[
+     SymmetrizedArray[
+      StructuredArray`StructuredData[{3, 
+       3}, {{{1, 
+          2} -> -$CellContext`b1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`f1, {1, 
+          3} -> -$CellContext`c1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`h1, {2, 
+          3} -> -$CellContext`c1 $CellContext`f1 + $CellContext`b1 \
+$CellContext`h1}, 
+        Antisymmetric[{1, 2}]}]]], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585477867*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"3a49fed4-a465-41de-8644-68c91b41d6cc"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"\[Omega]\"", 
+     TagBox[
+      GridBox[{{""}, {"\[Mu]"}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {"\[Nu]"}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          GridBox[{{"0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "b"}], " ", "d"}], "+", 
+               RowBox[{"a", " ", "f"}]}], 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c"}], " ", "d"}], "+", 
+               RowBox[{"a", " ", "h"}]}]}, {
+             RowBox[{
+               RowBox[{"b", " ", "d"}], "-", 
+               RowBox[{"a", " ", "f"}]}], "0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c"}], " ", "f"}], "+", 
+               RowBox[{"b", " ", "h"}]}]}, {
+             RowBox[{
+               RowBox[{"c", " ", "d"}], "-", 
+               RowBox[{"a", " ", "h"}]}], 
+             RowBox[{
+               RowBox[{"c", " ", "f"}], "-", 
+               RowBox[{"b", " ", "h"}]}], "0"}}, RowSpacings -> 1, 
+           ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> 
+           Center], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[
+          SymmetrizedArray[
+           
+           StructuredArray`StructuredData[{3, 
+            3}, {{{1, 
+               2} -> -$CellContext`b $CellContext`d + $CellContext`a \
+$CellContext`f, {1, 
+               3} -> -$CellContext`c $CellContext`d + $CellContext`a \
+$CellContext`h, {2, 
+               3} -> -$CellContext`c $CellContext`f + $CellContext`b \
+$CellContext`h}, 
+             Antisymmetric[{1, 2}]}]]]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[
+     SymmetrizedArray[
+      StructuredArray`StructuredData[{3, 
+       3}, {{{1, 
+          2} -> -$CellContext`b $CellContext`d + $CellContext`a \
+$CellContext`f, {1, 
+          3} -> -$CellContext`c $CellContext`d + $CellContext`a \
+$CellContext`h, {2, 
+          3} -> -$CellContext`c $CellContext`f + $CellContext`b \
+$CellContext`h}, 
+        Antisymmetric[{1, 2}]}]]], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585480658*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"03df71b4-4226-4b74-9afd-4bbded4c9b30"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "b"}], " ", "d"}], "+", 
+     RowBox[{"a", " ", "f"}]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+     RowBox[{"a1", " ", "f1"}]}], ")"}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c"}], " ", "d"}], "+", 
+     RowBox[{"a", " ", "h"}]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+     RowBox[{"a1", " ", "h1"}]}], ")"}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c"}], " ", "f"}], "+", 
+     RowBox[{"b", " ", "h"}]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+     RowBox[{"b1", " ", "h1"}]}], ")"}]}]}]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585482768*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"32de465a-9519-4405-aeaa-932d2f0320bc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "b"}], " ", "d"}], "+", 
+     RowBox[{"a", " ", "f"}]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+     RowBox[{"a1", " ", "f1"}]}], ")"}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c"}], " ", "d"}], "+", 
+     RowBox[{"a", " ", "h"}]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+     RowBox[{"a1", " ", "h1"}]}], ")"}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c"}], " ", "f"}], "+", 
+     RowBox[{"b", " ", "h"}]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+     RowBox[{"b1", " ", "h1"}]}], ")"}]}]}]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585545808*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"ac3e4296-40ba-4be8-a6eb-4f0afcb866be"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", 
+        TagBox[
+         GridBox[{{
+            TemplateBox[{
+              SubscriptBox["\"\[Iota]\"", "\"X\""], "\"\[Omega]\""}, 
+             "RowDefault"]}}, RowSpacings -> 1, ColumnAlignments -> Center, 
+          ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{
+          FractionBox["1", "2"], " ", 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{"2", " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "b"}], " ", "d"}], "+", 
+                    RowBox[{"a", " ", "f"}]}], ")"}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+                    RowBox[{"a1", " ", "f1"}]}], ")"}]}], "+", 
+              RowBox[{"2", " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c"}], " ", "d"}], "+", 
+                    RowBox[{"a", " ", "h"}]}], ")"}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+                    RowBox[{"a1", " ", "h1"}]}], ")"}]}], "+", 
+              RowBox[{"2", " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c"}], " ", "f"}], "+", 
+                    RowBox[{"b", " ", "h"}]}], ")"}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+                    RowBox[{"b1", " ", "h1"}]}], ")"}]}]}], ")"}]}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[
+    Rational[1, 2] (
+      2 (-$CellContext`b $CellContext`d + $CellContext`a $CellContext`f) \
+(-$CellContext`b1 $CellContext`d1 + $CellContext`a1 $CellContext`f1) + 
+      2 (-$CellContext`c $CellContext`d + $CellContext`a $CellContext`h) \
+(-$CellContext`c1 $CellContext`d1 + $CellContext`a1 $CellContext`h1) + 
+      2 (-$CellContext`c $CellContext`f + $CellContext`b $CellContext`h) \
+(-$CellContext`c1 $CellContext`f1 + $CellContext`b1 $CellContext`h1))], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585548436*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"6f078a92-2170-4437-a741-da7fa1218e20"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Iota]", "X"], "[", "\[Omega]", "]"}], "-", 
+    RowBox[{"TC", "[", 
+     RowBox[{"InteriorProduct", "[", 
+      RowBox[{"X", ",", "\[Omega]", ",", "Tensor"}], "]"}], "]"}]}], ")"}], "//",
+   "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.9557651830204163`*^9, 3.955765197206624*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"d4e89a1f-b64b-46b1-bbe1-d10a86f63286"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"c", " ", "c1", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"d", " ", "d1"}], "+", 
+     RowBox[{"f", " ", "f1"}]}], ")"}]}], "-", 
+  RowBox[{"b", " ", "f1", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"a1", " ", "d"}], "+", 
+     RowBox[{"c1", " ", "h"}]}], ")"}]}], "-", 
+  RowBox[{"c", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"a1", " ", "d"}], "+", 
+     RowBox[{"b1", " ", "f"}]}], ")"}], " ", "h1"}], "+", 
+  RowBox[{"b", " ", "b1", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"d", " ", "d1"}], "+", 
+     RowBox[{"h", " ", "h1"}]}], ")"}]}], "+", 
+  RowBox[{"a", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "b1"}], " ", "d1", " ", "f"}], "+", 
+     RowBox[{"a1", " ", "f", " ", "f1"}], "-", 
+     RowBox[{"c1", " ", "d1", " ", "h"}], "+", 
+     RowBox[{"a1", " ", "h", " ", "h1"}]}], ")"}]}]}]], "Output",
+ CellChangeTimes->{{3.9557651888544188`*^9, 3.955765197844941*^9}},
+ CellLabel->"Out[23]=",ExpressionUUID->"ff3914ab-8329-425d-95bb-740ab02d87f9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Iota]", "X"], "[", "\[Omega]", "]"}], "-", 
+    RowBox[{"2", 
+     RowBox[{"TC", "[", 
+      RowBox[{"InteriorProduct", "[", 
+       RowBox[{"X", ",", "\[Omega]", ",", "Tensor"}], "]"}], "]"}]}]}], ")"}],
+   "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{3.955765205524741*^9},
+ CellLabel->"In[24]:=",ExpressionUUID->"c39206a9-1e17-4ddd-b285-ba5bda2b2232"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.955765205717845*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"5fc1ccef-386a-4cd1-8a52-fc5a510537a7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The problem is in the following code", "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.9557703835417852`*^9, 3.9557703913978357`*^9}, 
+   3.955770540425273*^9},ExpressionUUID->"ac2922c0-7203-48f7-a00e-\
+8415aa9585ea"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"InteriorProduct", "[", 
+     RowBox[{
+      RowBox[{"X_Tensor", "/;", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"RankNumber", "[", "X", "]"}], ">", "0"}], ")"}]}], 
+      RowBox[{"(*", 
+       RowBox[{"&&", 
+        RowBox[{"(", 
+         RowBox[{"TestDifferentialVector", "[", "X", "]"}], ")"}]}], "*)"}], 
+      RowBox[{"(*", 
+       RowBox[{"TestOneVector", "[", "X", "]"}], "*)"}], ",", 
+      "\[Omega]_Tensor"}], "]"}], "/;", 
+    RowBox[{"(", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"TestDifferentialForm", "[", "\[Omega]", "]"}], "&&"}], "*)"}], 
+     RowBox[{
+      RowBox[{"RankNumber", "[", "\[Omega]", "]"}], ">", "0"}], ")"}]}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "originalXindices", ",", "original\[Omega]indices", ",", "Xindices", 
+       ",", "\[Omega]indices", ",", "length", ",", "length2", ",", 
+       "finallength", ",", "newIndicesrep", ",", "newIndices", ",", "i", ",", 
+       "output", ",", "newTensorName"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"TestDifferentialForm", "[", "\[Omega]", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"TestDifferentialVector", "[", "X", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"originalXindices", "=", 
+       RowBox[{"Indices", "[", "X", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"original\[Omega]indices", "=", 
+       RowBox[{"Indices", "[", "\[Omega]", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Xindices", "=", 
+       RowBox[{"RemoveUnderBarredIndices", "[", "originalXindices", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"\[Omega]indices", "=", 
+       RowBox[{
+       "RemoveUnderBarredIndices", "[", "original\[Omega]indices", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"length", "=", 
+       RowBox[{"RankNumber", "[", "Xindices", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"length2", "=", 
+       RowBox[{"RankNumber", "[", "\[Omega]indices", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"finallength", "=", 
+       RowBox[{"Min", "[", 
+        RowBox[{"length", ",", "length2"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newIndicesrep", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Xindices", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "\[Rule]", 
+           RowBox[{"\[Omega]indices", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], " ", ")"}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "finallength"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newIndices", "=", 
+       RowBox[{"originalXindices", "/.", "newIndicesrep"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Which", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"(", 
+          RowBox[{"length", "===", "length2"}], ")"}], 
+         RowBox[{"(*", 
+          RowBox[{"||", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Abs", "[", 
+              RowBox[{"length", "-", "length2"}], "]"}], "===", "1"}], 
+            ")"}]}], "*)"}], ")"}], ",", 
+        RowBox[{"output", "=", 
+         RowBox[{"(*", 
+          RowBox[{"Here", " ", "is", " ", "the", " ", "problem"}], "*)"}], 
+         RowBox[{"TensorsProduct", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Indices", "[", 
+             RowBox[{"X", ",", "newIndices"}], "]"}], ",", "\[Omega]"}], 
+           "}"}], "]"}]}], ",", "True", ",", 
+        RowBox[{
+         RowBox[{"output", "=", 
+          RowBox[{"TensorsProduct", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Indices", "[", 
+              RowBox[{"X", ",", "newIndices"}], "]"}], ",", "\[Omega]"}], 
+            "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"output", "=", 
+          RowBox[{"TensorsProduct", "[", 
+           RowBox[{
+            RowBox[{
+             FractionBox["1", 
+              RowBox[{"finallength", "!"}]], " ", "output"}], ",", "Tensor"}],
+            "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"output", "=", 
+          RowBox[{"TensorName", "[", 
+           RowBox[{"output", ",", 
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               SubscriptBox["\"\<\[Iota]\>\"", 
+                RowBox[{"TensorName", "[", "X", "]"}]], ",", 
+               RowBox[{"TensorName", "[", "\[Omega]", "]"}]}], "}"}], "]"}]}],
+            "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"output", "=", 
+          RowBox[{
+          "RemoveRepeatedUnderBarredIndices", "[", "output", "]"}]}]}]}], 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.95577054042551*^9, 3.955770570237632*^9}, {
+  3.956192268220223*^9, 
+  3.956192269124196*^9}},ExpressionUUID->"e6025929-3c31-47b7-81aa-\
+367086b60134"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["After", "Subsubsection",
+ CellChangeTimes->{{3.9557705456343193`*^9, 
+  3.955770546362481*^9}},ExpressionUUID->"635caf37-de22-4950-b44b-\
+b677927574c6"],
+
+Cell[CellGroupData[{
+
+Cell["code", "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.9557703835417852`*^9, 3.9557703913978357`*^9}, 
+   3.955770540425273*^9, 
+   3.955770587795476*^9},ExpressionUUID->"af06bebf-5f9a-4320-9c38-\
+ee2b9ffc0b73"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"InteriorProduct", "[", 
+     RowBox[{
+      RowBox[{"X_Tensor", "/;", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"RankNumber", "[", "X", "]"}], ">", "0"}], ")"}]}], 
+      RowBox[{"(*", 
+       RowBox[{"&&", 
+        RowBox[{"(", 
+         RowBox[{"TestDifferentialVector", "[", "X", "]"}], ")"}]}], "*)"}], 
+      RowBox[{"(*", 
+       RowBox[{"TestOneVector", "[", "X", "]"}], "*)"}], ",", 
+      "\[Omega]_Tensor"}], "]"}], "/;", 
+    RowBox[{"(", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"TestDifferentialForm", "[", "\[Omega]", "]"}], "&&"}], "*)"}], 
+     RowBox[{
+      RowBox[{"RankNumber", "[", "\[Omega]", "]"}], ">", "0"}], ")"}]}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "originalXindices", ",", "original\[Omega]indices", ",", "Xindices", 
+       ",", "\[Omega]indices", ",", "length", ",", "length2", ",", 
+       "finallength", ",", "newIndicesrep", ",", "newIndices", ",", "i", ",", 
+       "output", ",", "newTensorName"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"TestDifferentialForm", "[", "\[Omega]", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"TestDifferentialVector", "[", "X", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"originalXindices", "=", 
+       RowBox[{"Indices", "[", "X", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"original\[Omega]indices", "=", 
+       RowBox[{"Indices", "[", "\[Omega]", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Xindices", "=", 
+       RowBox[{"RemoveUnderBarredIndices", "[", "originalXindices", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"\[Omega]indices", "=", 
+       RowBox[{
+       "RemoveUnderBarredIndices", "[", "original\[Omega]indices", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"length", "=", 
+       RowBox[{"RankNumber", "[", "Xindices", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"length2", "=", 
+       RowBox[{"RankNumber", "[", "\[Omega]indices", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"finallength", "=", 
+       RowBox[{"Min", "[", 
+        RowBox[{"length", ",", "length2"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newIndicesrep", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Xindices", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "\[Rule]", 
+           RowBox[{"\[Omega]indices", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], " ", ")"}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "finallength"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newIndices", "=", 
+       RowBox[{"originalXindices", "/.", "newIndicesrep"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Which", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"(", 
+          RowBox[{"length", "===", "length2"}], ")"}], 
+         RowBox[{"(*", 
+          RowBox[{"||", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Abs", "[", 
+              RowBox[{"length", "-", "length2"}], "]"}], "===", "1"}], 
+            ")"}]}], "*)"}], ")"}], ",", 
+        RowBox[{"output", "=", 
+         RowBox[{
+          FractionBox["1", 
+           RowBox[{"finallength", "!"}]], " ", 
+          RowBox[{"TensorsProduct", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Indices", "[", 
+              RowBox[{"X", ",", "newIndices"}], "]"}], ",", "\[Omega]"}], 
+            "}"}], "]"}]}]}], ",", "True", ",", 
+        RowBox[{
+         RowBox[{"output", "=", 
+          RowBox[{"TensorsProduct", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Indices", "[", 
+              RowBox[{"X", ",", "newIndices"}], "]"}], ",", "\[Omega]"}], 
+            "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"output", "=", 
+          RowBox[{"TensorsProduct", "[", 
+           RowBox[{
+            RowBox[{
+             FractionBox["1", 
+              RowBox[{"finallength", "!"}]], " ", "output"}], ",", "Tensor"}],
+            "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"output", "=", 
+          RowBox[{"TensorName", "[", 
+           RowBox[{"output", ",", 
+            RowBox[{"Row", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               SubscriptBox["\"\<\[Iota]\>\"", 
+                RowBox[{"TensorName", "[", "X", "]"}]], ",", 
+               RowBox[{"TensorName", "[", "\[Omega]", "]"}]}], "}"}], "]"}]}],
+            "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"output", "=", 
+          RowBox[{
+          "RemoveRepeatedUnderBarredIndices", "[", "output", "]"}]}]}]}], 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.95577054042551*^9, 
+  3.955770594856618*^9}},ExpressionUUID->"77683b1b-4294-4dfb-909c-\
+577ab390813e"]
+}, Closed]],
+
+Cell["result", "Text",
+ CellChangeTimes->{{3.955770730279969*^9, 
+  3.9557707320877666`*^9}},ExpressionUUID->"232f4ec0-b949-4aad-b68a-\
+b91fe1c640cd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"X", "=", 
+  RowBox[{"NonMetricTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", "-"], ",", 
+      SuperscriptBox["\[Beta]", "-"]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a1", ",", "b1", ",", "c1"}], "}"}], "\[TensorWedge]", 
+     RowBox[{"{", 
+      RowBox[{"d1", ",", "f1", ",", "h1"}], "}"}]}], ",", "\"\<X\>\"", ",", 
+    RowBox[{"CoordinateSystem", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"\[Omega]", "=", 
+  RowBox[{"NonMetricTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["\[Mu]", "-"], ",", 
+      SubscriptBox["\[Nu]", "-"]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c"}], "}"}], "\[TensorWedge]", 
+     RowBox[{"{", 
+      RowBox[{"d", ",", "f", ",", "h"}], "}"}]}], ",", "\"\<\[Omega]\>\"", 
+    ",", 
+    RowBox[{"CoordinateSystem", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["\[Iota]", "X"], "[", "\[Omega]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"InteriorProduct", "[", 
+  RowBox[{"X", ",", "\[Omega]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"InteriorProduct", "[", 
+  RowBox[{"X", ",", "\[Omega]", ",", "Tensor"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.955765582428553*^9, 3.9557655852318773`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"75dd9190-2c34-44be-a360-40cd38ddade0"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"X\"", 
+     TagBox[
+      GridBox[{{"\[Alpha]"}, {""}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{"\[Beta]"}, {""}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          GridBox[{{"0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+               RowBox[{"a1", " ", "f1"}]}], 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+               RowBox[{"a1", " ", "h1"}]}]}, {
+             RowBox[{
+               RowBox[{"b1", " ", "d1"}], "-", 
+               RowBox[{"a1", " ", "f1"}]}], "0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+               RowBox[{"b1", " ", "h1"}]}]}, {
+             RowBox[{
+               RowBox[{"c1", " ", "d1"}], "-", 
+               RowBox[{"a1", " ", "h1"}]}], 
+             RowBox[{
+               RowBox[{"c1", " ", "f1"}], "-", 
+               RowBox[{"b1", " ", "h1"}]}], "0"}}, RowSpacings -> 1, 
+           ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> 
+           Center], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[
+          SymmetrizedArray[
+           
+           StructuredArray`StructuredData[{3, 
+            3}, {{{1, 
+               2} -> -$CellContext`b1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`f1, {1, 
+               3} -> -$CellContext`c1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`h1, {2, 
+               3} -> -$CellContext`c1 $CellContext`f1 + $CellContext`b1 \
+$CellContext`h1}, 
+             Antisymmetric[{1, 2}]}]]]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[
+     SymmetrizedArray[
+      StructuredArray`StructuredData[{3, 
+       3}, {{{1, 
+          2} -> -$CellContext`b1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`f1, {1, 
+          3} -> -$CellContext`c1 $CellContext`d1 + $CellContext`a1 \
+$CellContext`h1, {2, 
+          3} -> -$CellContext`c1 $CellContext`f1 + $CellContext`b1 \
+$CellContext`h1}, 
+        Antisymmetric[{1, 2}]}]]], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585477867*^9, 
+  3.95577073714874*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"520c46f6-7b82-4dff-9105-debd3555a892"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{"\"\[Omega]\"", 
+     TagBox[
+      GridBox[{{""}, {"\[Mu]"}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+     TagBox[
+      GridBox[{{""}, {"\[Nu]"}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+       DefaultBaseStyle -> "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{"(", "\[NoBreak]", 
+          GridBox[{{"0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "b"}], " ", "d"}], "+", 
+               RowBox[{"a", " ", "f"}]}], 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c"}], " ", "d"}], "+", 
+               RowBox[{"a", " ", "h"}]}]}, {
+             RowBox[{
+               RowBox[{"b", " ", "d"}], "-", 
+               RowBox[{"a", " ", "f"}]}], "0", 
+             RowBox[{
+               RowBox[{
+                 RowBox[{"-", "c"}], " ", "f"}], "+", 
+               RowBox[{"b", " ", "h"}]}]}, {
+             RowBox[{
+               RowBox[{"c", " ", "d"}], "-", 
+               RowBox[{"a", " ", "h"}]}], 
+             RowBox[{
+               RowBox[{"c", " ", "f"}], "-", 
+               RowBox[{"b", " ", "h"}]}], "0"}}, RowSpacings -> 1, 
+           ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> 
+           Center], "\[NoBreak]", ")"}], 
+        Function[BoxForm`e$, 
+         MatrixForm[
+          SymmetrizedArray[
+           
+           StructuredArray`StructuredData[{3, 
+            3}, {{{1, 
+               2} -> -$CellContext`b $CellContext`d + $CellContext`a \
+$CellContext`f, {1, 
+               3} -> -$CellContext`c $CellContext`d + $CellContext`a \
+$CellContext`h, {2, 
+               3} -> -$CellContext`c $CellContext`f + $CellContext`b \
+$CellContext`h}, 
+             Antisymmetric[{1, 2}]}]]]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[
+     SymmetrizedArray[
+      StructuredArray`StructuredData[{3, 
+       3}, {{{1, 
+          2} -> -$CellContext`b $CellContext`d + $CellContext`a \
+$CellContext`f, {1, 
+          3} -> -$CellContext`c $CellContext`d + $CellContext`a \
+$CellContext`h, {2, 
+          3} -> -$CellContext`c $CellContext`f + $CellContext`b \
+$CellContext`h}, 
+        Antisymmetric[{1, 2}]}]]], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585477867*^9, 
+  3.955770737164308*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"07a9efc0-389a-44ba-892b-ea467ef2f974"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "d"}], "+", 
+       RowBox[{"a", " ", "f"}]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+       RowBox[{"a1", " ", "f1"}]}], ")"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c"}], " ", "d"}], "+", 
+       RowBox[{"a", " ", "h"}]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+       RowBox[{"a1", " ", "h1"}]}], ")"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c"}], " ", "f"}], "+", 
+       RowBox[{"b", " ", "h"}]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+       RowBox[{"b1", " ", "h1"}]}], ")"}]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585477867*^9, 
+  3.955770737179443*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"90c5cc7d-c6cf-4644-829f-1a5c4611ed0d"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "d"}], "+", 
+       RowBox[{"a", " ", "f"}]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+       RowBox[{"a1", " ", "f1"}]}], ")"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c"}], " ", "d"}], "+", 
+       RowBox[{"a", " ", "h"}]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+       RowBox[{"a1", " ", "h1"}]}], ")"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c"}], " ", "f"}], "+", 
+       RowBox[{"b", " ", "h"}]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+       RowBox[{"b1", " ", "h1"}]}], ")"}]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585477867*^9, 
+  3.955770737197331*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"f74540cb-d0d3-498c-b5a1-ab2257be21bd"],
+
+Cell[BoxData[
+ TagBox[
+  TooltipBox[
+   TemplateBox[{
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", 
+        TagBox[
+         GridBox[{{
+            TemplateBox[{
+              SubscriptBox["\"\[Iota]\"", "\"X\""], "\"\[Omega]\""}, 
+             "RowDefault"]}}, RowSpacings -> 1, ColumnAlignments -> Center, 
+          ColumnAlignments -> Left], Column], "\[NoBreak]", ")"}], 
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]},
+    "RowDefault"],
+   RowBox[{"{", 
+     RowBox[{
+       TagBox[
+        RowBox[{
+          FractionBox["1", "2"], " ", 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{"2", " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "b"}], " ", "d"}], "+", 
+                    RowBox[{"a", " ", "f"}]}], ")"}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "b1"}], " ", "d1"}], "+", 
+                    RowBox[{"a1", " ", "f1"}]}], ")"}]}], "+", 
+              RowBox[{"2", " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c"}], " ", "d"}], "+", 
+                    RowBox[{"a", " ", "h"}]}], ")"}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c1"}], " ", "d1"}], "+", 
+                    RowBox[{"a1", " ", "h1"}]}], ")"}]}], "+", 
+              RowBox[{"2", " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c"}], " ", "f"}], "+", 
+                    RowBox[{"b", " ", "h"}]}], ")"}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "c1"}], " ", "f1"}], "+", 
+                    RowBox[{"b1", " ", "h1"}]}], ")"}]}]}], ")"}]}], 
+        Function[BoxForm`e$, 
+         MatrixForm[BoxForm`e$]]], ",", 
+       RowBox[{"\"Coordinates\"", "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "}"}],
+   TooltipStyle->{}],
+  Annotation[#, {
+    MatrixForm[
+    Rational[1, 2] (
+      2 (-$CellContext`b $CellContext`d + $CellContext`a $CellContext`f) \
+(-$CellContext`b1 $CellContext`d1 + $CellContext`a1 $CellContext`f1) + 
+      2 (-$CellContext`c $CellContext`d + $CellContext`a $CellContext`h) \
+(-$CellContext`c1 $CellContext`d1 + $CellContext`a1 $CellContext`h1) + 
+      2 (-$CellContext`c $CellContext`f + $CellContext`b $CellContext`h) \
+(-$CellContext`c1 $CellContext`f1 + $CellContext`b1 $CellContext`h1))], 
+    "Coordinates" -> {$CellContext`x, $CellContext`y, $CellContext`z}}, 
+   "Tooltip"]& ]], "Output",
+ CellChangeTimes->{3.955765154114843*^9, 3.955765585477867*^9, 
+  3.955770737223927*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"781fabbd-1d0b-43f0-b36a-b94d951fe8e5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Iota]", "X"], "[", "\[Omega]", "]"}], "-", 
+    RowBox[{"TC", "[", 
+     RowBox[{"InteriorProduct", "[", 
+      RowBox[{"X", ",", "\[Omega]", ",", "Tensor"}], "]"}], "]"}]}], ")"}], "//",
+   "FullSimplify"}]], "Input",
+ CellLabel->"In[16]:=",ExpressionUUID->"b259d61e-35c9-4b97-9dca-e672bd9e8105"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.955770745706884*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"8d8a601a-00c0-4ac9-8a34-41b7aafc73c3"]
+}, Open  ]]
+}, Closed]]
+},
+WindowSize->{972, 480.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"29697cd7-70d9-4c15-8e5a-a941dd104b1a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 157, 3, 45, "Subsubsection",ExpressionUUID->"6c40177c-2edd-47d5-95d3-51c18187c849"],
+Cell[CellGroupData[{
+Cell[762, 29, 1549, 41, 110, "Input",ExpressionUUID->"13bc0a39-94f7-4248-8131-05eba5881cfd"],
+Cell[2314, 72, 2938, 77, 48, "Output",ExpressionUUID->"3a49fed4-a465-41de-8644-68c91b41d6cc"],
+Cell[5255, 151, 2876, 75, 47, "Output",ExpressionUUID->"03df71b4-4226-4b74-9afd-4bbded4c9b30"],
+Cell[8134, 228, 1052, 36, 35, "Output",ExpressionUUID->"32de465a-9519-4405-aeaa-932d2f0320bc"],
+Cell[9189, 266, 1052, 36, 35, "Output",ExpressionUUID->"ac3e4296-40ba-4be8-a6eb-4f0afcb866be"],
+Cell[10244, 304, 2920, 73, 33, "Output",ExpressionUUID->"6f078a92-2170-4437-a741-da7fa1218e20"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13201, 382, 451, 11, 29, "Input",ExpressionUUID->"d4e89a1f-b64b-46b1-bbe1-d10a86f63286"],
+Cell[13655, 395, 1041, 31, 35, "Output",ExpressionUUID->"ff3914ab-8329-425d-95bb-740ab02d87f9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14733, 431, 448, 12, 31, "Input",ExpressionUUID->"c39206a9-1e17-4ddd-b285-ba5bda2b2232"],
+Cell[15184, 445, 149, 2, 33, "Output",ExpressionUUID->"5fc1ccef-386a-4cd1-8a52-fc5a510537a7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15370, 452, 260, 4, 35, "Text",ExpressionUUID->"ac2922c0-7203-48f7-a00e-8415aa9585ea",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[15633, 458, 5152, 128, 500, "Input",ExpressionUUID->"e6025929-3c31-47b7-81aa-367086b60134",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[20834, 592, 158, 3, 37, "Subsubsection",ExpressionUUID->"635caf37-de22-4950-b44b-b677927574c6"],
+Cell[CellGroupData[{
+Cell[21017, 599, 254, 5, 35, "Text",ExpressionUUID->"af06bebf-5f9a-4320-9c38-ee2b9ffc0b73",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[21274, 606, 5105, 128, 520, "Input",ExpressionUUID->"77683b1b-4294-4dfb-909c-577ab390813e",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
+}, Closed]],
+Cell[26394, 737, 150, 3, 31, "Text",ExpressionUUID->"232f4ec0-b949-4aad-b68a-b91fe1c640cd"],
+Cell[CellGroupData[{
+Cell[26569, 744, 1549, 41, 110, "Input",ExpressionUUID->"75dd9190-2c34-44be-a360-40cd38ddade0"],
+Cell[28121, 787, 2962, 78, 48, "Output",ExpressionUUID->"520c46f6-7b82-4dff-9105-debd3555a892"],
+Cell[31086, 867, 2901, 76, 47, "Output",ExpressionUUID->"07a9efc0-389a-44ba-892b-ea467ef2f974"],
+Cell[33990, 945, 1211, 40, 47, "Output",ExpressionUUID->"90c5cc7d-c6cf-4644-829f-1a5c4611ed0d"],
+Cell[35204, 987, 1211, 40, 47, "Output",ExpressionUUID->"f74540cb-d0d3-498c-b5a1-ab2257be21bd"],
+Cell[36418, 1029, 2945, 74, 33, "Output",ExpressionUUID->"781fabbd-1d0b-43f0-b36a-b94d951fe8e5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39400, 1108, 383, 10, 29, "Input",ExpressionUUID->"b259d61e-35c9-4b97-9dca-e672bd9e8105"],
+Cell[39786, 1120, 149, 2, 33, "Output",ExpressionUUID->"8d8a601a-00c0-4ac9-8a34-41b7aafc73c3"]
+}, Open  ]]
+}, Closed]]
+}
+]
+*)
+

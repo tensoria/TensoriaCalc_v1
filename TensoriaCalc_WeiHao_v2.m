@@ -739,6 +739,7 @@ result=Apply[Plus,sgnlist[[1]]Table[sgnlist[[ii]] TensorProduct[Sequence@@Permut
 (*NewCode: TestSymmetricTensorExpressionForm*)
 TestSymmetricTensorExpressionForm[stuff_]:=Module[{tep,liststuff},
 tep=stuff//Expand;
+liststuff=tep;
 Which[Head[tep]===Plus,liststuff=Apply[List,tep]];
 Which[Head[tep]===Times,liststuff={tep}];
 ((Cases[liststuff,((\[Del]_)|(\[Del]_)^power_|Times[x1___/;(Cases[{x1},(\[DifferentialD]_|\[Del]_),Infinity]==={}),xxx___/;(MatchQ[{xxx},{((\[Del]_)|(\[Del]_)^power_)..}]&&(Length[{xxx}]===1)),x2___/;(Cases[{x2},(\[DifferentialD]_|\[Del]_),Infinity]==={})]),{1}]=!={})||
@@ -2019,7 +2020,7 @@ coord=OptionValue[CoordinateSystem];
 texpand=stuff//Expand;
 dcoords=(\[DifferentialD]#)&/@coord;
 delcoords=(\[Del]#)&/@coord;
-CasesTP=Cases[tpexpand,TensorProduct[a_,___]/;MatchQ[a,(\[DifferentialD]__|\[Del]__)],Infinity];
+CasesTP=Cases[texpand,TensorProduct[a_,___]/;MatchQ[a,(\[DifferentialD]__|\[Del]__)],Infinity];
 CasesTPFirstList=Apply[List,First[CasesTP]];
 basissgn=BasisSgn[#]&/@CasesTPFirstList;
 idxl=Length[basissgn];
